@@ -54,3 +54,16 @@ a:link { color: #def3f5; }
 a:visited { color: #053a47; }
 
 a:hover { text-decoration: underline; }
+
+#hospital-name {
+    text-align: center;
+}
+
+.form td:first-child {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.form td:nth-child(2) {
+    text-align: left;
+}
