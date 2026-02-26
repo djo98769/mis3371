@@ -33,7 +33,8 @@
             </table>
         </div>
         <hr>
-        <div id="body">
+        
+<div id="body">    
 <div align="center"> <form action="thankyou.html">
    <table class="form">
     <tr class="form">
@@ -92,7 +93,12 @@
             <label for="ssn">SSN*</label>
         </td>
         <td>
-        <input type="password" id="ssn" name="ssn" maxlength="11" placeholder="123-45-6789" required>
+            <input type="password" 
+                    id="ssn" 
+                    name="ssn" 
+                    maxlength="11"    
+                    placeholder="123-45-6789" 
+                    required>
         </td>
     </tr>
        
@@ -234,7 +240,13 @@
             <label for="symptoms">Symptoms*</label>
         </td>
         <td>
-            <textarea id="symptoms" name="symptoms" rows="3" cols="50" placeholder="Describe your symptoms here" required></textarea>
+            <textarea id="symptoms" 
+                        name="symptoms" 
+                        rows="3" 
+                        cols="50" 
+                        placeholder="Describe your symptoms here" 
+                        required>
+            </textarea>
         </td>
     </tr>
                 
@@ -243,28 +255,70 @@
             <label>Medical History*<br>(Check all that apply)</label>
         </td>
         <td>
-            <input type="checkbox" name="history" id="diabetes" value="diabetes"> <label for="diabetes">Diabetes</label>
-            <input type="checkbox" name="history" id="hypertension" value="hypertension"> <label for="hypertension">Hypertension</label>
-            <input type="checkbox" name="history" id="asthma" value="asthma"> <label for="asthma">Asthma</label>
-            <input type="checkbox" name="history" id="flu" value="flu"> <label for="flu">Flu</label>
-            <input type="checkbox" name="history" id="allergies" value="allergies"> <label for="allergies">Allergies</label>
+            <input type="checkbox" 
+                    name="history" 
+                    id="diabetes" 
+                    value="diabetes"> 
+                    <label for="diabetes">Diabetes</label>
+            <input type="checkbox" 
+                    name="history" 
+                    id="hypertension" 
+                    value="hypertension"> 
+                    <label for="hypertension">Hypertension</label>
+            <input type="checkbox" 
+                    name="history" 
+                    id="asthma" 
+                    value="asthma"> 
+                    <label for="asthma">Asthma</label>
+            <input type="checkbox" 
+                    name="history" 
+                    id="flu" 
+                    value="flu"> 
+                    <label for="flu">Flu</label>
+            <input type="checkbox" 
+                    name="history" 
+                    id="allergies" 
+                    value="allergies"> 
+                    <label for="allergies">Allergies</label>
         </td>
     </tr>
                 
     <tr class="form">
         <td align="right"><label>Gender*</label></td>
         <td>
-            <input type="radio" name="gender" id="male" value="male" required> <label for="male">Male</label>
-            <input type="radio" name="gender" id="female" value="female"> <label for="female">Female</label>
-            <input type="radio" name="gender" id="other" value="other"> <label for="other">Other</label>
+            <input type="radio" 
+                    name="gender"    
+                    id="male" 
+                    value="male" 
+                    required> 
+                    <label for="male">Male</label>
+            <input type="radio" 
+                    name="gender" 
+                    id="female" 
+                    value="female"> 
+                    <label for="female">Female</label>
+            <input type="radio" 
+                    name="gender" 
+                    id="other" 
+                    value="other"> 
+                    <label for="other">Other</label>
         </td>
     </tr>
                 
     <tr class="form">
         <td align="right"><label>Vaccinated for COVID-19?*</label></td>
         <td>
-            <input type="radio" name="vax" id="vax_yes" value="yes" required> <label for="vax_yes">Yes</label>
-            <input type="radio" name="vax" id="vax_no" value="no"> <label for="vax_no">No</label>
+            <input type="radio" 
+                    name="vax" 
+                    id="vax_yes" 
+                    value="yes" 
+                    required> 
+                    <label for="vax_yes">Yes</label>
+            <input type="radio" 
+                    name="vax" 
+                    id="vax_no" 
+                    value="no"> 
+                    <label for="vax_no">No</label>
         </td>
     </tr>
                 
@@ -273,32 +327,56 @@
             <label>Insurance?*</label>
         </td>
         <td>
-            <input type="radio" name="insurance" id="ins_yes" value="yes" required>
-            <label for="ins_yes">Yes</label>
-            <input type="radio" name="insurance" id="ins_no" value="no">
-            <label for="ins_no">No</label>
+            <input type="radio" 
+                    name="insurance" 
+                    id="ins_yes" 
+                    value="yes" 
+                    required>
+                    <label for="ins_yes">Yes</label>
+            <input type="radio" 
+                    name="insurance" 
+                    id="ins_no" 
+                    value="no">
+                    <label for="ins_no">No</label>
         </td>
     </tr>
                 
     <tr class="form">
         <td align="right"><label for="health">On a scale of 1-10 (10 = Completely Healthy), how is your current health?*</label></td>
         <td>
-            0 <input type="range" name="health" id="health" min="0" max="10" step="1" value="5">
+            0 <input type="range" 
+                      name="health" 
+                      id="health" 
+                      min="0" 
+                      max="10" 
+                      step="1" 
+                      value="5"
+                      onimput="healthNum.innerText = this.value"> 10
+            <span id="health-value">Value: <span id="healthNum">5</span></span
         </td>
     </tr>
                 
     <tr class="form">
         <td align="right"><label for="userid">User ID*</label></td>
         <td>
-            <input type="text" id="userid" name="userid" maxlength="20" placeholder="Max 20 Characters" required 
-                   pattern="[A-Za-z]+[A-Za-z0-9-_]{8,}">
+            <input type="text" 
+                    id="userid" 
+                    name="userid" 
+                    maxlength="20" 
+                    placeholder="Max 20 Characters" 
+                    required 
+                    pattern="[A-Za-z]+[A-Za-z0-9-_]{8,}">
         </td>
     </tr>
                 
     <tr class="form">
         <td align="right"><label for="pword">Password*</label></td>
         <td>
-            <input type="password" id="pword" name="pword" placeholder="Min 8 Characters" required>
+            <input type="password" 
+                    id="pword" 
+                    name="pword" 
+                    placeholder="Min 8 Characters" 
+                    required>
         </td>
     </tr>
                 
@@ -307,7 +385,11 @@
             <label for="confirm_pword">Confirm Password*</label>
         </td>
         <td>
-            <input type="password" id="confirm_pword" name="confirm_pword" placeholder="Confirm Password" required>
+            <input type="password" 
+                    id="confirm_pword" 
+                    name="confirm_pword" 
+                    placeholder="Confirm Password" 
+                required>
         </td>
     </tr>
                 
@@ -321,9 +403,9 @@
     <tr>        
         <td colspan="3">
             <center>
-            <input type="submit">
+            <input type="submit" value="Submit">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="reset">
+            <input type="reset" value="Clear and Start Over>
             </center>
         </td>
     <tr>
@@ -334,7 +416,8 @@
         </div>
         <div id="footer"
             <hr>
-            Here is a footer... BYE!
+            <p>Questions? <a href="contact.html">Contact Us</p>
+            <p>Dan Jo Hospital</p>
         </div>
         <!-- Load external JavaScript -->
         <script src="homework1.js"></script>
@@ -343,5 +426,5 @@
     document.getElementById("today").innerHTML = new Date().toLocaleDateString();
 </script>
 </body>
-<!-- End of file: homework1.html -->
+<!-- End of file: patient-form.html -->
 </html>
