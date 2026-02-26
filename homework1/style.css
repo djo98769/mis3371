@@ -1,1 +1,45 @@
+/* 
+  Program name: style.css
+  Name: Daniel Jo
+  Date Created: 2026-02-01
+  Date Updated: 2023-02-27
+  Version: 1.1
+  Purpose: Style sheet for MIS 3371 Homework 1
+*/
 
+body {
+    background-color: lightblue;
+    font-family: "Source Sans Pro", sans-serif;
+}
+ h1 {
+    text-align: right;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: normal;
+    color: brown;
+}
+table.form, tr.form, td.form {
+  width: 70%;
+  opacity: 0.9;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:red;
+  padding: 0px;
+  border-spacing: 00px;
+  color:rgb(222, 243, 245);
+}
+th.form {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:red;
+  padding: 20px;
+  border-spacing: 20px;
+  color:rgb(222, 243, 245);
+  margin-left: auto;
+  margin-right: auto;
+}
+.textsize1 
+{
+    width:10px
+}
+.textsize5 
+{
+    width:40px
+}
