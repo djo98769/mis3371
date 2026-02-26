@@ -14,14 +14,11 @@ body {
 }
 
 table.form, tr.form, td.form {
-  width: 85%;
-  text-align: right;
-  margin-left: auto;
-  margin-right: auto;
+  width: 70%;
   opacity: 0.9;
   font-family: "Times New Roman", serif;
   background-color: #03697F;
-  padding: 12px;
+  padding: 0px;
   border-spacing: 00px;
   color:rgb(222, 243, 245);
 }
