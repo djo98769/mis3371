@@ -53,11 +53,11 @@
                     name="firsttname" 
                     required
                     oninput="this.setCustomValidity('')"
-                    placeholder="(First Name)"
+                    placeholder="First Name"
             >
             
             <input type="text" 
-                    size="1"
+                    size="2"
                     maxlength="1" 
                     id="middleinit" 
                     name="middleinit" 
@@ -71,13 +71,13 @@
                     required
                     oninvalid="this.setCustomValidity('Last Name is Required')"
                     oninput="this.setCustomValidity('')"
-                    placeholder="Last Name*"
+                    placeholder="Last Name"
             >
         <span id="name_text"><</td>
     </tr>
     <tr  class="form">
         <td align="right">
-            <label for="addr1" >Address Line 1</label>
+            <label for="addr1" >Address 1*</label>
         </td>
         <td>
             <input type="text" 
@@ -89,7 +89,7 @@
                     required
                     oninvalid="this.setCustomValidity('At least 1 address line Required')"
                     oninput="this.setCustomValidity('')"
-                    placeholder="1234 Main St (req'd)"
+                    placeholder="12345 Street Name"
             >
         <span id="addr1_text"></td>
     </tr>
@@ -103,7 +103,7 @@
                     maxlength="30" 
                     id="addr1" 
                     name="addr1" 
-                    placeholder="Apt #, etc..."
+                    placeholder="Apt, Suite, Floor, etc."
             >
             <span id="addr2_text">
         </td>
