@@ -11,19 +11,14 @@ body {
     background-color: #7D8C9B;
     font-family: "Times New Roman", serif;
 }
- h1 {
-    text-align: right;
-    font-family: "Times New Roman", serif;
-    font-weight: normal;
-    color: black;
-}
+
 table.form, tr.form, td.form {
-  width: 70%;
+  width: 85%;
   text-align: right;
   opacity: 0.9;
   font-family: "Times New Roman", serif;
   background-color: #03697F;
-  padding: 0px;
+  padding: 12px;
   border-spacing: 00px;
   color:rgb(222, 243, 245);
 }
@@ -43,4 +38,9 @@ th.form {
 .textsize5 
 {
     width:40px
+}
+
+table.form td:first-child {
+    text-align: right;
+    width: 40%;
 }
