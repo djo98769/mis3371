@@ -14,11 +14,11 @@ body {
 }
 
 table.form, tr.form, td.form {
-  float: left;
-  clear: left;
-  text-align: right;
+  margin-left: auto;
+  margin-right: auto;
   width: 70%;
   opacity: 0.9;
+  border-collapse: collapse;
   font-family: "Times New Roman", serif;
   background-color: #03697F;
   padding: 0px;
@@ -44,9 +44,9 @@ th.form {
 }
 
 td.form:first-child {
-    text-align: left;
-    padding-right: 15px;
-    width: 45%; 
+  text-align: right;
+  padding-right: 20px;
+  width: 40%;
 }
 
 td.form:nth-child(2) {
