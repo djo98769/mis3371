@@ -37,13 +37,13 @@
 <form action="thankyou.html">
    <table class="form">
     <tr class="form">
-        <th class="form" colspan="3">Set up a new account</th>
+        <th class="form" colspan="3">Patient Registration Form</th>
     </tr>
     <tr class="form">
         <td align="right">
-            <label for="firstname">First NAME</label>
-            <label for="middleinit">MI</label>
-            <label for="lastname">Last</label>
+            <label for="firstname">First Name*</label>
+            <label for="middleinit">M.I.</label>
+            <label for="lastname">Last Name*</label>
         </td>
         <td>
              <input type="text"
@@ -53,7 +53,7 @@
                     name="firsttname" 
                     required
                     oninput="this.setCustomValidity('')"
-                    placeholder="(req'd)"
+                    placeholder="(First Name)"
             >
             
             <input type="text" 
@@ -61,7 +61,7 @@
                     maxlength="1" 
                     id="middleinit" 
                     name="middleinit" 
-                    placeholder="Q"
+                    placeholder="M.I."
             >
             <input type="text"
                     size="20"
@@ -71,7 +71,7 @@
                     required
                     oninvalid="this.setCustomValidity('Last Name is Required')"
                     oninput="this.setCustomValidity('')"
-                    placeholder="Public (req'd)"
+                    placeholder="Last Name*"
             >
         <span id="name_text"><</td>
     </tr>
