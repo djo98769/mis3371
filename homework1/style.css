@@ -20,14 +20,14 @@ table.form, tr.form, td.form {
   background-color: #03697F;
   padding: 0px;
   border-spacing: 00px;
-  color:rgb(222, 243, 245);
+  color:rgb(255, 255, 255);
 }
 th.form {
   font-family: "Times New Roman", serif;
   background-color:#03697F;
   padding: 20px;
   border-spacing: 20px;
-  color:rgb(222, 243, 245);
+  color:rgb(255, 255, 255);
   margin-left: auto;
   margin-right: auto;
 }
@@ -46,5 +46,5 @@ footer {
     color:rgb(255, 255, 255);
 }
 
-a:link { color: rgb(222, 243, 245); }
-a:visited { color: rgb(222, 243, 245); }
+a:link { color:rgb(255, 255, 255); }
+a:visited { color:rgb(255, 255, 255); }
