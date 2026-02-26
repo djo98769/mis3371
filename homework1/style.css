@@ -6,6 +6,11 @@
   Version: 1.1
   Purpose: Style sheet for MIS 3371 Homework 1
 */
+header {
+    margin-bottom: 20px;
+}
+
+
 
 body {
     background-color: #7D8C9B;
@@ -15,6 +20,8 @@ body {
 table.form, tr.form, td.form {
   width: 85%;
   text-align: right;
+  margin-left: auto;
+  margin-right: auto;
   opacity: 0.9;
   font-family: "Times New Roman", serif;
   background-color: #03697F;
@@ -39,3 +46,20 @@ th.form {
 {
     width:40px
 }
+
+health-value {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+a:link { color: #002b36; text-decoration: none; }
+
+a:visited { color: #053a47; }
+
+a:hover { text-decoration: underline; }
