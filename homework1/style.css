@@ -8,26 +8,26 @@
 */
 
 body {
-    background-color: #03697F;
-    font-family: "Source Sans Pro", sans-serif;
+    background-color: #7D8C9B;
+    font-family: "Times New Roman", serif;
 }
  h1 {
     text-align: right;
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: "Times New Roman", serif;
     font-weight: normal;
-    color: brown;
+    color: black;
 }
 table.form, tr.form, td.form {
   width: 70%;
   opacity: 0.9;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color:red;
+  font-family: "Times New Roman", serif;
+  background-color: #03697F;
   padding: 0px;
   border-spacing: 00px;
   color:rgb(222, 243, 245);
 }
 th.form {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Times New Roman", serif;
   background-color:red;
   padding: 20px;
   border-spacing: 20px;
