@@ -1,1 +1,55 @@
+<html>
+    <head>
+        <meta charset="utf-8">
 
+        <title>Daniel's Homework 1</title>
+
+        <!-- Load external CSS styles -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="header"> 
+            <table width="100%">
+                <tr>
+                    <td>
+                        <img 
+                            id="logo" 
+                            src="logo.png" 
+                            alt="Dan Jo Hospital"
+                        >
+                    </td>
+                    <td align="center" valign="middle"><h1>Dan Jo Hospital</h1></td>
+                    <td valign="bottom" align="right">Today's date: <span id="today"></span></td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        
+<div id="body">    
+Thank you for your submission
+</div>
+        <div id="footer">
+        <hr>
+        <tr>
+            <td align="left">
+                Dan Jo Hospital<br>
+                PO BOX 18881<br>
+                Katy, TX 77494
+                <p>Questions? <a href="contact.html" >Contact Us</a></p>
+            </td>
+            <td>
+                <img src="facebook.png" width="30" lt="Facebook">
+                <img src="instagram.png" width="30" alt="Instagram">
+                <img src="twitter.png" width="30"alt="Twitter">
+            </td>
+        </tr>
+        </div>
+        <!-- Load external JavaScript -->
+        <script src="homework1.js"></script>
+        
+ <script>
+    document.getElementById("today").innerHTML = new Date().toLocaleDateString();
+</script>
+</body>
+<!-- End of file: patient-form.html -->
+</html>
