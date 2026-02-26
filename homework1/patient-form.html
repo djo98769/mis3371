@@ -94,7 +94,7 @@
     </tr>
     <tr  class="form">
         <td align="right">
-            <label for="addr2">Address Line 2</label>
+            <label for="addr2">Address 2</label>
         </td>
         <td>
             <input type="text" 
@@ -108,21 +108,20 @@
         </td>
     <tr class="form">
         <td align="right">
-            <label for="city">City,</label>
-            <label for="state">ST</label>
-            <label for="zip">Zip</label>
         </td>
         <td>
+            <label for="city">City*</label>
             <input type="text" 
                     size="10" 
-                    maxlength="25" 
+                    maxlength="30" 
                     id="city" 
                     name="city" 
                     required
                     oninvalid="this.setCustomValidity('You forgot City')"
                     oninput="this.setCustomValidity('')"
-                    placeholder="Anytown (req'd)"
+                    placeholder="City"
             >
+            <label for="state">State*</label>
             <select required>
                 <option value=""></option>
                 <option value="AL">Alabama</option>
@@ -177,6 +176,7 @@
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
             </select>
+            <label for="zip">Zip*</label>
             <input type="text" 
                     pattern="[0-9]{5}"
                     size="5"
@@ -186,7 +186,7 @@
                     required
                     oninvalid="this.setCustomValidity('5 Digit Zip/Postal Code required')"
                     oninput="this.setCustomValidity('')"
-                    placeholder="00000"
+                    placeholder="12345"
             >
             <span id="City_text"><span id="State_text"> 
         </td>
