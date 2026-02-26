@@ -19,6 +19,7 @@ body {
 }
 table.form, tr.form, td.form {
   width: 70%;
+  text-align: right;
   opacity: 0.9;
   font-family: "Times New Roman", serif;
   background-color: #03697F;
