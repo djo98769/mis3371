@@ -40,6 +40,16 @@ th.form {
     width:40px
 }
 
+td.form:first-child {
+    text-align: left;
+    padding-right: 15px;
+    width: 45%; 
+}
+
+td.form:nth-child(2) {
+    text-align: left;
+    padding-left: 15px;
+}
 
 footer {
     padding: 100px;
