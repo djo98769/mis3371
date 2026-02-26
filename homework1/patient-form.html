@@ -41,11 +41,9 @@
     </tr>
     <tr class="form">
         <td align="right">
-            <label for="firstname">First Name*</label>
-            <label for="middleinit">M.I.</label>
-            <label for="lastname">Last Name*</label>
         </td>
         <td>
+             <label for="firstname">First Name*</label>
              <input type="text"
                     size="25"
                     maxlength="30" 
@@ -55,7 +53,7 @@
                     oninput="this.setCustomValidity('')"
                     placeholder="First Name"
             >
-            
+            <label for="middleinit">M.I.</label>
             <input type="text" 
                     size="2"
                     maxlength="1" 
@@ -63,6 +61,7 @@
                     name="middleinit" 
                     placeholder="M.I."
             >
+            <label for="lastname">Last Name*</label>
             <input type="text"
                     size="20"
                     maxlength="30" 
@@ -73,7 +72,7 @@
                     oninput="this.setCustomValidity('')"
                     placeholder="Last Name"
             >
-        <span id="name_text"><</td>
+        <span id="name_text"></td>
     </tr>
     <tr  class="form">
         <td align="right">
