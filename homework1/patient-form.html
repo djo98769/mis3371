@@ -74,6 +74,22 @@
             >
         <span id="name_text"></td>
     </tr>
+    <tr class="form">
+        <td align="right">
+            <label for="dob">Date of Birth*</label>
+        </td>
+        <td>
+        <input type="date" id="dob" name="dob" required>
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right">
+            <label for="ssn">SSN*</label>
+        </td>
+        <td>
+        <input type="password" id="ssn" name="ssn" maxlength="11" placeholder="123-45-6789" required>
+        </td>
+    </tr>
     <tr  class="form">
         <td align="right">
             <label for="addr1" >Address 1*</label>
@@ -193,18 +209,16 @@
     </tr>
     <tr class="form">
         <td align="right">
-            <label for="phone">Phone #</label>
+            <label for="email">Email*</label>
         </td>
         <td>
-            <input type="text" 
-                    size="13" 
-                    maxlength="13" 
-                    id="phone" 
-                    name="phone" 
-                    placeholder="(713)555-1212"
-            >
-            <span id="phone_text">  
+            <input type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="name@domain.tld" 
+                    required>
         </td>
+    </tr>
     </tr class="form">
 
 
