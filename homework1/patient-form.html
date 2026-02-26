@@ -53,7 +53,7 @@
                     oninput="this.setCustomValidity('')"
                     placeholder="First Name"
             >
-            <label for="middleinit">M.I.</label>
+            <label for="middleinit">M.I. </label>
             <input type="text" 
                     size="2"
                     maxlength="1" 
@@ -110,7 +110,7 @@
     </tr>
     <tr  class="form">
         <td align="right">
-            <label for="addr2">Address 2</label>
+            <label for="addr2">Address 2 </label>
         </td>
         <td>
             <input type="text" 
@@ -124,9 +124,9 @@
         </td>
     <tr class="form">
         <td align="right">
+            <label for="city">City*</label>
         </td>
         <td>
-            <label for="city">City*</label>
             <input type="text" 
                     size="10" 
                     maxlength="30" 
@@ -217,6 +217,79 @@
                     name="email" 
                     placeholder="name@domain.tld" 
                     required>
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right" valign="top">
+            <label for="symptoms">Symptoms*</label>
+        </td>
+        <td>
+            <textarea id="symptoms" name="symptoms" rows="3" cols="50" placeholder="Describe your symptoms here" required></textarea>
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right" valign="top">
+            <label>Medical History*<br>(Check all that apply)</label>
+        </td>
+        <td>
+            <input type="checkbox" name="history" id="diabetes" value="diabetes"> <label for="diabetes">Diabetes</label>
+            <input type="checkbox" name="history" id="hypertension" value="hypertension"> <label for="hypertension">Hypertension</label>
+            <input type="checkbox" name="history" id="asthma" value="asthma"> <label for="asthma">Asthma</label>
+            <input type="checkbox" name="history" id="flu" value="flu"> <label for="flu">Flu</label>
+            <input type="checkbox" name="history" id="allergies" value="allergies"> <label for="allergies">Allergies</label>
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right"><label>Gender*</label></td>
+        <td>
+            <input type="radio" name="gender" id="male" value="male" required> <label for="male">Male</label>
+            <input type="radio" name="gender" id="female" value="female"> <label for="female">Female</label>
+            <input type="radio" name="gender" id="other" value="other"> <label for="other">Other</label>
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right"><label>Vaccinated for COVID-19?*</label></td>
+        <td>
+            <input type="radio" name="vax" id="vax_yes" value="yes" required> <label for="vax_yes">Yes</label>
+            <input type="radio" name="vax" id="vax_no" value="no"> <label for="vax_no">No</label>
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right">
+            <label>Insurance?*</label>
+        </td>
+        <td>
+            <input type="radio" name="insurance" id="ins_yes" value="yes" required>
+            <label for="ins_yes">Yes</label>
+            <input type="radio" name="insurance" id="ins_no" value="no">
+            <label for="ins_no">No</label>
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right"><label for="health">On a scale of 1-10 (10 = Completely Healthy), how is your current health?*</label></td>
+        <td>
+            0 <input type="range" name="health" id="health" min="0" max="10" step="1" value="5"> 10
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right"><label for="userid">User ID*</label></td>
+        <td>
+            <input type="text" id="userid" name="userid" maxlength="20" placeholder="Max 20 Characters" required 
+                   pattern="[A-Za-z]+[A-Za-z0-9-_]{8,}">
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right"><label for="pword">Password*</label></td>
+        <td>
+            <input type="password" id="pword" name="pword" placeholder="Min 8 Characters" required>
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right">
+            <label for="confirm_pword">Confirm Password*</label>
+        </td>
+        <td>
+            <input type="password" id="confirm_pword" name="confirm_pword" placeholder="Confirm Password" required>
         </td>
     </tr>
     </tr class="form">
