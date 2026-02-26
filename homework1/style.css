@@ -49,8 +49,7 @@ health-value {
 
 footer {
     text-align: center;
-    padding: 20px;
-    font-size: 0.9em;
+    padding: 100px;
 }
 
 a:link { color: #002b36; text-decoration: none; }
