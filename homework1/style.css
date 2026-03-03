@@ -40,13 +40,14 @@ th.form {
     width:40px
 }
 
-.slider
+.slider 
 {
-  padding-left: 40px;
+    padding-left: 40px;
     text-align: left;
 }
 
-.slider-value {
+.slider-value 
+{
     margin: 8px 0 0 0px;
     font-weight: bold;
 }
