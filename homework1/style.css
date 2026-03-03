@@ -18,7 +18,7 @@ table.form, tr.form, td.form {
   opacity: 0.9;
   font-family: "Times New Roman", serif;
   background-color: #03697F;
-  padding: 0px;
+  padding: 5px;
   border-spacing: 00px;
   color:rgb(255, 255, 255);
 }
