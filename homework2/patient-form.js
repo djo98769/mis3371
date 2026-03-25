@@ -45,33 +45,38 @@ function getdata1() {
         "password": "Password"
     };
 
-    // Header with 3 columns as requested: Field, Entry, and Status
     formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
 
     for (i = 0; i < formcontents.length; i++) {
         var element = formcontents.elements[i];
         var datatype = element.type;
         
-        // Skip buttons
         if (datatype === "button" || datatype === "submit" || datatype === "reset") continue;
 
         var friendlyName = labelMap[element.name] || element.name;
         var val = element.value;
         
-        // Logic to determine PASS/ERROR based on HTML5 validation
-        var status = element.checkValidity() ? "<span style='color:lightgreen'>PASS</span>" : "<span style='color:red'>ERROR</span>";
+        // Replace your current status line with this:
+        var status = "";
+        if (element.checkValidity()) {
+        status = "<span style='color:lightgreen'>PASS</span>";
+        } 
+            else {
+            var errorText = element.title || "Invalid Input"; 
+            status = "<span style='color:red'>ERROR: " + errorText + "</span>";
+            }
 
         switch (datatype) {
             case "checkbox":
-                if (!element.checked) continue; // Only show checked boxes
+                if (!element.checked) continue;
                 val = "Checked";
                 break;
             case "radio":
-                if (!element.checked) continue; // Only show the selected radio option
+                if (!element.checked) continue;
                 val = element.value;
                 break;
             case "password":
-                val = "********"; // Obscure SSN and Password per rubric
+                val = "********";
                 break;
             default:
                 val = element.value || "(Empty)";
@@ -91,4 +96,20 @@ function checkfirstname()
         x = document.getElementById("firstname").value;
               document.getElementById("name_text").innerHTML = "good so far";
     }
+
+window.onload = function checkdate() {
+    var dobInput = document.getElementById("dob");
+    if (dobInput) {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        var maxDate = yyyy + '-' + mm + '-' + dd;
+        var minDate = (yyyy - 120) + '-' + mm + '-' + dd;
+
+        dobInput.setAttribute("max", maxDate);
+        dobInput.setAttribute("min", minDate);
+    }
+};
     /* End of document: patient-form.js */
