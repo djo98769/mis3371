@@ -17,7 +17,7 @@ function removedata1() {
 }
  
 function getdata1() {
-  var formcontents = document.getElementById("signup");
+  var formcontents = document.getElementById("patientForm");
   var formoutput;
   var datatype;
   var i;
