@@ -21,7 +21,6 @@ function getdata1() {
     var formoutput;
     var i;
 
-    // Mapping technical IDs to the labels on your form
     var labelMap = {
         "firstname": "First Name",
         "middleinit": "M.I.",
@@ -55,28 +54,28 @@ function getdata1() {
 
         var friendlyName = labelMap[element.name] || element.name;
         var val = element.value;
-        
-        // Replace your current status line with this:
         var status = "";
+
+        // This checks your HTML 'pattern' and 'required' rules
         if (element.checkValidity()) {
-        status = "<span style='color:lightgreen'>PASS</span>";
-        } 
-            else {
+            status = "<span style='color:lightgreen'>PASS</span>";
+        } else {
+            // Pulls the SPECIFIC error message from your HTML 'title' attribute
             var errorText = element.title || "Invalid Input"; 
             status = "<span style='color:red'>ERROR: " + errorText + "</span>";
-            }
+        }
 
         switch (datatype) {
             case "checkbox":
-                if (!element.checked) continue;
+                if (!element.checked) continue; 
                 val = "Checked";
                 break;
             case "radio":
-                if (!element.checked) continue;
+                if (!element.checked) continue; 
                 val = element.value;
                 break;
             case "password":
-                val = "********";
+                val = "********"; 
                 break;
             default:
                 val = element.value || "";
