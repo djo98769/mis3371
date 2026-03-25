@@ -34,7 +34,7 @@
         </div>
         <hr>
 <div id="body">    
-<form action="thankyou.html">
+<form id="patientForm" action="thankyou.html">
    <table class="form" align="center">
     <tbody>
         
@@ -132,8 +132,8 @@
             <input type="text" 
                     size="20" 
                     maxlength="30" 
-                    id="addr1" 
-                    name="addr1" 
+                    id="addr2" 
+                    name="addr2" 
                     placeholder="Apt, Suite, Floor, etc."
             >
             <span id="addr2_text">
@@ -397,8 +397,8 @@
     <tr class="form">        
         <td colspan="3">
             <br><br><center>
+            <input type="button" value="Review" onclick="getdata1()">
             <input type="submit" value="Submit">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="reset" value="Clear and Start Over">
             </center><br><br>
         </td>
@@ -406,6 +406,7 @@
 </tbody>
 </table>
 </form> 
+<div id="outputformdata"></div>
         </div>
         <div id="footer">
         <br><br><br><br><hr>
@@ -427,7 +428,7 @@
         </table>
         </div>
         <!-- Load external JavaScript -->
-        <script src="homework1.js"></script>
+        <script src="patient-form.js"></script>
         
  <script>
     document.getElementById("today").innerHTML = new Date().toLocaleDateString();
