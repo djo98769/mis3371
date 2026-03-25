@@ -92,14 +92,19 @@ function checkfirstname()
     }
 
 /* DOB validation */
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0');
-var yyyy = today.getFullYear();
+window.onload = function() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
 
-var maxDate = yyyy + '-' + mm + '-' + dd;
-var minDate = (yyyy - 120) + '-' + mm + '-' + dd;
+    var maxDate = yyyy + '-' + mm + '-' + dd;
+    var minDate = (yyyy - 120) + '-' + mm + '-' + dd;
 
-document.getElementById("dob").setAttribute("max", maxDate);
-document.getElementById("dob").setAttribute("min", minDate);
+    var dobField = document.getElementById("dob");
+    if (dobField) {
+        dobField.setAttribute("max", maxDate);
+        dobField.setAttribute("min", minDate);
+    }
+};
     /* End of document: patient-form.js */
