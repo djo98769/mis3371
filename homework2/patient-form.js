@@ -2,7 +2,7 @@
  Name: Daniel Jo
  File: patient-form.js
  Date Created: 2026-03-01
- Date Updated: 2023-03-27
+ Date Updated: 2026-03-27
  Purpose: Redisplay/validate data from a form
  Notes: IF we are going to use document.write, we have to either include some HTML from another file 
  and bring it in here in the srcipt, OR use document.writes to inject html code for proper formatting.
