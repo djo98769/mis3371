@@ -21,37 +21,63 @@ function getdata1() {
     var formoutput;
     var i;
 
+    // Mapping technical IDs to the labels on your form
     var labelMap = {
-        "firstname": "First Name", "middleinit": "M.I.", "lastname": "Last Name",
-        "dob": "Date of Birth", "ssn": "SSN", "addr1": "Address Line 1",
-        "city": "City", "state": "State", "zip": "Zip Code", "email": "Email",
-        "phone": "Phone Number", "symptoms": "Symptoms", "gender": "Gender",
-        "vax": "COVID-19 Vaccinated", "insurance": "Insurance", 
-        "health": "Current Health Rating", "userid": "User ID"
+        "firstname": "First Name",
+        "middleinit": "M.I.",
+        "lastname": "Last Name",
+        "dob": "Date of Birth",
+        "ssn": "SSN",
+        "addr1": "Address 1",
+        "addr2": "Address 2",
+        "city": "City",
+        "state": "State",
+        "zip": "Zip Code",
+        "email": "Email",
+        "phone": "Phone Number",
+        "symptoms": "Symptoms",
+        "history": "Medical History",
+        "gender": "Gender",
+        "vax": "COVID-19 Vaccinated",
+        "insurance": "Insurance",
+        "health": "Current Health Rating",
+        "userid": "User ID",
+        "password": "Password"
     };
 
-    // Added a 'Status' header to meet rubric requirements
+    // Header with 3 columns as requested: Field, Entry, and Status
     formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
 
     for (i = 0; i < formcontents.length; i++) {
         var element = formcontents.elements[i];
         var datatype = element.type;
+        
+        // Skip buttons
         if (datatype === "button" || datatype === "submit" || datatype === "reset") continue;
 
         var friendlyName = labelMap[element.name] || element.name;
         var val = element.value;
+        
+        // Logic to determine PASS/ERROR based on HTML5 validation
         var status = element.checkValidity() ? "<span style='color:lightgreen'>PASS</span>" : "<span style='color:red'>ERROR</span>";
 
-        // Logic for specific types
-        if (datatype === "checkbox") {
-            val = element.checked ? "Checked" : "Not Checked";
-        } else if (datatype === "radio") {
-            if (!element.checked) continue; // Skip the radio options that aren't picked
-        } else if (datatype === "password") {
-            val = "********"; // Keep SSN/Password obscured
+        switch (datatype) {
+            case "checkbox":
+                if (!element.checked) continue; // Only show checked boxes
+                val = "Checked";
+                break;
+            case "radio":
+                if (!element.checked) continue; // Only show the selected radio option
+                val = element.value;
+                break;
+            case "password":
+                val = "********"; // Obscure SSN and Password per rubric
+                break;
+            default:
+                val = element.value || "(Empty)";
         }
 
-        formoutput += "<tr><td><b>" + friendlyName + "</b></td><td class='outputdata'>" + val + "</td><td>" + status + "</td></tr>";
+        formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + val + "</td><td align='center'>" + status + "</td></tr>";
     }
 
     if (formoutput.length > 0) {
