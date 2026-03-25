@@ -79,7 +79,7 @@ function getdata1() {
                 val = "********";
                 break;
             default:
-                val = element.value || "(Empty)";
+                val = element.value || "";
         }
 
         formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + val + "</td><td align='center'>" + status + "</td></tr>";
