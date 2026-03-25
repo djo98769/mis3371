@@ -34,7 +34,7 @@
         </div>
         <hr>
 <div id="body">    
-<form id="patientForm" action="thankyou.html">
+<form id="patientForm" onreset="removedata1()" action="thankyou.html">
    <table class="form" align="center">
     <tbody>
         
@@ -50,35 +50,41 @@
             <label for="firstname">First Name*</label>
         </td>
         <td>
-             <input type="text"
-                    size="25"
+            <input type="text" 
+                    size="25" 
                     maxlength="30" 
                     id="firstname" 
-                    name="firsttname" 
-                    required
-                    oninput="this.setCustomValidity('')"
+                    name="firstname" 
+                    required 
+                    pattern="[A-Za-z'- ]{2,}" 
+                    title="Minimum 2 characters; letters, spaces, hyphens, and apostrophes only." 
+                    oninput="this.setCustomValidity('')" 
                     placeholder="First Name"
             >
-            <label for="middleinit">M.I. </label>
+            <label for="middleinit">M.I.</label>
             <input type="text" 
-                    size="2"
+                    size="2" 
                     maxlength="1" 
                     id="middleinit" 
                     name="middleinit" 
+                    pattern="[A-Za-z]{1}" 
+                    title="1 letter only." 
                     placeholder="M.I."
             >
             <label for="lastname">Last Name*</label>
-            <input type="text"
-                    size="20"
+            <input type="text" 
+                    size="20" 
                     maxlength="30" 
                     id="lastname" 
                     name="lastname" 
-                    required
-                    oninvalid="this.setCustomValidity('Last Name is Required')"
-                    oninput="this.setCustomValidity('')"
+                    required 
+                    pattern="[A-Za-z2-5'- ]{2,}" 
+                    title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only." 
+                    oninvalid="this.setCustomValidity('Last Name is Required')" 
+                    oninput="this.setCustomValidity('')" 
                     placeholder="Last Name"
             >
-        <span id="name_text"><span/>
+            <span id="name_text"></span>
         </td>
     </tr>
        
@@ -87,7 +93,12 @@
             <label for="dob">Date of Birth*</label>
         </td>
         <td>
-        <input type="date" id="dob" name="dob" required>
+            <input type="date" 
+                    id="dob" 
+                    name="dob" 
+                    required 
+                    title="Birthdays cannot be in the future or more than 120 years ago."
+            >
         </td>
     </tr>
        
@@ -99,9 +110,12 @@
             <input type="password" 
                     id="ssn" 
                     name="ssn" 
-                    maxlength="11"    
+                    maxlength="11" 
+                    pattern="\d{3}-\d{2}-\d{4}" 
+                    title="Please enter SSN in the format: 000-00-0000" 
                     placeholder="123-45-6789" 
-                    required>
+                    required
+            >
         </td>
     </tr>
        
@@ -139,7 +153,7 @@
             <span id="addr2_text">
         </td>
         
-    <tr class="form">
+<tr class="form">
         <td align="right">
             <label for="city">City*</label>
         </td>
@@ -149,13 +163,15 @@
                     maxlength="30" 
                     id="city" 
                     name="city" 
-                    required
-                    oninvalid="this.setCustomValidity('You forgot City')"
-                    oninput="this.setCustomValidity('')"
+                    required 
+                    oninvalid="this.setCustomValidity('You forgot City')" 
+                    oninput="this.setCustomValidity('')" 
                     placeholder="City"
             >
             <label for="state">State*</label>
-            <select required>
+            <select required
+                    name="state" 
+                    title="Please select a state from the list">
                 <option value=""></option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -211,22 +227,19 @@
             </select>
             <label for="zip">Zip*</label>
             <input type="text" 
-                    pattern="[0-9]{5}"
-                    size="5"
-                    maxlength="5" 
                     id="zip" 
                     name="zip" 
+                    class="textsize5" 
+                    maxlength="10" 
+                    pattern="(\d{5}([\-]\d{4})?)" 
+                    title="5-digit zip or 5+4 format (e.g., 77002 or 77002-1234)" 
+                    placeholder="00000" 
                     required
-                    oninvalid="this.setCustomValidity('5 Digit Zip/Postal Code required')"
-                    oninput="this.setCustomValidity('')"
-                    placeholder="12345"
             >
             <span id="City_text"><span id="State_text"> 
         </td>
     </tr>
     
-    
-                
     <tr class="form">
         <td align="right">
             <label for="email">Email*</label>
@@ -235,11 +248,27 @@
             <input type="email" 
                     id="email" 
                     name="email" 
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                    title="Please enter a valid email address (e.g., name@domain.tld)" 
                     placeholder="name@domain.tld" 
-                    required>
+                    required
+            >
         </td>
     </tr>
-    <br><br>
+    <tr class="form">
+        <td align="right">
+            <label for="phone">Phone Number*</label>
+        </td>
+        <td>
+            <input type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    required 
+                    pattern="\d{3}-\d{3}-\d{4}" 
+                    title="Please enter phone number in the format: 000-000-0000" 
+                    placeholder="000-000-0000">
+        </td>
+    </tr>
     <tr class="form">
         <td align="right" valign="top">
             <label for="symptoms">Symptoms*</label>
@@ -358,39 +387,50 @@
     </tr>
     <br><br>            
     <tr class="form">
-        <td align="right"><label for="userid">User ID*</label></td>
+        <td align="right">
+            <label for="userid">User ID*</label>
+        </td>
         <td>
             <input type="text" 
                     id="userid" 
                     name="userid" 
-                    maxlength="20" 
-                    placeholder="Max 20 Characters" 
                     required 
-                    pattern="[A-Za-z]+[A-Za-z0-9-_]{8,}">
-        </td>
-    </tr>
-                
-    <tr class="form">
-        <td align="right"><label for="pword">Password*</label></td>
-        <td>
-            <input type="password" 
-                    id="pword" 
-                    name="pword" 
-                    placeholder="Min 8 Characters" 
-                    required>
+                    maxlength="30" 
+                    pattern="[A-Za-z][A-Za-z0-9_-]{4,29}" 
+                    title="5-30 chars; must start with a letter; no spaces or special chars (except _ or -)." 
+                    oninput="this.value=this.value.toLowerCase()" 
+                    placeholder="Desired User ID"
+            >
         </td>
     </tr>
                 
     <tr class="form">
         <td align="right">
-            <label for="confirm_pword">Confirm Password*</label>
+            <label for="password">Password*</label>
         </td>
         <td>
             <input type="password" 
-                    id="confirm_pword" 
-                    name="confirm_pword" 
-                    placeholder="Confirm Password" 
-                required>
+                    id="password" 
+                    name="password" 
+                    required 
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#%^&*()-_+=\/><.,`~]).{8,30}" 
+                    title="8-30 chars, must include: 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Character." 
+                    placeholder="Min 8 Characters"
+            >
+        </td>
+    </tr>
+    <tr class="form">
+        <td align="right">
+            <label for="confirm_password">Confirm Password*</label>
+        </td>
+        <td>
+            <input type="password" 
+                    id="confirm_password" 
+                    name="confirm_password" 
+                    required 
+                    oninput="if(this.value != password.value) { this.setCustomValidity('Passwords do not match'); } else { this.setCustomValidity(''); }" 
+                    placeholder="Confirm Password"
+            >
         </td>
     </tr>
                 
