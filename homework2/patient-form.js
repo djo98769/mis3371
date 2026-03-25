@@ -18,6 +18,13 @@ function removedata1() {
  
 function getdata1() {
   var formcontents = document.getElementById("patientForm");
+  var uid = document.getElementById("userid").value.toLowerCase();
+  var pass = document.getElementById("password").value.toLowerCase();
+       if (uid !== "" && pass.includes(uid)) 
+       {
+       alert("Security Error: Password cannot contain your User ID.");
+       return;
+       }
   var formoutput;
   var datatype;
   var i;
