@@ -22,34 +22,36 @@ function getdata1() {
     var datatype;
     
     var userIdField = document.getElementById("userid"); 
-    if(userIdField) {
-        userIdField.value = userIdField.value.toLowerCase();
-    }
+    if(userIdField) { userIdField.value = userIdField.value.toLowerCase(); }
 
-    formoutput = "<table class='output'><tr><th>Field Name</th><th>Type</th><th>Entered Value</th></tr>";
+    formoutput = "<table class='output'><tr><th>Field Name</th><th>Type</th><th>Entered Value</th><th>Status</th></tr>";
 
     for (var i = 0; i < formcontents.length; i++) {
         var element = formcontents.elements[i];
         datatype = element.type;
         var name = element.name || element.id;
 
-        if (datatype === "button" || datatype === "submit" || datatype === "reset") {
-            continue;
-        }
+        if (datatype === "button" || datatype === "submit" || datatype === "reset") continue;
 
         formoutput += "<tr><td align='right'><strong>" + name + "</strong></td>";
         formoutput += "<td align='center'>" + datatype + "</td>";
 
+        var val = "";
         if (datatype === "checkbox") {
-            formoutput += "<td class='outputdata'>" + (element.checked ? "Checked" : "Unchecked") + "</td>";
+            val = element.checked ? "Checked" : "Unchecked";
         } else if (datatype === "radio") {
-            if (element.checked) {
-                formoutput += "<td class='outputdata'>" + element.value + "</td>";
-            } else {
-                continue;
-            }
+            if (element.checked) { val = element.value; } 
+            else { continue; }
         } else {
-            formoutput += "<td class='outputdata'>" + element.value + "</td>";
+            val = element.value;
+        }
+
+        formoutput += "<td class='outputdata'>" + val + "</td>";
+
+        if (element.checkValidity()) {
+            formoutput += "<td style='color: green; font-weight: bold;'>PASS</td>";
+        } else {
+            formoutput += "<td style='color: red; font-weight: bold;'>ERROR: " + element.validationMessage + "</td>";
         }
         
         formoutput += "</tr>";
