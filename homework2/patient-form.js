@@ -6,12 +6,8 @@
  Purpose: Redisplay/validate data from a form
  Notes: IF we are going to use document.write, we have to either include some HTML from another file 
  and bring it in here in the srcipt, OR use document.writes to inject html code for proper formatting.
+*/
 
-*/
-/* 
-This subroutine simply retrieves the data names and entered data from the form.
-This code doesn't require that you know how many elements are in your form OR the names of the variables. 
-*/
 function removedata1() {
   document.getElementById("outputformdata").innerHTML = "(you started over)";
 }
@@ -64,22 +60,7 @@ function getdata1() {
     formoutput += "</table>";
     document.getElementById("outputformdata").innerHTML = formoutput;
 }
-/* Experimentation...
-var data = document.getElementById("storage").value;
-formoutput = formoutput+"<tr><td>Storage? "+
-  data+"</td></tr>";
-/* End of Experiment */
-/* function getrangedata() {
-  var slider = document.getElementById("budget");
-  document.getElementById("rangedisplay").value = slider;
-}
-*/
 
-/* This version gets the data from the form explicitely by field name. 
-function getdata2()
-*/
-
-/* These are the subroutines to check inidivudial fields  */
 function checkfirstname()
     {
         x = document.getElementById("firstname").value;
