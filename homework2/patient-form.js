@@ -61,7 +61,7 @@ function getdata1() {
             case "checkbox": if (!element.checked) continue; val = "Checked"; break;
             case "radio": if (!element.checked) continue; val = element.value; break;
             case "password": val = "********"; break;
-            default: val = element.value || "(Empty)";
+            default: val = element.value || "";
         }
         formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + val + "</td><td align='center'>" + status + "</td></tr>";
     }
