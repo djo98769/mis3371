@@ -18,7 +18,7 @@ function removedata1() {
  
 function getdata1() {
   var formcontents = document.getElementById("patientForm");
-       if (!formcontents.checkValidity()) 
+       if (!form.checkValidity()) 
        {
            form.reportValidity();
            return; 
