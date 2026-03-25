@@ -17,40 +17,47 @@ function removedata1() {
 }
  
 function getdata1() {
-  var formcontents = document.getElementById("patientForm");
-  var formoutput;
-  var datatype;
-  var i;
-  formoutput = "<table class='output'><th>Dataname</th><th>Type</th><th>Value</th>";
-  for (i = 0; i < formcontents.length; i++) {
-            console.log("item: "+i+" "+formcontents.elements[i].name+" = "+formcontents.elements[i].value);
-            /* if (formcontents.elements[i].value !="") { */
-              datatype = formcontents.elements[i].type;
-              switch (datatype) {
-                case "checkbox":
-                  if (formcontents.elements[i].checked) {
-                    formoutput = formoutput + "<tr><td align='right'>"+formcontents.elements[i].name+"</td>";
-                    formoutput = formoutput +"<td align='right'>"+ datatype + "</td>";
-                    formoutput = formoutput +"<td class='outputdata'>Checked</td></tr>";
-                  }
-                  break;
-               case "radio":
-                    if (formcontents.elements[i].checked) {
-                      formoutput = formoutput + "<tr><td align='right'>"+formcontents.elements[i].name+"</td>";
-                      formoutput = formoutput +"<td align='right'>"+ datatype + "</td>";
-                      formoutput = formoutput +"<td class='outputdata'>"+ formcontents.elements[i].value+"</td></tr>";
-                    }
-                  break;
-                case "button": case "submit": case "reset":
-                  break;
-                default:
-                  formoutput = formoutput + "<tr><td align='right'>"+formcontents.elements[i].name+"</td>";
-                  formoutput = formoutput +"<td align='right'>"+ datatype + "</td>";
-                  formoutput = formoutput +"<td class='outputdata'>"+ formcontents.elements[i].value+"</td></tr>";
-                }
-            /* } */
+    var formcontents = document.getElementById("patientForm");
+    var formoutput;
+    var datatype;
+    
+    var userIdField = document.getElementById("userid"); 
+    if(userIdField) {
+        userIdField.value = userIdField.value.toLowerCase();
+    }
 
-  }
+    formoutput = "<table class='output'><tr><th>Field Name</th><th>Type</th><th>Entered Value</th></tr>";
+
+    for (var i = 0; i < formcontents.length; i++) {
+        var element = formcontents.elements[i];
+        datatype = element.type;
+        var name = element.name || element.id;
+
+        if (datatype === "button" || datatype === "submit" || datatype === "reset") {
+            continue;
+        }
+
+        formoutput += "<tr><td align='right'><strong>" + name + "</strong></td>";
+        formoutput += "<td align='center'>" + datatype + "</td>";
+
+        if (datatype === "checkbox") {
+            formoutput += "<td class='outputdata'>" + (element.checked ? "Checked" : "Unchecked") + "</td>";
+        } else if (datatype === "radio") {
+            if (element.checked) {
+                formoutput += "<td class='outputdata'>" + element.value + "</td>";
+            } else {
+                continue;
+            }
+        } else {
+            formoutput += "<td class='outputdata'>" + element.value + "</td>";
+        }
+        
+        formoutput += "</tr>";
+    }
+
+    formoutput += "</table>";
+    document.getElementById("outputformdata").innerHTML = formoutput;
+}
 /* Experimentation...
 var data = document.getElementById("storage").value;
 formoutput = formoutput+"<tr><td>Storage? "+
