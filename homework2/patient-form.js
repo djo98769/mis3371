@@ -82,4 +82,16 @@ function checkfirstname()
         else { */
               document.getElementById("name_text").innerHTML = "good so far";
     }
+
+/* DOB validation */
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+
+var maxDate = yyyy + '-' + mm + '-' + dd;
+var minDate = (yyyy - 120) + '-' + mm + '-' + dd;
+
+document.getElementById("dob").setAttribute("max", maxDate);
+document.getElementById("dob").setAttribute("min", minDate);
     /* End of document: patient-form.js */
