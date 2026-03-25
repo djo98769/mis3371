@@ -58,9 +58,16 @@ function getdata1() {
         var status = element.checkValidity() ? "<span style='color:lightgreen'>PASS</span>" : "<span style='color:red'>ERROR: " + (element.title || "Invalid Input") + "</span>";
 
         switch (datatype) {
-            case "checkbox": if (!element.checked) { val = "Not Selected"; } else { val = "Checked"; } break;
-            case "radio": if (!element.checked) continue; val = element.value; break;
-            case "password": val = "********"; break;
+            case "checkbox":
+               if (!element.checked) continue;
+               val = element.value.charAt(0).toUpperCase() + element.value.slice(1); 
+               break;
+            case "radio": 
+               if (!element.checked) continue; val = element.value; 
+               break;
+            case "password": 
+               val = "********"; 
+            break;
             default: val = element.value || "(Empty)";
         }
         formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + val + "</td><td align='center'>" + status + "</td></tr>";
