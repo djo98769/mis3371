@@ -18,12 +18,14 @@ function removedata1() {
  
 function getdata1() {
     var formcontents = document.getElementById("patientForm");
-    var formoutput;
+    var formoutput = "";
     var datatype;
     
+    // Requirement: User ID to lowercase
     var userIdField = document.getElementById("userid"); 
     if(userIdField) { userIdField.value = userIdField.value.toLowerCase(); }
 
+    // Start Table
     formoutput = "<table class='output'><tr><th>Field Name</th><th>Type</th><th>Entered Value</th><th>Status</th></tr>";
 
     for (var i = 0; i < formcontents.length; i++) {
@@ -31,29 +33,31 @@ function getdata1() {
         datatype = element.type;
         var name = element.name || element.id;
 
+        // Skip buttons
         if (datatype === "button" || datatype === "submit" || datatype === "reset") continue;
 
         formoutput += "<tr><td align='right'><strong>" + name + "</strong></td>";
         formoutput += "<td align='center'>" + datatype + "</td>";
 
+        // Get Value Logic
         var val = "";
         if (datatype === "checkbox") {
             val = element.checked ? "Checked" : "Unchecked";
         } else if (datatype === "radio") {
             if (element.checked) { val = element.value; } 
-            else { continue; }
+            else { continue; } // Skip unselected radio options
         } else {
             val = element.value;
         }
 
         formoutput += "<td class='outputdata'>" + val + "</td>";
 
+        // Validation Column (Rubric: error messages in right location)
         if (element.checkValidity()) {
             formoutput += "<td style='color: green; font-weight: bold;'>PASS</td>";
         } else {
             formoutput += "<td style='color: red; font-weight: bold;'>ERROR: " + element.validationMessage + "</td>";
         }
-        
         formoutput += "</tr>";
     }
 
