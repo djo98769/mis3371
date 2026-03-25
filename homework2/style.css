@@ -35,10 +35,10 @@ table.output, tr.output, td.output {
   width: 70%;
   opacity: 0.9;
   font-family: "Times New Roman", serif;
-  background-color:#03697F;
+  background-color:#1fbdd2;
   padding: 2px;
   border-spacing: 2px;
-  color:rgb(222, 243, 245);
+  color:rgb(255, 255, 255);
 }
 td.outputdata {
   width: 70%;
