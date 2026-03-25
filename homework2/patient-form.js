@@ -69,10 +69,6 @@ var data = document.getElementById("storage").value;
 formoutput = formoutput+"<tr><td>Storage? "+
   data+"</td></tr>";
 /* End of Experiment */
-   if (formoutput.length>0) { 
-      formoutput = formoutput + "</table>";
-      document.getElementById("outputformdata").innerHTML = formoutput;
-   }
 /* function getrangedata() {
   var slider = document.getElementById("budget");
   document.getElementById("rangedisplay").value = slider;
