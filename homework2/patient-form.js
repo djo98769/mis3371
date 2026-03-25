@@ -18,39 +18,58 @@ function removedata1() {
  
 function getdata1() {
   var formcontents = document.getElementById("patientForm");
+  if (!formcontents.checkValidity()) {
+    formcontents.reportValidity();
+    return; 
+  }
+
+  var uid = document.getElementById("userid").value.toLowerCase();
+  var pass = document.getElementById("password").value.toLowerCase();
+  if (uid !== "" && pass.includes(uid)) {
+    alert("SECURITY ERROR: Your password cannot contain your User ID.");
+    return;
+  }
+
+  var zipInput = document.getElementById("zip");
+  if (zipInput.value.includes("-")) {
+    zipInput.value = zipInput.value.split("-")[0];
+  }
+
   var formoutput;
   var datatype;
   var i;
-  formoutput = "<table class='output'><th>Dataname</th><th>Type</th><th>Value</th>";
-  for (i = 0; i < formcontents.length; i++) {
-            console.log("item: "+i+" "+formcontents.elements[i].name+" = "+formcontents.elements[i].value);
-            /* if (formcontents.elements[i].value !="") { */
-              datatype = formcontents.elements[i].type;
-              switch (datatype) {
-                case "checkbox":
-                  if (formcontents.elements[i].checked) {
-                    formoutput = formoutput + "<tr><td align='right'>"+formcontents.elements[i].name+"</td>";
-                    formoutput = formoutput +"<td align='right'>"+ datatype + "</td>";
-                    formoutput = formoutput +"<td class='outputdata'>Checked</td></tr>";
-                  }
-                  break;
-               case "radio":
-                    if (formcontents.elements[i].checked) {
-                      formoutput = formoutput + "<tr><td align='right'>"+formcontents.elements[i].name+"</td>";
-                      formoutput = formoutput +"<td align='right'>"+ datatype + "</td>";
-                      formoutput = formoutput +"<td class='outputdata'>"+ formcontents.elements[i].value+"</td></tr>";
-                    }
-                  break;
-                case "button": case "submit": case "reset":
-                  break;
-                default:
-                  formoutput = formoutput + "<tr><td align='right'>"+formcontents.elements[i].name+"</td>";
-                  formoutput = formoutput +"<td align='right'>"+ datatype + "</td>";
-                  formoutput = formoutput +"<td class='outputdata'>"+ formcontents.elements[i].value+"</td></tr>";
-                }
-            /* } */
+  
+  formoutput = "<table class='output'><tr><th>Field Description</th><th>Value Entered</th><th>Status</th></tr>";
 
+  for (i = 0; i < formcontents.length; i++) {
+    datatype = formcontents.elements[i].type;
+    var name = formcontents.elements[i].name;
+    var value = formcontents.elements[i].value;
+
+    switch (datatype) {
+      case "checkbox":
+        if (formcontents.elements[i].checked) {
+          formoutput += "<tr><td>" + name + "</td><td class='outputdata'>Checked</td><td style='color:lime'>pass</td></tr>";
+        }
+        break;
+      case "radio":
+        if (formcontents.elements[i].checked) {
+          formoutput += "<tr><td>" + name + "</td><td class='outputdata'>" + value + "</td><td style='color:lime'>pass</td></tr>";
+        }
+        break;
+      case "button": case "submit": case "reset":
+        break;
+      default:
+      
+        formoutput += "<tr><td>" + name + "</td><td class='outputdata'>" + value + "</td><td style='color:lime'>pass</td></tr>";
+    }
   }
+
+  if (formoutput.length > 0) {
+    formoutput += "</table>";
+    document.getElementById("outputformdata").innerHTML = formoutput;
+  }
+}
 /* Experimentation...
 var data = document.getElementById("storage").value;
 formoutput = formoutput+"<tr><td>Storage? "+
