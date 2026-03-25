@@ -73,7 +73,6 @@ formoutput = formoutput+"<tr><td>Storage? "+
       formoutput = formoutput + "</table>";
       document.getElementById("outputformdata").innerHTML = formoutput;
    }
-}
 /* function getrangedata() {
   var slider = document.getElementById("budget");
   document.getElementById("rangedisplay").value = slider;
