@@ -49,38 +49,20 @@ function getdata1() {
     for (i = 0; i < formcontents.length; i++) {
         var element = formcontents.elements[i];
         var datatype = element.type;
-        
         if (datatype === "button" || datatype === "submit" || datatype === "reset") continue;
 
         var friendlyName = labelMap[element.name] || element.name;
         var val = element.value;
-        var status = "";
-
-        // This checks your HTML 'pattern' and 'required' rules
-        if (element.checkValidity()) {
-            status = "<span style='color:lightgreen'>PASS</span>";
-        } else {
-            // Pulls the SPECIFIC error message from your HTML 'title' attribute
-            var errorText = element.title || "Invalid Input"; 
-            status = "<span style='color:red'>ERROR: " + errorText + "</span>";
-        }
+        
+        // This logic ensures the specific 'title' instructions show up on failure
+        var status = element.checkValidity() ? "<span style='color:lightgreen'>PASS</span>" : "<span style='color:red'>ERROR: " + (element.title || "Invalid Input") + "</span>";
 
         switch (datatype) {
-            case "checkbox":
-                if (!element.checked) continue; 
-                val = "Checked";
-                break;
-            case "radio":
-                if (!element.checked) continue; 
-                val = element.value;
-                break;
-            case "password":
-                val = "********"; 
-                break;
-            default:
-                val = element.value || "";
+            case "checkbox": if (!element.checked) continue; val = "Checked"; break;
+            case "radio": if (!element.checked) continue; val = element.value; break;
+            case "password": val = "********"; break;
+            default: val = element.value || "(Empty)";
         }
-
         formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + val + "</td><td align='center'>" + status + "</td></tr>";
     }
 
