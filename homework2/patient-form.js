@@ -55,9 +55,18 @@ function getdata1() {
             case "button": case "submit": case "reset":
                 break;
             default:
-                  formoutput = formoutput + "<tr><td align='right'>"+formcontents.elements[i].name+"</td>";
-                  formoutput = formoutput +"<td class='outputdata'>"+ formcontents.elements[i].value+"</td></tr>";
-                }
+                var rawValue = element.value.trim();
+                var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
+                
+                var isValid = element.checkValidity();
+                if (datatype === "password" && rawValue === "") { isValid = false; }
+
+                var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
+                                "<span style='color:red'>ERROR: " + (element.title || "Invalid") + "</span>";
+
+                formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
+                break;
+        }
 
      if (formoutput.length>0) { 
       formoutput = formoutput + "</table>";
