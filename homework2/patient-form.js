@@ -98,10 +98,12 @@ function getdata1() {
 function checkfirstname() {
     var fn = document.getElementById("firstname");
     var msg = document.getElementById("firstname_text");
+    
+    // Rule: 1-30 chars, letters/hyphens/apostrophes only
     if (fn.value.length < 1) {
-        msg.innerHTML = "<span style='color:red'>ERROR: Required Field</span>";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Required Field</span>";
     } else if (!fn.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + fn.title + "</span>";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + fn.title + "</span>";
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
@@ -110,10 +112,12 @@ function checkfirstname() {
 function checklastname() {
     var ln = document.getElementById("lastname");
     var msg = document.getElementById("lastname_text");
+    
+    // Rule: 1-30 chars, letters/numbers 2-5/hyphens/apostrophes
     if (ln.value.length < 1) {
-        msg.innerHTML = "<span style='color:red'>ERROR: Required Field</span>";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Required Field</span>";
     } else if (!ln.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + ln.title + "</span>";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + ln.title + "</span>";
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
@@ -122,11 +126,14 @@ function checklastname() {
 function checkUserID() {
     var uid = document.getElementById("userid");
     var msg = document.getElementById("userid_text");
-    uid.value = uid.value.toLowerCase(); // Requirement: Convert and redisplay
+    
+    // REQUIREMENT: Convert to lowercase and redisplay immediately
+    uid.value = uid.value.toLowerCase();
+    
     if (uid.value.length < 5) {
-        msg.innerHTML = "<span style='color:red'>ERROR: Must be at least 5 characters</span>";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Too short (Min 5)</span>";
     } else if (!uid.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + uid.title + "</span>";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + uid.title + "</span>";
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
@@ -135,10 +142,10 @@ function checkUserID() {
 function checkPassword() {
     var pw = document.getElementById("password");
     var msg = document.getElementById("password_text");
-    if (pw.value.length < 1) {
-        msg.innerHTML = "<span style='color:red'>ERROR: Required Field</span>";
+    if (pw.value.length < 8) {
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Too short (Min 8)</span>";
     } else if (!pw.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + pw.title + "</span>";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + pw.title + "</span>";
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
