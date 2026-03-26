@@ -99,9 +99,9 @@ function checkfirstname() {
     var fn = document.getElementById("firstname");
     var msg = document.getElementById("firstname_text");
     if (fn.value.length < 1) {
-        msg.innerHTML = "<span style='color:red'>ERROR: Required Field</span>";
+        msg.innerHTML = "<span style='color:lightred'>ERROR: Required Field</span>";
     } else if (!fn.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + fn.title + "</span>";
+        msg.innerHTML = "<span style='color:lightred'>ERROR: " + fn.title + "</span>";
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
@@ -111,9 +111,9 @@ function checklastname() {
     var ln = document.getElementById("lastname");
     var msg = document.getElementById("lastname_text");
     if (ln.value.length < 1) {
-        msg.innerHTML = "<span style='color:red'>ERROR: Required Field</span>";
+        msg.innerHTML = "<span style='color:lightred'>ERROR: Required Field</span>";
     } else if (!ln.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + ln.title + "</span>";
+        msg.innerHTML = "<span style='color:lightred'>ERROR: " + ln.title + "</span>";
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
@@ -123,9 +123,9 @@ function checkUserID() {
     var uid = document.getElementById("userid");
     var msg = document.getElementById("userid_text");
     if (uid.value.length < 5) {
-        msg.innerHTML = "<span style='color:red'>ERROR: Must be at least 5 characters</span>";
+        msg.innerHTML = "<span style='color:lightred'>ERROR: Must be at least 5 characters</span>";
     } else if (!uid.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + uid.title + "</span>";
+        msg.innerHTML = "<span style='color:lightred'>ERROR: " + uid.title + "</span>";
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
@@ -135,9 +135,9 @@ function checkPassword() {
     var pw = document.getElementById("password");
     var msg = document.getElementById("password_text");
     if (ln.value.length < 1) {
-        msg.innerHTML = "<span style='color:red'>ERROR: Required Field</span>";
+        msg.innerHTML = "<span style='color:lightred'>ERROR: Required Field</span>";
     else if (!pw.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + pw.title + "</span>";
+        msg.innerHTML = "<span style='color:lightred'>ERROR: " + pw.title + "</span>";
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
