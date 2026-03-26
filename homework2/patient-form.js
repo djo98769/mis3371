@@ -98,20 +98,24 @@ function getdata1() {
 function checkfirstname() {
     var fn = document.getElementById("firstname");
     var msg = document.getElementById("firstname_text");
-    if (fn.value.length < 2) {
-        msg.innerHTML = "<span style='color:red'>ERROR: NAME TOO SHORT</span>";
+    if (fn.value.length < 1) {
+        msg.innerHTML = "<span style='color:red'>ERROR: Required Field</span>";
+    } else if (!fn.checkValidity()) {
+        msg.innerHTML = "<span style='color:red'>ERROR: " + fn.title + "</span>";
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
+        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
 }
 
 function checklastname() {
     var ln = document.getElementById("lastname");
     var msg = document.getElementById("lastname_text");
-    if (ln.value.length < 2) {
-        msg.innerHTML = "<span style='color:red'>ERROR: NAME TOO SHORT</span>";
+    if (ln.value.length < 1) {
+        msg.innerHTML = "<span style='color:red'>ERROR: Required Field</span>";
+    } else if (!ln.checkValidity()) {
+        msg.innerHTML = "<span style='color:red'>ERROR: " + ln.title + "</span>";
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
+        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
 }
 
@@ -119,9 +123,11 @@ function checkUserID() {
     var uid = document.getElementById("userid");
     var msg = document.getElementById("userid_text");
     if (uid.value.length < 5) {
-        msg.innerHTML = "<span style='color:red'>ERROR: TOO SHORT</span>";
+        msg.innerHTML = "<span style='color:red'>ERROR: Must be at least 5 characters</span>";
+    } else if (!uid.checkValidity()) {
+        msg.innerHTML = "<span style='color:red'>ERROR: " + uid.title + "</span>";
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
+        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
 }
 
@@ -131,7 +137,7 @@ function checkPassword() {
     if (!pw.checkValidity()) {
         msg.innerHTML = "<span style='color:red'>ERROR: " + pw.title + "</span>";
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
+        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
 }
 
