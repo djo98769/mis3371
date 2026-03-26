@@ -52,11 +52,16 @@ function getdata1() {
         if (datatype === "button" || datatype === "submit" || datatype === "reset") continue;
 
         var friendlyName = labelMap[element.name] || element.name;
-        var val = element.value;
-        
-        // This logic ensures the specific 'title' instructions show up on failure
-        var status = element.checkValidity() ? "<span style='color:lightgreen'>PASS</span>" : "<span style='color:red'>ERROR: " + (element.title || "Invalid Input") + "</span>";
 
+        var val = element.value.trim();
+        var isValid = element.checkValidity();
+        if (element.hasAttribute('required') && val === "") {
+        isValid = false;
+        }
+
+var status = isValid ? 
+    "<span style='color:lightgreen'>PASS</span>" : 
+    "<span style='color:red'>ERROR: " + (element.title || "Field Required") + "</span>";
         switch (datatype) {
             case "checkbox":
                if (!element.checked) continue;
