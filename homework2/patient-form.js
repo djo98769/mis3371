@@ -134,7 +134,9 @@ function checkUserID() {
 function checkPassword() {
     var pw = document.getElementById("password");
     var msg = document.getElementById("password_text");
-    if (!pw.checkValidity()) {
+    if (ln.value.length < 1) {
+        msg.innerHTML = "<span style='color:red'>ERROR: Required Field</span>";
+    else if (!pw.checkValidity()) {
         msg.innerHTML = "<span style='color:red'>ERROR: " + pw.title + "</span>";
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
