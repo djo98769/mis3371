@@ -20,18 +20,29 @@ function getdata1() {
     var formcontents = document.getElementById("patientForm");
     var formoutput;
     var i;
+    
     var labelMap = {
         "firstname": "First Name",
+        "middleinit": "M.I.",
         "lastname": "Last Name",
-        "userid": "User ID",
-        "password": "Password",
-        "confirm_password": "Confirm Password",
         "dob": "Date of Birth",
         "ssn": "SSN",
         "addr1": "Address 1",
+        "addr2": "Address 2",
+        "city": "City",
+        "state": "State",
         "zip": "Zip Code",
         "email": "Email",
-        "phone": "Phone Number"
+        "phone": "Phone Number",
+        "symptoms": "Symptoms",
+        "history": "Medical History",
+        "gender": "Gender",
+        "vax": "Vaccinated for COVID-19?",
+        "insurance": "Insurance?",
+        "health": "How is your current health?",
+        "userid": "User ID",
+        "password": "Password",
+        "confirm_password": "Confirm Password"
     };
 
     formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
@@ -44,25 +55,32 @@ function getdata1() {
         switch (datatype) {
             case "checkbox":
                 if (element.checked) {
-                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>Checked</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
+                    var val = element.value.charAt(0).toUpperCase() + element.value.slice(1);
+                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + val + "</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
                 }
                 break;
+                
             case "radio":
                 if (element.checked) {
-                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + element.value + "</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
+                    var radioVal = element.value.charAt(0).toUpperCase() + element.value.slice(1);
+                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + radioVal + "</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
                 }
                 break;
+
             case "button": case "submit": case "reset":
                 break;
+
             default:
                 var rawValue = element.value.trim();
+
                 if (element.id === "userid") {
                     element.value = element.value.toLowerCase();
-                    rawValue = element.value;
+                    rawValue = element.value; 
                 }
-                var displayVal = (datatype === "password" || element.id === "ssn" || element.id === "confirm_password") ? "********" : (rawValue || "(Empty)");
-                var isValid = element.checkValidity();
 
+                var displayVal = (datatype === "password" || element.id === "ssn" || element.id === "confirm_password") ? "********" : (rawValue || "(Empty)");
+                
+                var isValid = element.checkValidity();
                 if (datatype === "password" && rawValue === "") { isValid = false; }
 
                 var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
