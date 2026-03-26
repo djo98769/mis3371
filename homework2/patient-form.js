@@ -95,13 +95,36 @@ function getdata1() {
     document.getElementById("outputformdata").innerHTML = formoutput;
 }
 
-function checkfirstname() {
-    var x = document.getElementById("firstname").value;
+function checkNames() {
+    var fn = document.getElementById("firstname");
+    var ln = document.getElementById("lastname");
     var msg = document.getElementById("name_text");
-    if (x.length < 2) {
-        msg.innerHTML = "<span style='color:red'>NAME TOO SHORT</span>";
+    if (!fn.checkValidity()) {
+        msg.innerHTML = "<span style='color:red'>ERROR: " + fn.title + "</span>";
+    } else if (!ln.checkValidity()) {
+        msg.innerHTML = "<span style='color:red'>ERROR: " + ln.title + "</span>";
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
+        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
+    }
+}
+
+function checkUserID() {
+    var uid = document.getElementById("userid");
+    var msg = document.getElementById("userid_text");
+    if (!uid.checkValidity()) {
+        msg.innerHTML = "<span style='color:red'>ERROR: " + uid.title + "</span>";
+    } else {
+        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
+    }
+}
+
+function checkPassword() {
+    var pw = document.getElementById("password");
+    var msg = document.getElementById("password_text");
+    if (!pw.checkValidity()) {
+        msg.innerHTML = "<span style='color:red'>ERROR: " + pw.title + "</span>";
+    } else {
+        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
 }
 
