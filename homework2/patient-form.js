@@ -34,31 +34,42 @@ function getdata1() {
 
     formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
 
-    for (i = 0; i < formcontents.length; i++) {
-        var element = formcontents.elements[i];
-        if (element.type === "button" || element.type === "submit" || element.type === "reset") continue;
+for (i = 0; i < formcontents.length; i++) {
+    var element = formcontents.elements[i];
+    var datatype = element.type;
+    var friendlyName = labelMap[element.name] || element.name;
 
-        var friendlyName = labelMap[element.name] || element.name;
-        var rawValue = element.value.trim();
-        var displayVal = (element.type === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
-        
-        var isValid = element.checkValidity();
-
-        // Custom validation for passwords matching
-        if (element.id === "confirm_password") {
-            if (rawValue !== document.getElementById("password").value) {
-                isValid = false;
-                element.title = "Passwords do not match";
+    switch (datatype) {
+        case "checkbox":
+            if (element.checked) {
+                formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>Checked</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
             }
-        }
+            break;
 
-        var status = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
-                     "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
+        case "radio":
+            if (element.checked) {
+                formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + element.value + "</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
+            }
+            break;
 
-        formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + status + "</td></tr>";
+        case "button": case "submit": case "reset":
+            break;
+
+        default:
+            var rawValue = element.value.trim();
+            var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
+            
+            var isValid = element.checkValidity();
+            
+            if (datatype === "password" && rawValue === "") {
+                isValid = false;
+            }
+
+            var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
+                            "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
+
+            formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
     }
-
-    document.getElementById("outputformdata").innerHTML = formoutput + "</table>";
 }
 
 window.onload = function checkdate() {
