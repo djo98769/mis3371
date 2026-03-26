@@ -56,7 +56,11 @@ function getdata1() {
                 break;
             default:
                 var rawValue = element.value.trim();
-                var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
+                if (element.id === "userid") {
+                    element.value = element.value.toLowerCase();
+                    rawValue = element.value;
+                }
+                var displayVal = (datatype === "password" || element.id === "ssn" || element.id === "confirm_password") ? "********" : (rawValue || "(Empty)");
                 var isValid = element.checkValidity();
 
                 if (datatype === "password" && rawValue === "") { isValid = false; }
