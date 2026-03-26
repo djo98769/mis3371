@@ -45,10 +45,8 @@ function getdata1() {
         var rawValue = element.value.trim();
         var displayVal = (element.type === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
 
-        // --- VALIDATION LOGIC ---
         var isValid = element.checkValidity();
 
-        // FAIL-SAFE 1: If it has a pattern, re-test it manually (fixes the "always pass" bug)
         if (element.hasAttribute('pattern') && rawValue !== "") {
             var pattern = new RegExp("^" + element.pattern + "$");
             if (!pattern.test(rawValue)) {
@@ -56,12 +54,10 @@ function getdata1() {
             }
         }
 
-        // FAIL-SAFE 2: Check required fields that are empty
         if (element.hasAttribute('required') && rawValue === "") {
             isValid = false;
         }
-
-        // FAIL-SAFE 3: Password Match
+     
         if (element.id === "confirm_password") {
             if (rawValue !== document.getElementById("password").value) {
                 isValid = false;
