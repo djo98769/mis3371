@@ -55,38 +55,10 @@ function getdata1() {
             case "button": case "submit": case "reset":
                 break;
             default:
-    var rawValue = element.value.trim();
-    var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
-    var isValid = element.checkValidity();
-
-    if (element.id === "userid") {
-        element.value = element.value.toLowerCase();
-        rawValue = element.value; 
-    }
-
-    if (datatype === "password" && rawValue === "") { isValid = false; }
-
-    var targetIds = ["firstname", "lastname", "userid", "password"];
-    if (targetIds.includes(element.id)) {
-        var spanId = (element.id === "firstname" || element.id === "lastname") ? "name_text" : element.id + "_text";
-        var formSpan = document.getElementById(spanId);
-        
-        if (formSpan) {
-            if (!isValid) {
-                formSpan.innerHTML = " <span style='color:red'>ERROR: " + element.title + "</span>";
-            } else if (formSpan.innerHTML.indexOf("ERROR") === -1) { 
-                formSpan.innerHTML = " <span style='color:lightgreen'>pass</span>";
-            }
-        }
-    }
-
-    var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
-    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
-    break;
-        }
-    }
-    document.getElementById("outputformdata").innerHTML = formoutput + "</table>";
-}
+                  formoutput = formoutput + "<tr><td align='right'>"+formcontents.elements[i].name+"</td>";
+                  formoutput = formoutput +"<td align='right'>"+ datatype + "</td>";
+                  formoutput = formoutput +"<td class='outputdata'>"+ formcontents.elements[i].value+"</td></tr>";
+                }
 
 window.onload = function checkdate() {
     var dobInput = document.getElementById("dob");
