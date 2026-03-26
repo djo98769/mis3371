@@ -144,6 +144,22 @@ function checkPassword() {
     }
 }
 
+function checkPasswordMatch() {
+    var pw = document.getElementById("password");
+    var confirm_pw = document.getElementById("confirm_password");
+    var msg = document.getElementById("confirm_password_text");
+    if (confirm_pw.value === "") {
+        msg.innerHTML = "";
+        confirm_pw.setCustomValidity("Confirming password is required");
+    } else if (pw.value !== confirm_pw.value) {
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Passwords do not match</span>";
+        confirm_pw.setCustomValidity("Passwords do not match");
+    } else {
+        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        confirm_pw.setCustomValidity("");
+    }
+}
+
 window.onload = function () {
     var dobInput = document.getElementById("dob");
     if (dobInput) {
