@@ -56,7 +56,6 @@ function getdata1() {
                 break;
             default:
                   formoutput = formoutput + "<tr><td align='right'>"+formcontents.elements[i].name+"</td>";
-                  formoutput = formoutput +"<td align='right'>"+ datatype + "</td>";
                   formoutput = formoutput +"<td class='outputdata'>"+ formcontents.elements[i].value+"</td></tr>";
                 }
 
