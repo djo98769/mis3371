@@ -47,42 +47,47 @@ function getdata1() {
     formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
 
 for (i = 0; i < formcontents.length; i++) {
-    var element = formcontents.elements[i];
-    var datatype = element.type;
+        var element = formcontents.elements[i];
+        if (element.type === "button" || element.type === "submit" || element.type === "reset") continue;
 
-    if (datatype === "button" || datatype === "submit" || datatype === "reset") continue;
+        var friendlyName = labelMap[element.name] || element.name;
+        var rawValue = element.value.trim();
+        var displayVal = rawValue;
 
-    var friendlyName = labelMap[element.name] || element.name;
-    var val = element.value.trim();
+        // 1. Process display values
+        if (element.type === "password") {
+            displayVal = "********";
+        } else {
+            displayVal = rawValue || "(Empty)";
+        }
 
-    switch (datatype) {
-        case "checkbox":
-            if (!element.checked) continue;
-            val = element.value.charAt(0).toUpperCase() + element.value.slice(1);
-            break;
-        case "radio":
-            if (!element.checked) continue;
-            val = element.value;
-            break;
-        case "password":
-            val = "********";
-            break;
-        default:
-            val = val || "(Empty)";
+        // 2. Logic: User ID requirement (convert to lowercase)
+        if (element.id === "userid") {
+            element.value = element.value.toLowerCase();
+            rawValue = element.value;
+            displayVal = rawValue;
+        }
+
+        // 3. Validation Logic
+        var isValid = element.checkValidity();
+
+        // FAIL-SAFE: If field is required but empty
+        if (element.hasAttribute('required') && rawValue === "") {
+            isValid = false;
+        }
+
+        // PASSWORD MATCH CHECK
+        if (element.id === "confirm_password") {
+            var pass = document.getElementById("password").value;
+            if (rawValue !== pass) isValid = false;
+        }
+
+        var status = isValid ? 
+            "<span style='color:lightgreen'>PASS</span>" : 
+            "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
+
+        formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + status + "</td></tr>";
     }
-
-    var isValid = element.checkValidity();
-    
-    if (element.hasAttribute('required') && (val === "(Empty)" || val === "")) {
-        isValid = false;
-    }
-
-    var status = isValid ? 
-        "<span style='color:lightgreen'>PASS</span>" : 
-        "<span style='color:red'>ERROR: " + (element.title || "Field Required") + "</span>";
-
-    formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + val + "</td><td align='center'>" + status + "</td></tr>";
-}
 
     if (formoutput.length > 0) {
         formoutput += "</table>";
@@ -90,11 +95,18 @@ for (i = 0; i < formcontents.length; i++) {
     }
 }
 
-function checkfirstname()
-    {
-        x = document.getElementById("firstname").value;
-              document.getElementById("name_text").innerHTML = "good so far";
+// Professor's "On the Fly" style function
+function checkfirstname() {
+    var x = document.getElementById("firstname").value;
+    var nameText = document.getElementById("name_text");
+    if (x.length >= 2) {
+        nameText.innerHTML = "good so far";
+        nameText.style.color = "lightgreen";
+    } else {
+        nameText.innerHTML = "Too short";
+        nameText.style.color = "red";
     }
+}
 
 window.onload = function checkdate() {
     var dobInput = document.getElementById("dob");
