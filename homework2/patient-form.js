@@ -59,6 +59,22 @@ function getdata1() {
                   formoutput = formoutput +"<td class='outputdata'>"+ formcontents.elements[i].value+"</td></tr>";
                 }
 
+     if (formoutput.length>0) { 
+      formoutput = formoutput + "</table>";
+      document.getElementById("outputformdata").innerHTML = formoutput;
+   }
+}
+
+function checkfirstname()
+    {
+        x = document.getElementById("firstname").value;
+        if( x.length<2 ) { 
+              document.getElementById("name_text").innerHTML = "NAME TOO SHORT"; 
+              document.getElementById("good_count>=[i]").innerHTML = "X"; 
+        else {
+              document.getElementById("name_text").innerHTML = "good so far";
+    }
+
 window.onload = function checkdate() {
     var dobInput = document.getElementById("dob");
     if (dobInput) {
