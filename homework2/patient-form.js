@@ -34,7 +34,8 @@ function getdata1() {
         "phone": "Phone Number"
     };
 
-    formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Type</th><th>Entry</th><th>Status</th></tr>";
+    // Start table with 3 columns: Field, Entry, Status
+    formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
 
     for (i = 0; i < formcontents.length; i++) {
         var element = formcontents.elements[i];
@@ -44,12 +45,12 @@ function getdata1() {
         switch (datatype) {
             case "checkbox":
                 if (element.checked) {
-                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>Checked</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
+                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>Checked</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
                 }
                 break;
             case "radio":
                 if (element.checked) {
-                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + element.value + "</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
+                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + element.value + "</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
                 }
                 break;
             case "button": case "submit": case "reset":
@@ -57,21 +58,21 @@ function getdata1() {
             default:
                 var rawValue = element.value.trim();
                 var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
-                
                 var isValid = element.checkValidity();
+
+                // Force error if required password is empty
                 if (datatype === "password" && rawValue === "") { isValid = false; }
 
                 var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
                                 "<span style='color:red'>ERROR: " + (element.title || "Invalid") + "</span>";
 
-                formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
+                formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
                 break;
         }
+    }
 
-     if (formoutput.length>0) { 
-      formoutput = formoutput + "</table>";
-      document.getElementById("outputformdata").innerHTML = formoutput;
-   }
+    formoutput += "</table>";
+    document.getElementById("outputformdata").innerHTML = formoutput;
 }
 
 function checkfirstname() {
