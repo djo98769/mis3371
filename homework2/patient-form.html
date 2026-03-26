@@ -362,15 +362,13 @@
         </td>
         <td>
             <input type="password" 
-                    size="15" 
-                    maxlength="20" 
-                    id="password" 
-                    name="password" 
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@#%^&*()\-_+=\\\/><.,`~]).{8,30}" 
-                    oninput="checkPassword(); this.setCustomValidity('')"
-                    title="8-30 chars, must include: 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Character." 
-                    placeholder="Min 8 Characters"
-            >
+                   id="password" 
+                   name="password" 
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#%^&*()\-_+=\\\/><.,`~]).{8,30}" 
+                   oninput="checkPassword(); this.setCustomValidity('')" 
+                   title="8-30 chars, must include: 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Character (!@#%^&*()-_+=\/><.,`~)" 
+                   placeholder="Min 8 Characters"
+                >
             <span id="password_text"></span>
         </td>
     </tr>
