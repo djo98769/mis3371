@@ -56,7 +56,7 @@
                 id="firstname" 
                 name="firstname" 
                 required 
-                pattern="[A-Za-z'- ]{1,30}"
+                pattern="[A-Z^a-z-' ^~]{1,30}"
                 oninput="this.setCustomValidity('')"
                 title="1 to 30 characters; letters, spaces, hyphens, and apostrophes only." 
                 placeholder="First Name"
@@ -67,7 +67,7 @@
                     maxlength="1" 
                     id="middleinit" 
                     name="middleinit" 
-                    pattern="[A-Za-z]{1}" 
+                    pattern="[A-Za-z ]{1}" 
                     title="1 letter only." 
                     placeholder="M.I."
             >
@@ -78,7 +78,7 @@
                     id="lastname" 
                     name="lastname" 
                     required 
-                    pattern="[A-Za-z2-5' -]{1,30}" 
+                    pattern="[A-Z^a-z34-' ]{1,30}" 
                     oninput="this.setCustomValidity('')"
                     title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only."  
                     placeholder="Last Name"
