@@ -83,17 +83,15 @@ function checkfirstname() {
     }
 }
 
-window.onload = function checkdate() {
+window.onload = function() {
     var dobInput = document.getElementById("dob");
     if (dobInput) {
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0');
         var yyyy = today.getFullYear();
-
         var maxDate = yyyy + '-' + mm + '-' + dd;
         var minDate = (yyyy - 120) + '-' + mm + '-' + dd;
-
         dobInput.setAttribute("max", maxDate);
         dobInput.setAttribute("min", minDate);
     }
