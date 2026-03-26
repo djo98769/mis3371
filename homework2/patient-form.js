@@ -34,7 +34,6 @@ function getdata1() {
         "phone": "Phone Number"
     };
 
-    // Start table with 3 columns: Field, Entry, Status
     formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
 
     for (i = 0; i < formcontents.length; i++) {
@@ -60,7 +59,6 @@ function getdata1() {
                 var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
                 var isValid = element.checkValidity();
 
-                // Force error if required password is empty
                 if (datatype === "password" && rawValue === "") { isValid = false; }
 
                 var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
