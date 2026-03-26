@@ -90,15 +90,20 @@ function getdata1() {
                     element.value = element.value.toLowerCase();
                     rawValue = element.value;
                 }
-                
+
                 var displayVal = (datatype === "password" || element.id === "ssn" || element.id === "confirm_password") ? "********" : (rawValue || "(Empty)");
                 
+                var customError = element.validationMessage; 
                 var isValid = element.checkValidity();
-                if (datatype === "password" && rawValue === "") { isValid = false; }
-
-                var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
-                "<span style='color:red'>ERROR: " + (element.title || "Invalid") + "</span>";
-
+                
+                if (datatype === "password" && rawValue === "") { 
+                    isValid = false; 
+                }
+                
+                var statusMsg = isValid ? 
+                    "<span style='color:lightgreen'>PASS</span>" : 
+                    "<span style='color:red'>ERROR: " + (customError || element.title || "Invalid") + "</span>";
+                
                 formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
                 break;
         }
@@ -163,13 +168,13 @@ function checkPassword() {
     } 
     else if (uid && pw.toLowerCase().includes(uid.toLowerCase())) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot contain User ID</span>";
-        pwInput.setCustomValidity("Password cannot contain User ID");
+        pwInput.setCustomValidity("Password cannot contain User ID"); 
     } 
     else if ((fn && pw.toLowerCase().includes(fn.toLowerCase())) || 
              (ln && pw.toLowerCase().includes(ln.toLowerCase()))) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot contain your name</span>";
         pwInput.setCustomValidity("Password cannot contain your name");
-    } 
+    }
     else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
