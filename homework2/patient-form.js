@@ -46,37 +46,43 @@ function getdata1() {
 
     formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
 
-    for (i = 0; i < formcontents.length; i++) {
-        var element = formcontents.elements[i];
-        var datatype = element.type;
-        if (datatype === "button" || datatype === "submit" || datatype === "reset") continue;
+for (i = 0; i < formcontents.length; i++) {
+    var element = formcontents.elements[i];
+    var datatype = element.type;
 
-        var friendlyName = labelMap[element.name] || element.name;
+    if (datatype === "button" || datatype === "submit" || datatype === "reset") continue;
 
-        var val = element.value.trim();
-        var isValid = element.checkValidity();
-        if (element.hasAttribute('required') && val === "") {
-        isValid = false;
-        }
+    var friendlyName = labelMap[element.name] || element.name;
+    var val = element.value.trim();
 
-var status = isValid ? 
-    "<span style='color:lightgreen'>PASS</span>" : 
-    "<span style='color:red'>ERROR: " + (element.title || "Field Required") + "</span>";
-        switch (datatype) {
-            case "checkbox":
-               if (!element.checked) continue;
-               val = element.value.charAt(0).toUpperCase() + element.value.slice(1); 
-               break;
-            case "radio": 
-               if (!element.checked) continue; val = element.value; 
-               break;
-            case "password": 
-               val = "********"; 
+    switch (datatype) {
+        case "checkbox":
+            if (!element.checked) continue;
+            val = element.value.charAt(0).toUpperCase() + element.value.slice(1);
             break;
-            default: val = element.value || "(Empty)";
-        }
-        formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + val + "</td><td align='center'>" + status + "</td></tr>";
+        case "radio":
+            if (!element.checked) continue;
+            val = element.value;
+            break;
+        case "password":
+            val = "********";
+            break;
+        default:
+            val = val || "(Empty)";
     }
+
+    var isValid = element.checkValidity();
+    
+    if (element.hasAttribute('required') && (val === "(Empty)" || val === "")) {
+        isValid = false;
+    }
+
+    var status = isValid ? 
+        "<span style='color:lightgreen'>PASS</span>" : 
+        "<span style='color:red'>ERROR: " + (element.title || "Field Required") + "</span>";
+
+    formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + val + "</td><td align='center'>" + status + "</td></tr>";
+}
 
     if (formoutput.length > 0) {
         formoutput += "</table>";
