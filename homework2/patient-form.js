@@ -84,7 +84,7 @@ function getdata1() {
                 if (datatype === "password" && rawValue === "") { isValid = false; }
 
                 var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
-                                "<span style='color:lightcoral'>ERROR: " + (element.title || "Invalid") + "</span>";
+                "<span style='color:lightcoral'>ERROR: " + (element.title || "Invalid") + "</span>";
 
                 formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
                 break;
