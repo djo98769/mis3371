@@ -95,26 +95,33 @@ function getdata1() {
     document.getElementById("outputformdata").innerHTML = formoutput;
 }
 
-function checkNames() {
+function checkfirstname() {
     var fn = document.getElementById("firstname");
-    var ln = document.getElementById("lastname");
-    var msg = document.getElementById("name_text");
-    if (!fn.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + fn.title + "</span>";
-    } else if (!ln.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + ln.title + "</span>";
+    var msg = document.getElementById("firstname_text");
+    if (fn.value.length < 2) {
+        msg.innerHTML = "<span style='color:red'>ERROR: NAME TOO SHORT</span>";
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
+    }
+}
+
+function checklastname() {
+    var ln = document.getElementById("lastname");
+    var msg = document.getElementById("lastname_text");
+    if (ln.value.length < 2) {
+        msg.innerHTML = "<span style='color:red'>ERROR: NAME TOO SHORT</span>";
+    } else {
+        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
     }
 }
 
 function checkUserID() {
     var uid = document.getElementById("userid");
     var msg = document.getElementById("userid_text");
-    if (!uid.checkValidity()) {
-        msg.innerHTML = "<span style='color:red'>ERROR: " + uid.title + "</span>";
+    if (uid.value.length < 5) {
+        msg.innerHTML = "<span style='color:red'>ERROR: TOO SHORT</span>";
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
     }
 }
 
@@ -124,11 +131,11 @@ function checkPassword() {
     if (!pw.checkValidity()) {
         msg.innerHTML = "<span style='color:red'>ERROR: " + pw.title + "</span>";
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
     }
 }
 
-window.onload = function() {
+window.onload = function () {
     var dobInput = document.getElementById("dob");
     if (dobInput) {
         var today = new Date();
