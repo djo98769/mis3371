@@ -146,29 +146,31 @@ function checkUserID() {
 }
 
 function checkPassword() {
-    var pw = document.getElementById("password").value;
+    var pwInput = document.getElementById("password");
+    var pw = pwInput.value;
     var uid = document.getElementById("userid").value;
     var fn = document.getElementById("firstname").value;
     var ln = document.getElementById("lastname").value;
     var msg = document.getElementById("password_text");
-    var pwInput = document.getElementById("password");
 
     pwInput.setCustomValidity("");
 
     if (pw.length < 8) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: Too short (Min 8)</span>";
-    } else if (!pwInput.checkValidity()) {
+    } 
+    else if (!pwInput.checkValidity()) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + pwInput.title + "</span>";
-    } else if (uid && pw.toLowerCase().includes(uid.toLowerCase())) {
+    } 
+    else if (uid && pw.toLowerCase().includes(uid.toLowerCase())) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot contain User ID</span>";
         pwInput.setCustomValidity("Password cannot contain User ID");
-    } else if (fn && pw.toLowerCase().includes(fn.toLowerCase())) {
+    } 
+    else if ((fn && pw.toLowerCase().includes(fn.toLowerCase())) || 
+             (ln && pw.toLowerCase().includes(ln.toLowerCase()))) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot contain your name</span>";
         pwInput.setCustomValidity("Password cannot contain your name");
-    } else if (ln && pw.toLowerCase().includes(ln.toLowerCase())) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot contain your name</span>";
-        pwInput.setCustomValidity("Password cannot contain your name");
-    } else {
+    } 
+    else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
 }
