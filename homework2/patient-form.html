@@ -58,7 +58,6 @@
                 required 
                 pattern="[A-Za-z' -]{1,30}"
                 title="1 to 30 characters; letters, spaces, hyphens, and apostrophes only." 
-                oninput="this.setCustomValidity('')" 
                 placeholder="First Name"
             >
             <label for="middleinit">M.I.</label>
@@ -79,9 +78,7 @@
                     name="lastname" 
                     required 
                     pattern="[A-Za-z2-5' -]{1,30}" 
-                    title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only." 
-                    oninvalid="this.setCustomValidity('Last Name is Required')" 
-                    oninput="this.setCustomValidity('')" 
+                    title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only."  
                     placeholder="Last Name"
             >
             <span id="name_text"></span>
