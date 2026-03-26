@@ -57,6 +57,7 @@
                 name="firstname" 
                 required 
                 pattern="[A-Za-z' -]{1,30}"
+                oninput="checkfirstname(); this.setCustomValidity('')"
                 title="1 to 30 characters; letters, spaces, hyphens, and apostrophes only." 
                 placeholder="First Name"
             >
@@ -78,6 +79,7 @@
                     name="lastname" 
                     required 
                     pattern="[A-Za-z2-5' -]{1,30}" 
+                    oninput="checklastname(); this.setCustomValidity('')"
                     title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only."  
                     placeholder="Last Name"
             >
@@ -397,7 +399,7 @@
                     maxlength="30" 
                     pattern="[A-Za-z][A-Za-z0-9_-]{4,29}" 
                     title="5-30 chars; must start with a letter; no spaces or special chars (except _ or -)." 
-                    oninput="this.value=this.value.toLowerCase()" 
+                    oninput="this.value = this.value.toLowerCase(); this.setCustomValidity('')"
                     placeholder="Desired User ID"
             >
         </td>
@@ -414,6 +416,7 @@
                     required 
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#%^&*()\-=_+\[\]{}|;:,.<>?]).{8,30}"
                     title="8-30 chars, must include: 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Character." 
+                    oninput="this.setCustomValidity('')"
                     placeholder="Min 8 Characters"
             >
         </td>
