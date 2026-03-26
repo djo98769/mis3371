@@ -65,16 +65,15 @@ function getdata1() {
    }
 }
 
-function checkfirstname()
-    {
-        x = document.getElementById("firstname").value;
-        if( x.length<2 ) { 
-              document.getElementById("name_text").innerHTML = "NAME TOO SHORT"; 
-              document.getElementById("good_count>=[i]").innerHTML = "X"; 
-        }
-        else {
-              document.getElementById("name_text").innerHTML = "good so far";
+function checkfirstname() {
+    var x = document.getElementById("firstname").value;
+    var msg = document.getElementById("name_text");
+    if (x.length < 2) {
+        msg.innerHTML = "<span style='color:red'>NAME TOO SHORT</span>";
+    } else {
+        msg.innerHTML = "<span style='color:lightgreen'>good so far</span>";
     }
+}
 
 window.onload = function checkdate() {
     var dobInput = document.getElementById("dob");
