@@ -79,58 +79,6 @@ function getdata1() {
     document.getElementById("outputformdata").innerHTML = formoutput + "</table>";
 }
 
-function checkfirstname() {
-    var x = document.getElementById("firstname").value;
-    var nameText = document.getElementById("name_text");
-    if (x.length >= 2) {
-        nameText.innerHTML = "good so far";
-        nameText.style.color = "lightgreen";
-    } else {
-        nameText.innerHTML = "Too short";
-        nameText.style.color = "red";
-    }
-}
-
-function checklastname() {
-    var x = document.getElementById("lastname").value;
-    var nameText = document.getElementById("name_text");
-    
-    if (x.length >= 2) {
-        nameText.innerHTML = "last name good so far";
-        nameText.style.color = "lightgreen";
-    } else {
-        nameText.innerHTML = "Last name too short";
-        nameText.style.color = "red";
-    }
-}
-
-function checkuserid() {
-    var x = document.getElementById("userid");
-    x.value = x.value.toLowerCase(); // Requirement 225.4
-    var msg = document.getElementById("name_text"); // Reusing your message span
-    
-    if (x.checkValidity()) {
-        msg.innerHTML = "User ID valid";
-        msg.style.color = "lightgreen";
-    } else {
-        msg.innerHTML = x.title;
-        msg.style.color = "red";
-    }
-}
-
-function checkpass() {
-    var p = document.getElementById("password");
-    var msg = document.getElementById("name_text");
-    
-    if (p.checkValidity()) {
-        msg.innerHTML = "Password meets requirements";
-        msg.style.color = "lightgreen";
-    } else {
-        msg.innerHTML = "Must have: 1 Upper, 1 Lower, 1 Number, 1 Special";
-        msg.style.color = "red";
-    }
-}
-
 window.onload = function checkdate() {
     var dobInput = document.getElementById("dob");
     if (dobInput) {
