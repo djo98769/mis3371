@@ -399,7 +399,7 @@
                     maxlength="30" 
                     pattern="[A-Za-z][A-Za-z0-9_-]{4,29}" 
                     title="5-30 chars; must start with a letter; no spaces or special chars (except _ or -)." 
-                    oninput="this.value = this.value.toLowerCase(); this.setCustomValidity('')"
+                    oninput="checkuserid(); this.setCustomValidity('')"
                     placeholder="Desired User ID"
             >
         </td>
@@ -416,7 +416,7 @@
                     required 
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#%^&*()\-=_+\[\]{}|;:,.<>?]).{8,30}"
                     title="8-30 chars, must include: 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Character." 
-                    oninput="this.setCustomValidity('')"
+                    oninput="checkpass(); this.setCustomValidity('')"
                     placeholder="Min 8 Characters"
             >
         </td>
