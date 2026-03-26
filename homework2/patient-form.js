@@ -55,32 +55,34 @@ function getdata1() {
             case "button": case "submit": case "reset":
                 break;
             default:
-                var rawValue = element.value.trim();
-                var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
-                var isValid = element.checkValidity();
+    var rawValue = element.value.trim();
+    var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
+    var isValid = element.checkValidity();
 
-                // Lowercase the User ID automatically
-                if (element.id === "userid") {
-                    element.value = element.value.toLowerCase();
-                    rawValue = element.value; 
-                }
+    if (element.id === "userid") {
+        element.value = element.value.toLowerCase();
+        rawValue = element.value; 
+    }
 
-                // Force error if required password is empty
-                if (datatype === "password" && rawValue === "") { isValid = false; }
+    if (datatype === "password" && rawValue === "") { isValid = false; }
 
-                // UPDATE THE ACTUAL FORM SPANS
-                var targetIds = ["firstname", "lastname", "userid", "password"];
-                if (targetIds.includes(element.id)) {
-                    var spanId = (element.id === "firstname" || element.id === "lastname") ? "name_text" : element.id + "_text";
-                    var formSpan = document.getElementById(spanId);
-                    if (formSpan) {
-                        formSpan.innerHTML = isValid ? " <span style='color:lightgreen'>pass</span>" : " <span style='color:red'>ERROR: " + element.title + "</span>";
-                    }
-                }
+    var targetIds = ["firstname", "lastname", "userid", "password"];
+    if (targetIds.includes(element.id)) {
+        var spanId = (element.id === "firstname" || element.id === "lastname") ? "name_text" : element.id + "_text";
+        var formSpan = document.getElementById(spanId);
+        
+        if (formSpan) {
+            if (!isValid) {
+                formSpan.innerHTML = " <span style='color:red'>ERROR: " + element.title + "</span>";
+            } else if (formSpan.innerHTML.indexOf("ERROR") === -1) { 
+                formSpan.innerHTML = " <span style='color:lightgreen'>pass</span>";
+            }
+        }
+    }
 
-                var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
-                formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
-                break; // <-- Added the missing break/closing logic
+    var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
+    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
+    break;
         }
     }
     document.getElementById("outputformdata").innerHTML = formoutput + "</table>";
