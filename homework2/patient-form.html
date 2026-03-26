@@ -432,10 +432,11 @@
             <input type="password" 
                     id="confirm_password" 
                     name="confirm_password" 
-                    required 
-                    oninput="if(this.value != password.value) { this.setCustomValidity('Passwords do not match'); } else { this.setCustomValidity(''); }" 
+                    required  
                     placeholder="Confirm Password"
+                    oninput="checkPasswordMatch()" placeholder="Confirm Password"
             >
+            <span id="confirm_password_text"></span>
         </td>
     </tr>
                 
