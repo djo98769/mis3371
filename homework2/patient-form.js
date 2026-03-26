@@ -71,6 +71,7 @@ function checkfirstname()
         if( x.length<2 ) { 
               document.getElementById("name_text").innerHTML = "NAME TOO SHORT"; 
               document.getElementById("good_count>=[i]").innerHTML = "X"; 
+        }
         else {
               document.getElementById("name_text").innerHTML = "good so far";
     }
