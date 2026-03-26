@@ -122,6 +122,7 @@ function checklastname() {
 function checkUserID() {
     var uid = document.getElementById("userid");
     var msg = document.getElementById("userid_text");
+    uid.value = uid.value.toLowerCase();
     if (uid.value.length < 5) {
         msg.innerHTML = "<span style='color:lightred'>ERROR: Must be at least 5 characters</span>";
     } else if (!uid.checkValidity()) {
