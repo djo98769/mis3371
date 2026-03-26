@@ -12,14 +12,16 @@
 This subroutine simply retrieves the data names and entered data from the form.
 This code doesn't require that you know how many elements are in your form OR the names of the variables. 
 */
+function removedata1() {
+  document.getElementById("outputformdata").innerHTML = "(you started over)";
+}
+
 function getdata1() {
     var formcontents = document.getElementById("patientForm");
     var formoutput;
     var i;
-    
     var labelMap = {
         "firstname": "First Name",
-        "middleinit": "M.I.",
         "lastname": "Last Name",
         "userid": "User ID",
         "password": "Password",
@@ -32,44 +34,56 @@ function getdata1() {
         "phone": "Phone Number"
     };
 
-    formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
+    formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Type</th><th>Entry</th><th>Status</th></tr>";
 
-for (i = 0; i < formcontents.length; i++) {
-    var element = formcontents.elements[i];
-    var datatype = element.type;
-    var friendlyName = labelMap[element.name] || element.name;
+    for (i = 0; i < formcontents.length; i++) {
+        var element = formcontents.elements[i];
+        var datatype = element.type;
+        var friendlyName = labelMap[element.name] || element.name;
 
-    switch (datatype) {
-        case "checkbox":
-            if (element.checked) {
-                formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>Checked</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
-            }
-            break;
+        switch (datatype) {
+            case "checkbox":
+                if (element.checked) {
+                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>Checked</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
+                }
+                break;
+            case "radio":
+                if (element.checked) {
+                    formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + element.value + "</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
+                }
+                break;
+            case "button": case "submit": case "reset":
+                break;
+            default:
+                var rawValue = element.value.trim();
+                var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
+                var isValid = element.checkValidity();
 
-        case "radio":
-            if (element.checked) {
-                formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + element.value + "</td><td align='center' style='color:lightgreen'>PASS</td></tr>";
-            }
-            break;
+                // Lowercase the User ID automatically
+                if (element.id === "userid") {
+                    element.value = element.value.toLowerCase();
+                    rawValue = element.value; 
+                }
 
-        case "button": case "submit": case "reset":
-            break;
+                // Force error if required password is empty
+                if (datatype === "password" && rawValue === "") { isValid = false; }
 
-        default:
-            var rawValue = element.value.trim();
-            var displayVal = (datatype === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
-            
-            var isValid = element.checkValidity();
-            
-            if (datatype === "password" && rawValue === "") {
-                isValid = false;
-            }
+                // UPDATE THE ACTUAL FORM SPANS
+                var targetIds = ["firstname", "lastname", "userid", "password"];
+                if (targetIds.includes(element.id)) {
+                    var spanId = (element.id === "firstname" || element.id === "lastname") ? "name_text" : element.id + "_text";
+                    var formSpan = document.getElementById(spanId);
+                    if (formSpan) {
+                        formSpan.innerHTML = isValid ? " <span style='color:lightgreen'>pass</span>" : " <span style='color:red'>ERROR: " + element.title + "</span>";
+                    }
+                }
 
-            var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
-                            "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
-
-            formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
+                var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
+                formoutput += "<tr><td align='right'>" + friendlyName + "</td><td align='right'>" + datatype + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
+                break; // <-- Added the missing break/closing logic
+        }
     }
+    document.getElementById("outputformdata").innerHTML = formoutput + "</table>";
 }
 
 window.onload = function checkdate() {
