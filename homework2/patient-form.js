@@ -20,61 +20,53 @@ function getdata1() {
     var formcontents = document.getElementById("patientForm");
     var formoutput;
     var i;
-
     var labelMap = {
         "firstname": "First Name",
         "middleinit": "M.I.",
         "lastname": "Last Name",
+        "userid": "User ID",
+        "password": "Password",
+        "confirm_password": "Confirm Password",
         "dob": "Date of Birth",
         "ssn": "SSN",
         "addr1": "Address 1",
-        "addr2": "Address 2",
-        "city": "City",
-        "state": "State",
         "zip": "Zip Code",
         "email": "Email",
-        "phone": "Phone Number",
-        "symptoms": "Symptoms",
-        "history": "Medical History",
-        "gender": "Gender",
-        "vax": "COVID-19 Vaccinated",
-        "insurance": "Insurance",
-        "health": "Current Health Rating",
-        "userid": "User ID",
-        "password": "Password"
+        "phone": "Phone Number"
     };
 
     formoutput = "<table class='output' align='center'><tr><th>Field</th><th>Entry</th><th>Status</th></tr>";
 
-for (i = 0; i < formcontents.length; i++) {
+    for (i = 0; i < formcontents.length; i++) {
         var element = formcontents.elements[i];
         if (element.type === "button" || element.type === "submit" || element.type === "reset") continue;
 
         var friendlyName = labelMap[element.name] || element.name;
         var rawValue = element.value.trim();
-        var displayVal = rawValue;
+        var displayVal = (element.type === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
 
-        if (element.type === "password") {
-            displayVal = "********";
-        } else {
-            displayVal = rawValue || "(Empty)";
-        }
-
-        if (element.id === "userid") {
-            element.value = element.value.toLowerCase();
-            rawValue = element.value;
-            displayVal = rawValue;
-        }
-
+        // --- VALIDATION LOGIC ---
         var isValid = element.checkValidity();
 
+        // FAIL-SAFE 1: If it has a pattern, re-test it manually (fixes the "always pass" bug)
+        if (element.hasAttribute('pattern') && rawValue !== "") {
+            var pattern = new RegExp("^" + element.pattern + "$");
+            if (!pattern.test(rawValue)) {
+                isValid = false;
+            }
+        }
+
+        // FAIL-SAFE 2: Check required fields that are empty
         if (element.hasAttribute('required') && rawValue === "") {
             isValid = false;
         }
 
+        // FAIL-SAFE 3: Password Match
         if (element.id === "confirm_password") {
-            var pass = document.getElementById("password").value;
-            if (rawValue !== pass) isValid = false;
+            if (rawValue !== document.getElementById("password").value) {
+                isValid = false;
+                element.title = "Passwords do not match";
+            }
         }
 
         var status = isValid ? 
@@ -84,10 +76,7 @@ for (i = 0; i < formcontents.length; i++) {
         formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + status + "</td></tr>";
     }
 
-    if (formoutput.length > 0) {
-        formoutput += "</table>";
-        document.getElementById("outputformdata").innerHTML = formoutput;
-    }
+    document.getElementById("outputformdata").innerHTML = formoutput + "</table>";
 }
 
 function checkfirstname() {
@@ -112,6 +101,33 @@ function checklastname() {
     } else {
         nameText.innerHTML = "Last name too short";
         nameText.style.color = "red";
+    }
+}
+
+function checkuserid() {
+    var x = document.getElementById("userid");
+    x.value = x.value.toLowerCase(); // Requirement 225.4
+    var msg = document.getElementById("name_text"); // Reusing your message span
+    
+    if (x.checkValidity()) {
+        msg.innerHTML = "User ID valid";
+        msg.style.color = "lightgreen";
+    } else {
+        msg.innerHTML = x.title;
+        msg.style.color = "red";
+    }
+}
+
+function checkpass() {
+    var p = document.getElementById("password");
+    var msg = document.getElementById("name_text");
+    
+    if (p.checkValidity()) {
+        msg.innerHTML = "Password meets requirements";
+        msg.style.color = "lightgreen";
+    } else {
+        msg.innerHTML = "Must have: 1 Upper, 1 Lower, 1 Number, 1 Special";
+        msg.style.color = "red";
     }
 }
 
