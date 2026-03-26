@@ -364,7 +364,7 @@
             <input type="password" 
                    id="password" 
                    name="password" 
-                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#%^&*()\-_+=\\\/><.,`~]).{8,30}" 
+                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^&*()\-_+=\\\/><.,`~]).{8,30}$"
                    oninput="checkPassword(); this.setCustomValidity('')" 
                    title="8-30 chars, must include: 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Character (!@#%^&*()-_+=\/><.,`~)" 
                    placeholder="Min 8 Characters"
