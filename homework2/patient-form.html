@@ -57,10 +57,10 @@
                 name="firstname" 
                 required 
                 pattern="[A-Za-z' \-]{1,30}"
-                oninput="checkName(); this.setCustomValidity('')"
+                oninput="checkfirstname(); this.setCustomValidity('')"
                 title="1 to 30 characters; letters, spaces, hyphens, and apostrophes only." 
                 placeholder="First Name"
-            >
+            ><span id="firstname_text"></span>
             <label for="middleinit">M.I.</label>
             <input type="text" 
                     size="2" 
@@ -83,7 +83,7 @@
                     title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only."  
                     placeholder="Last Name"
             >
-            <span id="name_text"></span>
+            <span id="lastname_text"></span>
         </td>
     </tr>
        
