@@ -126,8 +126,6 @@ function checklastname() {
 function checkUserID() {
     var uid = document.getElementById("userid");
     var msg = document.getElementById("userid_text");
-    
-    // REQUIREMENT: Convert to lowercase and redisplay immediately
     uid.value = uid.value.toLowerCase();
     
     if (uid.value.length < 5) {
