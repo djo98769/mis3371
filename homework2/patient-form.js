@@ -54,29 +54,24 @@ for (i = 0; i < formcontents.length; i++) {
         var rawValue = element.value.trim();
         var displayVal = rawValue;
 
-        // 1. Process display values
         if (element.type === "password") {
             displayVal = "********";
         } else {
             displayVal = rawValue || "(Empty)";
         }
 
-        // 2. Logic: User ID requirement (convert to lowercase)
         if (element.id === "userid") {
             element.value = element.value.toLowerCase();
             rawValue = element.value;
             displayVal = rawValue;
         }
 
-        // 3. Validation Logic
         var isValid = element.checkValidity();
 
-        // FAIL-SAFE: If field is required but empty
         if (element.hasAttribute('required') && rawValue === "") {
             isValid = false;
         }
 
-        // PASSWORD MATCH CHECK
         if (element.id === "confirm_password") {
             var pass = document.getElementById("password").value;
             if (rawValue !== pass) isValid = false;
@@ -95,7 +90,6 @@ for (i = 0; i < formcontents.length; i++) {
     }
 }
 
-// Professor's "On the Fly" style function
 function checkfirstname() {
     var x = document.getElementById("firstname").value;
     var nameText = document.getElementById("name_text");
@@ -104,6 +98,19 @@ function checkfirstname() {
         nameText.style.color = "lightgreen";
     } else {
         nameText.innerHTML = "Too short";
+        nameText.style.color = "red";
+    }
+}
+
+function checklastname() {
+    var x = document.getElementById("lastname").value;
+    var nameText = document.getElementById("name_text");
+    
+    if (x.length >= 2) {
+        nameText.innerHTML = "last name good so far";
+        nameText.style.color = "lightgreen";
+    } else {
+        nameText.innerHTML = "Last name too short";
         nameText.style.color = "red";
     }
 }
