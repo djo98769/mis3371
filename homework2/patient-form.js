@@ -12,14 +12,11 @@
 This subroutine simply retrieves the data names and entered data from the form.
 This code doesn't require that you know how many elements are in your form OR the names of the variables. 
 */
-function removedata1() {
-  document.getElementById("outputformdata").innerHTML = "(you started over)";
-}
- 
 function getdata1() {
     var formcontents = document.getElementById("patientForm");
     var formoutput;
     var i;
+    
     var labelMap = {
         "firstname": "First Name",
         "middleinit": "M.I.",
@@ -44,20 +41,10 @@ function getdata1() {
         var friendlyName = labelMap[element.name] || element.name;
         var rawValue = element.value.trim();
         var displayVal = (element.type === "password" || element.id === "ssn") ? "********" : (rawValue || "(Empty)");
-
+        
         var isValid = element.checkValidity();
 
-        if (element.hasAttribute('pattern') && rawValue !== "") {
-            var pattern = new RegExp("^" + element.pattern + "$");
-            if (!pattern.test(rawValue)) {
-                isValid = false;
-            }
-        }
-
-        if (element.hasAttribute('required') && rawValue === "") {
-            isValid = false;
-        }
-     
+        // Custom validation for passwords matching
         if (element.id === "confirm_password") {
             if (rawValue !== document.getElementById("password").value) {
                 isValid = false;
@@ -65,9 +52,8 @@ function getdata1() {
             }
         }
 
-        var status = isValid ? 
-            "<span style='color:lightgreen'>PASS</span>" : 
-            "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
+        var status = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
+                     "<span style='color:red'>ERROR: " + (element.title || "Invalid Entry") + "</span>";
 
         formoutput += "<tr><td align='right'><b>" + friendlyName + "</b></td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + status + "</td></tr>";
     }
