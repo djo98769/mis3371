@@ -57,7 +57,7 @@
                 name="firstname" 
                 required 
                 pattern="[A-Z^a-z-' ^~]{1,30}"
-                oninput="this.setCustomValidity('')"
+                oninput="checkfirstname(); this.setCustomValidity('')"
                 title="1 to 30 characters; letters, spaces, hyphens, and apostrophes only." 
                 placeholder="First Name"
             >
@@ -78,7 +78,7 @@
                     id="lastname" 
                     name="lastname" 
                     required 
-                    pattern="[A-Z^a-z34-' ]{1,30}" 
+                    pattern="[A-Za-z2-5' \-]{1,30}"
                     oninput="this.setCustomValidity('')"
                     title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only."  
                     placeholder="Last Name"
