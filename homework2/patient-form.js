@@ -84,7 +84,7 @@ function getdata1() {
                 if (datatype === "password" && rawValue === "") { isValid = false; }
 
                 var statusMsg = isValid ? "<span style='color:lightgreen'>PASS</span>" : 
-                                "<span style='color:red'>ERROR: " + (element.title || "Invalid") + "</span>";
+                                "<span style='color:lightcoral'>ERROR: " + (element.title || "Invalid") + "</span>";
 
                 formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
                 break;
@@ -98,8 +98,6 @@ function getdata1() {
 function checkfirstname() {
     var fn = document.getElementById("firstname");
     var msg = document.getElementById("firstname_text");
-    
-    // Rule: 1-30 chars, letters/hyphens/apostrophes only
     if (fn.value.length < 1) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: Required Field</span>";
     } else if (!fn.checkValidity()) {
@@ -112,8 +110,6 @@ function checkfirstname() {
 function checklastname() {
     var ln = document.getElementById("lastname");
     var msg = document.getElementById("lastname_text");
-    
-    // Rule: 1-30 chars, letters/numbers 2-5/hyphens/apostrophes
     if (ln.value.length < 1) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: Required Field</span>";
     } else if (!ln.checkValidity()) {
@@ -127,7 +123,6 @@ function checkUserID() {
     var uid = document.getElementById("userid");
     var msg = document.getElementById("userid_text");
     uid.value = uid.value.toLowerCase();
-    
     if (uid.value.length < 5) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: Too short (Min 5)</span>";
     } else if (!uid.checkValidity()) {
