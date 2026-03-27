@@ -171,16 +171,18 @@ function checkPassword() {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + pwInput.title + "</span>";
     } 
     else if (uid && pw.toLowerCase().includes(uid.toLowerCase())) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot contain User ID</span>";
-        pwInput.setCustomValidity("Password cannot contain User ID"); 
+        var error = "Password cannot contain User ID";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + error + "</span>";
+        pwInput.setCustomValidity(error);
     } 
-    else if ((fn && pw.toLowerCase().includes(fn.toLowerCase())) || 
-             (ln && pw.toLowerCase().includes(ln.toLowerCase()))) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot contain your name</span>";
-        pwInput.setCustomValidity("Password cannot contain your name");
-    }
+    else if ((fn && pw.toLowerCase().includes(fn.toLowerCase())) || (ln && pw.toLowerCase().includes(ln.toLowerCase()))) {
+        var error = "Password cannot contain your name";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + error + "</span>";
+        pwInput.setCustomValidity(error);
+    } 
     else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        pwInput.setCustomValidity("");
     }
 }
 
