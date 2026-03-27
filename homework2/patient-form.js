@@ -123,6 +123,7 @@ function checkfirstname() {
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
+    checkPassword();
 }
 
 function checklastname() {
@@ -135,6 +136,7 @@ function checklastname() {
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
+    checkPassword();
 }
 
 function checkUserID() {
@@ -148,6 +150,7 @@ function checkUserID() {
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
     }
+    checkPassword();
 }
 
 function checkPassword() {
