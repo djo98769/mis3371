@@ -173,7 +173,7 @@ function checkPassword() {
     else if (uid && pw.toLowerCase().includes(uid.toLowerCase())) {
         var error = "Password cannot contain User ID";
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + error + "</span>";
-        pwInput.setCustomValidity(error);
+        pwInput.setCustomValidity(error); 
     } 
     else if ((fn && pw.toLowerCase().includes(fn.toLowerCase())) || (ln && pw.toLowerCase().includes(ln.toLowerCase()))) {
         var error = "Password cannot contain your name";
