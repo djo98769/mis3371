@@ -364,6 +364,7 @@
             <input type="password" 
                    id="password" 
                    name="password" 
+                   required
                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^&*()-_+=\/><.,`~]).{8,30}$"
                    oninput="checkPassword(); this.setCustomValidity('')" 
                    title="8-30 chars, must include: 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Character (!@#%^&*()-_+=\/><.,`~)" 
@@ -380,7 +381,7 @@
             <input type="password" 
                     id="confirm_password" 
                     name="confirm_password" 
-                    required  
+                    required
                     placeholder="Confirm Password"
                     oninput="checkPasswordMatch()"
             >
