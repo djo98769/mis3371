@@ -95,13 +95,9 @@ function getdata1() {
 
                 var customError = element.validationMessage; 
                 var isValid = element.checkValidity();
-
-                if (datatype === "password" && rawValue === "") { 
-                    isValid = false; 
-                }
-
+                
                 var statusMsg = "";
-                if (isValid) {
+                if (isValid && customError === "") {
                     statusMsg = "<span style='color:lightgreen'>PASS</span>";
                 } else {
                     var errorText = customError || element.title || "Invalid Input";
@@ -172,19 +168,19 @@ function checkPassword() {
     } 
 
     else if (uid && pw.toLowerCase().includes(uid.toLowerCase())) {
-        var errorMsg = "Password cannot contain User ID";
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + errorMsg + "</span>";
-        pwInput.setCustomValidity(errorMsg);
+    var errorMsg = "Password cannot contain User ID";
+    msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + errorMsg + "</span>";
+    pwInput.setCustomValidity(errorMsg); 
     } 
     else if ((fn && pw.toLowerCase().includes(fn.toLowerCase())) || 
              (ln && pw.toLowerCase().includes(ln.toLowerCase()))) {
-        var error = "Password cannot contain your name";
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + error + "</span>";
-        pwInput.setCustomValidity(error);
+        var errorMsg = "Password cannot contain your name";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + errorMsg + "</span>";
+        pwInput.setCustomValidity(errorMsg);
     } 
     else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
-        pwInput.setCustomValidity("");
+        pwInput.setCustomValidity(""); 
     }
 }
 
