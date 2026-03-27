@@ -362,12 +362,11 @@
         </td>
         <td>
             <input type="password" 
-                    size="15" 
-                    maxlength="20" 
                     id="password" 
                     name="password" 
-                    placeholder="(Req'd)"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                    placeholder="Min 8 Characters"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30}" 
+                    oninput="checkPassword(); this.setCustomValidity('')"
                     title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             <span id="password_text"></span>
         </td>
