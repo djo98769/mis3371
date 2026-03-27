@@ -162,7 +162,7 @@ function checkPassword() {
     var ln = document.getElementById("lastname").value;
     var msg = document.getElementById("password_text");
 
-    pwInput.setCustomValidity("");
+    pwInput.setCustomValidity(""); 
 
     if (pw.length < 8) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: Too short (Min 8)</span>";
@@ -170,12 +170,14 @@ function checkPassword() {
     else if (!pwInput.checkValidity()) {
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + pwInput.title + "</span>";
     } 
+
     else if (uid && pw.toLowerCase().includes(uid.toLowerCase())) {
-        var error = "Password cannot contain User ID";
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + error + "</span>";
-        pwInput.setCustomValidity(error); 
+        var errorMsg = "Password cannot contain User ID";
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + errorMsg + "</span>";
+        pwInput.setCustomValidity(errorMsg);
     } 
-    else if ((fn && pw.toLowerCase().includes(fn.toLowerCase())) || (ln && pw.toLowerCase().includes(ln.toLowerCase()))) {
+    else if ((fn && pw.toLowerCase().includes(fn.toLowerCase())) || 
+             (ln && pw.toLowerCase().includes(ln.toLowerCase()))) {
         var error = "Password cannot contain your name";
         msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + error + "</span>";
         pwInput.setCustomValidity(error);
