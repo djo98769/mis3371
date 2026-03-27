@@ -92,17 +92,21 @@ function getdata1() {
                 }
 
                 var displayVal = (datatype === "password" || element.id === "ssn" || element.id === "confirm_password") ? "********" : (rawValue || "(Empty)");
-                
+
                 var customError = element.validationMessage; 
                 var isValid = element.checkValidity();
-                
+
                 if (datatype === "password" && rawValue === "") { 
                     isValid = false; 
                 }
-                
-                var statusMsg = isValid ? 
-                    "<span style='color:lightgreen'>PASS</span>" : 
-                    "<span style='color:red'>ERROR: " + (customError || element.title || "Invalid") + "</span>";
+
+                var statusMsg = "";
+                if (isValid) {
+                    statusMsg = "<span style='color:lightgreen'>PASS</span>";
+                } else {
+                    var errorText = customError || element.title || "Invalid Input";
+                    statusMsg = "<span style='color:red'>ERROR: " + errorText + "</span>";
+                }
                 
                 formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
                 break;
