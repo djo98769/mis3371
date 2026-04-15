@@ -97,19 +97,13 @@ table.output {
     align-items: center;
     gap: 10px;
     position: relative; 
-    margin-bottom: 30px;
-    height: auto;
+    margin-top: 25px;
+    margin-bottom: 5px;
 }
-
-.name-container label {
-    font-size: 1.1em;
-    margin-bottom: 0;
-}
-
 
 #firstname_text, #lastname_text {
     position: absolute;
-    top: 32px;
+    top: -20px;
     font-size: 0.85em;
     color: Tomato;
     white-space: nowrap;
