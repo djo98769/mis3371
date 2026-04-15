@@ -92,29 +92,34 @@ table.output {
     margin-right: auto;
 }
 
+
 .name-container {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     position: relative; 
-    margin-top: 25px;
-    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.name-container label {
+    margin: 0;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 #firstname_text, #lastname_text {
     position: absolute;
-    top: -20px;
-    font-size: 0.85em;
+    top: -18px;        
+    font-size: 0.8em;
     color: Tomato;
     white-space: nowrap;
     font-weight: bold;
 }
 
-
 #firstname_text {
-    left: 0;
+    left: 85px;   
 }
 
 #lastname_text {
-    left: 365px;
+    left: 380px;    
 }
