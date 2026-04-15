@@ -150,10 +150,14 @@ function checkUserID() {
 
 function checkPassword() {
     const password = document.getElementById('password').value;
+    const userid = document.getElementById('userid').value;
     const passwordText = document.getElementById('password_text');
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-    if (passwordRegex.test(password)) {
+    if (password === userid && userid !== "") {
+        passwordText.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot match User ID</span>";
+        return false;
+    } else if (passwordRegex.test(password)) {
         passwordText.innerHTML = "<span style='color:lightgreen'>Pass</span>";
         return true;
     } else {
