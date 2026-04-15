@@ -66,6 +66,14 @@ footer
 a:link { color:rgb(255, 255, 255); }
 a:visited { color:rgb(255, 255, 255); }
 
+span[id$="_text"], span[id$="_error"] {
+    display: inline-block;
+    width: 150px;
+    height: 1.2em;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
 table.output td:first-child {
     white-space: nowrap;
     width: 160px;
