@@ -72,3 +72,15 @@ span[id$="_text"], span[id$="_error"] {
     min-height: 1.2em;
     margin-top: 2px;
 }
+
+table.output td:first-child {
+    white-space: nowrap;
+    width: 160px;
+    padding-right: 15px;
+    font-weight: bold;
+}
+
+td.outputdata {
+    width: auto;
+    min-width: 200px;
+}
