@@ -88,26 +88,3 @@ table.output {
     margin-left: auto;
     margin-right: auto;
 }
-
-
-.name-container {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.label-input-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-}
