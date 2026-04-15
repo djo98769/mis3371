@@ -91,3 +91,20 @@ table.output {
     margin-left: auto;
     margin-right: auto;
 }
+
+.name-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.name-container input {
+    flex-shrink: 0;
+}
+
+
+#firstname_text, #lastname_text {
+    width: 150px;
+    display: inline-block;
+    white-space: nowrap;
+}
