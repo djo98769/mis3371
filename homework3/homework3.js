@@ -325,7 +325,6 @@ function masterValidate() {
     const isLnameValid = checkName(document.getElementById('lastname'));
     const isDobValid = checkDOB();
     const isSsnValid = formatSSN();
-    const isZipValid = checkZip();
     const isEmailValid = checkEmail();
     const isPhoneValid = checkPhone();
     const isUidValid = checkUserID();
