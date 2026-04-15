@@ -68,14 +68,11 @@ a:visited { color:rgb(255, 255, 255); }
 
 
 span[id$="_text"], span[id$="_error"] {
-    display: inline-block;
-    min-height: 1.2em;
-    font-family: "Times New Roman", serif;
-    font-size: 0.85em;
+    display: block;
+    height: 1.2em;
+    font-family: "Times New Roman", serif; 
+    font-size: 0.85em; 
     font-weight: bold;
-    margin-left: 10px;
-    vertical-align: middle;
-    text-align: left;
     line-height: 1.2;
 }
 
@@ -94,32 +91,15 @@ table.output {
 
 
 .name-container {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    position: relative; 
-    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    align-items: flex-end;
 }
 
-.name-container label {
-    margin: 0;
-    white-space: nowrap;
-    display: inline-block;
-}
-
-#firstname_text, #lastname_text {
-    position: absolute;
-    top: -18px;        
-    font-size: 0.8em;
-    color: Tomato;
-    white-space: nowrap;
-    font-weight: bold;
-}
-
-#firstname_text {
-    left: 85px;   
-}
-
-#lastname_text {
-    left: 380px;    
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
