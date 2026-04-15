@@ -57,7 +57,7 @@
                 name="firstname" 
                 required 
                 pattern="[A-Za-z' \-]{1,30}"
-                oninput="checkfirstname(); this.setCustomValidity('')"
+                oninput="checkName(this)"
                 title="1 to 30 characters; letters, spaces, hyphens, and apostrophes only." 
                 placeholder="First Name"
             ><span id="firstname_text"></span>
@@ -79,7 +79,7 @@
                     name="lastname" 
                     required 
                     pattern="[A-Za-z2-5' \-]{1,30}"
-                    oninput="checklastname(); this.setCustomValidity('')"
+                    oninput="checkName(this)"
                     title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only."  
                     placeholder="Last Name"
             >
@@ -96,8 +96,10 @@
                     id="dob" 
                     name="dob" 
                     required 
+                    onblur="checkDOB()"
                     title="Birthdays cannot be in the future or more than 120 years ago."
             >
+            <span id="dob_text"></span>
         </td>
     </tr>
        
@@ -110,6 +112,7 @@
                     id="ssn" 
                     name="ssn" 
                     maxlength="11" 
+                    oninput="formatSSN()"
                     pattern="\d{3}-\d{2}-\d{4}" 
                     title="Please enter SSN in the format: 000-00-0000" 
                     placeholder="123-45-6789" 
@@ -199,7 +202,7 @@
             <input type="email" 
                     id="email" 
                     name="email" 
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                    oninput="checkEmail()"
                     title="Please enter a valid email address (e.g., name@domain.tld)" 
                     placeholder="name@domain.tld" 
                     required
@@ -215,9 +218,10 @@
                     id="phone" 
                     name="phone" 
                     required 
-                    pattern="\d{3}-\d{3}-\d{4}" 
+                    oninput="checkPhone()"
                     title="Please enter phone number in the format: 000-000-0000" 
                     placeholder="000-000-0000">
+            <span id="phone_text"></span>
         </td>
     </tr>
     <tr class="form">
@@ -346,8 +350,8 @@
                     id="userid" 
                     name="userid" 
                     required 
-                    maxlength="30" 
-                    pattern="[A-Za-z][A-Za-z0-9\-_]{4,29}"
+                    maxlength="20" 
+                    pattern="[A-Za-z][A-Za-z0-9\-_]{4,19}"
                     title="5-30 chars; must start with a letter; no spaces or special chars (except _ or -)." 
                     oninput="checkUserID(); this.setCustomValidity('')"
                     placeholder="Desired User ID"
@@ -365,8 +369,7 @@
                    id="password" 
                    name="password" 
                    required 
-                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,30}$" 
-                   oninput="checkPassword(); this.setCustomValidity('')" 
+                   oninput="checkPassword()"
                    title="8-30 characters; must include 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Character (!@#$%^&*)" 
                    placeholder="Min 8 Characters"
                 >
@@ -392,8 +395,8 @@
     <tr class="form">        
         <td colspan="3">
             <br><br><center>
-            <input type="button" value="Review" onclick="getdata1()">
-            <input type="submit" value="Submit">
+            <input type="button" id="btnValidate" value="Validate" onclick="masterValidate()">
+            <input type="submit" id="btnSubmit" value="Submit" style="display: none;">
             <input type="reset" value="Clear and Start Over">
             </center><br><br>
         </td>
