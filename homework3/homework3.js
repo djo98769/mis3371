@@ -113,93 +113,66 @@ function getdata1() {
     document.getElementById("outputformdata").innerHTML = formoutput;
 }
 
-function checkfirstname() {
-    var fn = document.getElementById("firstname");
-    var msg = document.getElementById("firstname_text");
-    if (fn.value.length < 1) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Required Field</span>";
-    } else if (!fn.checkValidity()) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + fn.title + "</span>";
-    } else {
-        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
-    }
-    checkPassword();
-}
+function checkName(inputElement) {
+    const nameText = document.getElementById(inputElement.id + "_text");
+    const nameRegex = /^[A-Za-z\s'-]+$/;
 
-function checklastname() {
-    var ln = document.getElementById("lastname");
-    var msg = document.getElementById("lastname_text");
-    if (ln.value.length < 1) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Required Field</span>";
-    } else if (!ln.checkValidity()) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + ln.title + "</span>";
+    if (inputElement.value.length === 0) {
+        nameText.innerHTML = "<span style='color:lightcoral'>ERROR: Required</span>";
+        return false;
+    } else if (!nameRegex.test(inputElement.value)) {
+        nameText.innerHTML = "<span style='color:lightcoral'>ERROR: Letters, apostrophes, and dashes only</span>";
+        return false;
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        nameText.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        return true;
     }
-    checkPassword();
 }
 
 function checkUserID() {
     var uid = document.getElementById("userid");
     var msg = document.getElementById("userid_text");
+    
     uid.value = uid.value.toLowerCase();
-    if (uid.value.length < 5) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Too short (Min 5)</span>";
-    } else if (!uid.checkValidity()) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + uid.title + "</span>";
+    const uidRegex = /^[a-z][a-z0-9_-]{4,19}$/;
+
+    if (uid.value.length === 0) {
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: User ID is required</span>";
+        return false;
+    } else if (!uidRegex.test(uid.value)) {
+        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Must be 5-20 chars, start with a letter, no special chars</span>";
+        return false;
     } else {
         msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        return true;
     }
-    checkPassword();
 }
 
 function checkPassword() {
-    var pwInput = document.getElementById("password");
-    var pw = pwInput.value;
-    var uid = document.getElementById("userid").value;
-    var fn = document.getElementById("firstname").value;
-    var ln = document.getElementById("lastname").value;
-    var msg = document.getElementById("password_text");
+    const password = document.getElementById('password').value;
+    const passwordText = document.getElementById('password_text');
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-    pwInput.setCustomValidity(""); 
-
-    if (pw.length < 8) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Too short (Min 8)</span>";
-    } 
-    else if (!pwInput.checkValidity()) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + pwInput.title + "</span>";
-    } 
-
-    else if (uid && pw.toLowerCase().includes(uid.toLowerCase())) {
-    var errorMsg = "Password cannot contain User ID";
-    msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + errorMsg + "</span>";
-    pwInput.setCustomValidity(errorMsg); 
-    } 
-    else if ((fn && pw.toLowerCase().includes(fn.toLowerCase())) || 
-             (ln && pw.toLowerCase().includes(ln.toLowerCase()))) {
-        var errorMsg = "Password cannot contain your name";
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: " + errorMsg + "</span>";
-        pwInput.setCustomValidity(errorMsg);
-    } 
-    else {
-        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
-        pwInput.setCustomValidity(""); 
+    if (passwordRegex.test(password)) {
+        passwordText.innerHTML = "<span style='color:lightgreen'>Pass</span>";
+        return true;
+    } else {
+        passwordText.innerHTML = "<span style='color:lightcoral'>Must be 8+ chars with 1 Uppercase, 1 Lowercase, and 1 Digit</span>";
+        return false;
     }
 }
 
 function checkPasswordMatch() {
-    var pw = document.getElementById("password");
-    var confirm_pw = document.getElementById("confirm_password");
-    var msg = document.getElementById("confirm_password_text");
-    if (confirm_pw.value === "") {
-        msg.innerHTML = "";
-        confirm_pw.setCustomValidity("Confirming password is required");
-    } else if (pw.value !== confirm_pw.value) {
-        msg.innerHTML = "<span style='color:lightcoral'>ERROR: Passwords do not match</span>";
-        confirm_pw.setCustomValidity("Passwords do not match");
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+    const confirmText = document.getElementById('confirm_password_text');
+
+    if (password === confirmPassword && confirmPassword !== "") {
+        confirmText.innerHTML = "<span style='color:lightgreen'>Passwords match</span>";
+        return true;
     } else {
-        msg.innerHTML = "<span style='color:lightgreen'>pass</span>";
-        confirm_pw.setCustomValidity("");
+        confirmText.innerHTML = "<span style='color:lightcoral'>Passwords do not match</span>";
+        return false;
     }
 }
 
@@ -250,4 +223,120 @@ window.onload = function () {
     }
     populateStates();
 };
+
+function formatSSN() {
+    const ssnInput = document.getElementById('ssn');
+    const ssnText = document.getElementById('ssn_text');
+    let val = ssnInput.value.replace(/\D/g, ''); 
+    let formatted = "";
+
+    if (val.length > 0) {
+        formatted = val.substring(0, 3);
+        if (val.length > 3) {
+            formatted += "-" + val.substring(3, 5);
+        }
+        if (val.length > 5) {
+            formatted += "-" + val.substring(5, 9);
+        }
+    }
+    ssnInput.value = formatted;
+    if (val.length < 9 && val.length > 0) {
+        ssnText.innerText = "Must be 9 digits";
+        ssnText.style.color = "red";
+    } else {
+        ssnText.innerText = "";
+    }
+}
+
+function checkDOB() {
+    const dobInput = document.getElementById('dob');
+    const dobText = document.getElementById('dob_text');
+    const dobValue = new Date(dobInput.value);
+    const today = new Date();
+    const minDate = new Date();
+    minDate.setFullYear(today.getFullYear() - 120);
+    dobText.innerText = "";
+
+    if (dobInput.value === "") {
+        dobText.innerHTML = "<span style='color:lightcoral'>ERROR: Date of birth is required</span>";
+        return false;
+    } else if (dobValue > today) {
+        dobText.innerHTML = "<span style='color:lightcoral'>ERROR: Date cannot be in the future</span>";
+        return false;
+    } else if (dobValue < minDate) {
+        dobText.innerHTML = "<span style='color:lightcoral'>ERROR: Date cannot be more than 120 years ago</span>";
+        return false;
+    } else {
+        dobText.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        return true;
+    }
+}
+
+function checkEmail() {
+    const emailInput = document.getElementById('email');
+    const emailText = document.getElementById('email_text');
+    emailInput.value = emailInput.value.toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailRegex.test(emailInput.value)) {
+        emailText.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        return true;
+    } else {
+        emailText.innerHTML = "<span style='color:lightcoral'>ERROR: Must be name@domain.tld</span>";
+        return false;
+    }
+}
+
+function checkPhone() {
+    const phoneInput = document.getElementById('phone');
+    const phoneText = document.getElementById('phone_text');
+    let val = phoneInput.value.replace(/\D/g, ''); 
+    let formatted = "";
+
+    if (val.length > 0) {
+        formatted = val.substring(0, 3);
+        if (val.length > 3) {
+            formatted += "-" + val.substring(3, 6);
+        }
+        if (val.length > 6) {
+            formatted += "-" + val.substring(6, 10);
+        }
+    }
+    
+    phoneInput.value = formatted;
+
+    if (val.length === 10) {
+        phoneText.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        return true;
+    } else if (val.length > 0) {
+        phoneText.innerHTML = "<span style='color:lightcoral'>ERROR: Must be 10 digits</span>";
+        return false;
+    } else {
+        phoneText.innerText = "";
+        return true;
+    }
+}
+
+function masterValidate() {
+    const isFnameValid = checkName(document.getElementById('firstname'));
+    const isLnameValid = checkName(document.getElementById('lastname'));
+    const isDobValid = checkDOB();
+    const isSsnValid = (document.getElementById('ssn').value.replace(/\D/g, '').length === 9);
+    const isEmailValid = checkEmail();
+    const isPhoneValid = checkPhone();
+    const isUidValid = checkUserID();
+    const isPwValid = checkPassword();
+    const isPwMatchValid = checkPasswordMatch();
+
+    if (isFnameValid && isLnameValid && isDobValid && isSsnValid && 
+        isEmailValid && isPhoneValid && isUidValid && isPwValid && isPwMatchValid) {
+        
+        document.getElementById('btnSubmit').style.display = "inline-block";
+        document.getElementById('btnValidate').style.display = "none";
+        
+        alert("All fields are valid! You may now click 'Submit'.");
+    } else {
+        alert("There are still errors on the form. Please fix the highlighted fields and try again.");
+    }
+}
     /* End of document: homework3.js */
