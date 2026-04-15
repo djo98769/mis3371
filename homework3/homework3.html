@@ -46,49 +46,46 @@
     </tr>
        
 <tr class="form">
-    <td colspan="2" align="center"> 
-        <div class="name-container">
-            <div class="input-group">
-                <span id="firstname_text"></span>
-                <label for="firstname">First Name*</label>
-                <input 
-                    type="text" 
-                    size="20" 
-                    maxlength="30" 
-                    id="firstname" 
-                    name="firstname" 
-                    required 
-                    oninput="checkName(this)" 
-                    placeholder="First Name">
-            </div>
-
-            <div class="input-group">
-                <span></span> <label for="middleinit">M.I.</label>
-                <input 
-                    type="text" 
+        <td align="right">
+            <label for="firstname">First Name*</label>
+        </td>
+        <td>
+            <input type="text" 
+                size="25" 
+                maxlength="30" 
+                id="firstname" 
+                name="firstname" 
+                required 
+                pattern="[A-Za-z' \-]{1,30}"
+                oninput="checkName(this)" 
+                title="1 to 30 characters; letters, spaces, hyphens, and apostrophes only." 
+                placeholder="First Name"
+            ><span id="firstname_text"></span>
+            <label for="middleinit">M.I.</label>
+            <input type="text" 
                     size="2" 
                     maxlength="1" 
                     id="middleinit" 
                     name="middleinit" 
-                    placeholder="M.I.">
-            </div>
-
-            <div class="input-group">
-                <span id="lastname_text"></span>
-                <label for="lastname">Last Name*</label>
-                <input 
-                    type="text" 
+                    pattern="[A-Za-z]{1}" 
+                    title="1 letter only." 
+                    placeholder="M.I."
+            >
+            <label for="lastname">Last Name*</label>
+            <input type="text" 
                     size="20" 
                     maxlength="30" 
                     id="lastname" 
                     name="lastname" 
                     required 
+                    pattern="[A-Za-z2-5' \-]{1,30}"
                     oninput="checkName(this)" 
-                    placeholder="Last Name">
-            </div>
-        </div>
-    </td>
-</tr>
+                    title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only."  
+                    placeholder="Last Name"
+            >
+            <span id="lastname_text"></span>
+        </td>
+    </tr>
        
     <tr class="form">
         <td align="right">
