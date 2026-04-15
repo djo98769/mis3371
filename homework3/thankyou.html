@@ -1,0 +1,67 @@
+<!doctype html>
+<!-- 
+    Program name: thankyou.html
+    Author: Daniel Jo  
+    Date Created: 2026-04-01
+    Date Updated: 2026-04-01
+    Version: 1.1
+    Purpose: for MIS 3371 Homework 3, creating a thank you page using HTML.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Daniel's Homework 3</title>
+
+        <!-- Load external CSS styles -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="header"> 
+            <table width="100%">
+                <tr>
+                    <td width="20%">
+                        <img 
+                            id="logo" 
+                            src="logo.png" 
+                            alt="Dan Jo Hospital"
+                        >
+                    </td>
+                    <td align="center" valign="middle"><h1>Dan Jo Hospital</h1></td>
+                    <td width="20%" valign="bottom" align="right">Today's date: <span id="today"></span></td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        
+<div id="body">    
+<h1 align="center">Thank you for your submission!</h1>
+</div>
+        <div id="footer">
+        <hr>
+        <table width=100%>
+        <tr>
+            <td width="30%" align="left" valign="middle">
+                Dan Jo Hospital<br>
+                PO BOX 18881<br>
+                Katy, TX 77494
+            </td>
+            <td align="center" valign="middle">
+                Questions?<br> <a href="contact.html" >Contact Us</a>
+            <td width="30%" align="right" valign="middle">
+                <a href="https://www.facebook.com"><img src="facebook.png" width="30" alt="Facebook"></a>
+                <a href="https://www.instagram.com"><img src="instagram.png" width="30" alt="Instagram"></a>
+                <a href="https://www.twitter.com"><img src="twitter.png" width="30" alt="Twitter"></a>
+            </td>
+        </tr>
+        </table>
+        </div>
+        <!-- Load external JavaScript -->
+        <script src="homework3.js"></script>
+        
+ <script>
+    document.getElementById("today").innerHTML = new Date().toLocaleDateString();
+</script>
+</body>
+<!-- End of file: thankyou.html -->
+</html>
