@@ -70,5 +70,6 @@ table.output td:first-child {
     white-space: nowrap;
     width: 160px;
     padding-right: 15px;
-    horizontal-align: middle;
+    text-align: right;
+    vertical-align: middle; 
 }
