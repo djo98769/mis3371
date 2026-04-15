@@ -276,23 +276,14 @@ function checkPhone() {
 }
 
 function masterValidate() {
-    document.getElementById('btnSubmit').style.display = "none";
-    getdata1();
+    const submitBtn = document.getElementById('btnSubmit');
+    submitBtn.disabled = true;
+    getdata1(); 
     const isFnameValid = checkName(document.getElementById('firstname'));
     const isLnameValid = checkName(document.getElementById('lastname'));
-    const isDobValid = checkDOB();
-    const isSsnValid = formatSSN();
-    const isEmailValid = checkEmail();
-    const isPhoneValid = checkPhone();
-    const isUidValid = checkUserID();
-    const isPwValid = checkPassword();
-    const isPwMatchValid = checkPasswordMatch();
-
     if (isFnameValid && isLnameValid && isDobValid && isSsnValid && 
         isEmailValid && isPhoneValid && isUidValid && isPwValid && isPwMatchValid) {
-        
-        document.getElementById('btnSubmit').style.display = "inline-block";
-        document.getElementById('btnValidate').style.display = "none";
+        submitBtn.disabled = false;
         alert("Success! All fields are valid. You can now submit.");
     } else {
         alert("Please fix the errors highlighted in red before submitting.");
