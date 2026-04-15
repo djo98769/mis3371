@@ -331,14 +331,14 @@ function masterValidate() {
     const isPwValid = checkPassword();
     const isPwMatchValid = checkPasswordMatch();
 
-    if (isFnameValid && isLnameValid && isDobValid && isSsnValid && isZipValid &&
+    if (isFnameValid && isLnameValid && isDobValid && isSsnValid && 
         isEmailValid && isPhoneValid && isUidValid && isPwValid && isPwMatchValid) {
         
         document.getElementById('btnSubmit').style.display = "inline-block";
         document.getElementById('btnValidate').style.display = "none";
-        alert("Success! You can now submit.");
+        alert("Success! All fields are valid. You can now submit.");
     } else {
-        alert("Please fix errors before submitting.");
+        alert("Please fix the errors highlighted in red before submitting.");
     }
 }
     /* End of document: homework3.js */
