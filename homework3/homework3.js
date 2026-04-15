@@ -276,6 +276,7 @@ function checkPhone() {
 }
 
 function masterValidate() {
+    document.getElementById('btnSubmit').style.display = "none";
     getdata1();
     const isFnameValid = checkName(document.getElementById('firstname'));
     const isLnameValid = checkName(document.getElementById('lastname'));
