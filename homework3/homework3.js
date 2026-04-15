@@ -320,25 +320,26 @@ function checkPhone() {
 }
 
 function masterValidate() {
+    getdata1();
     const isFnameValid = checkName(document.getElementById('firstname'));
     const isLnameValid = checkName(document.getElementById('lastname'));
     const isDobValid = checkDOB();
-    const isSsnValid = (document.getElementById('ssn').value.replace(/\D/g, '').length === 9);
+    const isSsnValid = formatSSN();
+    const isZipValid = checkZip();
     const isEmailValid = checkEmail();
     const isPhoneValid = checkPhone();
     const isUidValid = checkUserID();
     const isPwValid = checkPassword();
     const isPwMatchValid = checkPasswordMatch();
 
-    if (isFnameValid && isLnameValid && isDobValid && isSsnValid && 
+    if (isFnameValid && isLnameValid && isDobValid && isSsnValid && isZipValid &&
         isEmailValid && isPhoneValid && isUidValid && isPwValid && isPwMatchValid) {
         
         document.getElementById('btnSubmit').style.display = "inline-block";
         document.getElementById('btnValidate').style.display = "none";
-        
-        alert("All fields are valid! You may now click 'Submit'.");
+        alert("Success! You can now submit.");
     } else {
-        alert("There are still errors on the form. Please fix the highlighted fields and try again.");
+        alert("Please fix errors before submitting.");
     }
 }
     /* End of document: homework3.js */
