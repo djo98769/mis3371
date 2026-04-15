@@ -13,13 +13,17 @@ This subroutine simply retrieves the data names and entered data from the form.
 This code doesn't require that you know how many elements are in your form OR the names of the variables. 
 */
 function removedata1() {
-    document.getElementById("outputformdata").innerHTML = "(you started over)";
-    document.getElementById("firstname_text").innerHTML = "";
-    document.getElementById("lastname_text").innerHTML = "";
-    document.getElementById("userid_text").innerHTML = "";
-    document.getElementById("password_text").innerHTML = "";
-    document.getElementById("confirm_password_text").innerHTML = "";
-    document.getElementById("confirm_password").setCustomValidity("");
+    document.getElementById("outputformdata").innerHTML = "(you started over)"; 
+    document.getElementById("firstname_text").innerHTML = ""; 
+    document.getElementById("lastname_text").innerHTML = ""; 
+    document.getElementById("dob_text").innerHTML = "";     
+    document.getElementById("ssn_text").innerHTML = "";      
+    document.getElementById("email_text").innerHTML = "";
+    document.getElementById("phone_text").innerHTML = "";
+    document.getElementById("userid_text").innerHTML = ""; 
+    document.getElementById("password_text").innerHTML = ""; 
+    document.getElementById("confirm_password_text").innerHTML = ""; 
+    document.getElementById("confirm_password").setCustomValidity(""); 
 }
 
 function getdata1() {
