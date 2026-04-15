@@ -13,7 +13,7 @@ This subroutine simply retrieves the data names and entered data from the form.
 This code doesn't require that you know how many elements are in your form OR the names of the variables. 
 */
 function removedata1() {
-    document.getElementById("outputformdata").innerHTML = "(you started over)"; 
+    document.getElementById("outputformdata").innerHTML = "<div style='text-align: center'>(you started over)</div>";
     document.getElementById("firstname_text").innerHTML = ""; 
     document.getElementById("lastname_text").innerHTML = ""; 
     document.getElementById("dob_text").innerHTML = "";     
