@@ -1,0 +1,67 @@
+/* 
+  Program name: style.css
+  Name: Daniel Jo
+  Date Created: 2026-04-01
+  Date Updated: 2026-04-17
+  Version: 1.2
+  Purpose: Style sheet for MIS 3371 Homework 3
+*/
+
+body {
+    background-color: #7D8C9B;
+    font-family: "Times New Roman", serif;
+    color:rgb(255, 255, 255);
+}
+
+table.form, tr.form, td.form {
+  width: 70%;
+  opacity: 0.9;
+  font-family: "Times New Roman", serif;
+  background-color: #03697F;
+  padding: 0px;
+  border-spacing: 00px;
+  color:rgb(255, 255, 255);
+}
+th.form {
+  font-family: "Times New Roman", serif;
+  background-color:#03697F;
+  padding: 20px;
+  border-spacing: 20px;
+  color:rgb(255, 255, 255);
+  margin-left: auto;
+  margin-right: auto;
+}
+table.output, tr.output, td.output {
+  width: 70%;
+  opacity: 0.9;
+  font-family: "Times New Roman", serif;
+  background-color:#5F9EA0;
+  padding: 2px;
+  border-spacing: 2px;
+  color:rgb(255, 255, 255);
+}
+td.outputdata {
+  width: 70%;
+  opacity: 0.9;
+  font-family: "Times New Roman", serif;
+  background-color:white;
+  padding: 2px;
+  border-spacing: 2px;
+  color:black;
+}
+.textsize1 
+{
+    width:10px
+}
+.textsize5 
+{
+    width:40px
+}
+
+footer 
+{
+    color:rgb(255, 255, 255);
+}
+
+a:link { color:rgb(255, 255, 255); }
+a:visited { color:rgb(255, 255, 255); }
