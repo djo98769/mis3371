@@ -68,8 +68,10 @@ a:visited { color:rgb(255, 255, 255); }
 
 span[id$="_text"], span[id$="_error"] {
     display: inline-block;
-    height: 1.2em;
+    width: 160px;
+    min-height: 1.2em;
     vertical-align: middle;
+    margin-left: 10px;
 }
 
 table.output td:first-child {
