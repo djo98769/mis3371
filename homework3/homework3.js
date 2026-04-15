@@ -277,22 +277,15 @@ function checkPhone() {
 
 function masterValidate() {
     const submitBtn = document.getElementById('btnSubmit');
-    submitBtn.disabled = true;
-    getdata1();
-    const isFnameValid = checkName(document.getElementById('firstname'));
-    const isLnameValid = checkName(document.getElementById('lastname'));
-    const isDobValid   = checkDOB();
-    const isSsnValid   = formatSSN();
-    const isEmailValid = checkEmail();
-    const isPhoneValid = checkPhone();
-    const isUidValid   = checkUserID();
-    const isPwValid    = checkPassword();
-    const isPwMatchValid = checkPasswordMatch();
+    submitBtn.disabled = true; 
+    getdata1(); 
     if (isFnameValid && isLnameValid && isDobValid && isSsnValid && 
         isEmailValid && isPhoneValid && isUidValid && isPwValid && isPwMatchValid) {
+        
         submitBtn.disabled = false;
         alert("Success! All fields are valid. You can now submit.");
     } else {
+        submitBtn.disabled = true; 
         alert("Please fix the errors highlighted in red before submitting.");
     }
 }
@@ -343,5 +336,13 @@ window.onload = function () {
         dobInput.setAttribute("min", minDate);
     }
     populateStates();
+};
+
+document.getElementById('patientForm').onsubmit = function() {
+    if (document.getElementById('btnSubmit').disabled) {
+        alert("The form has changed. Please re-validate.");
+        return false;
+    }
+    return true; 
 };
     /* End of document: homework3.js */
