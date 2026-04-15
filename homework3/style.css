@@ -97,23 +97,23 @@ table.output {
     align-items: center;
     gap: 10px;
     position: relative; 
-    margin-bottom: 25px;
-    height: 30px;
+    margin-bottom: 30px;
+    height: auto;
 }
 
 .name-container label {
-    margin-top: 0;
-    vertical-align: middle;
+    font-size: 1.1em;
+    margin-bottom: 0;
 }
 
 
 #firstname_text, #lastname_text {
     position: absolute;
-    top: 25px;
-    font-size: 0.75em;
+    top: 32px;
+    font-size: 0.85em;
     color: Tomato;
     white-space: nowrap;
-    width: auto;
+    font-weight: bold;
 }
 
 
@@ -122,5 +122,5 @@ table.output {
 }
 
 #lastname_text {
-    left: 320px;
+    left: 365px;
 }
