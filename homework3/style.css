@@ -21,8 +21,6 @@ table.form, tr.form, td.form {
     padding: 0px;
     border-spacing: 0px;
     color: rgb(255, 255, 255);
-    margin-left: 0;
-    margin-right: 0; 
 }
 th.form {
   font-family: "Times New Roman", serif;
