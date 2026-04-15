@@ -96,15 +96,25 @@ table.output {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.name-container input {
-    flex-shrink: 0;
+    position: relative; 
+    margin-bottom: 25px;
 }
 
 
 #firstname_text, #lastname_text {
-    width: 150px;
-    display: inline-block;
+    position: absolute;
+    top: 25px;
+    font-size: 0.75em;
+    color: Tomato;
     white-space: nowrap;
+    width: auto;
+}
+
+
+#firstname_text {
+    left: 0;
+}
+
+#lastname_text {
+    left: 280px;
 }
