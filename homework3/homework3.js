@@ -232,19 +232,17 @@ function formatSSN() {
 
     if (val.length > 0) {
         formatted = val.substring(0, 3);
-        if (val.length > 3) {
-            formatted += "-" + val.substring(3, 5);
-        }
-        if (val.length > 5) {
-            formatted += "-" + val.substring(5, 9);
-        }
+        if (val.length > 3) formatted += "-" + val.substring(3, 5);
+        if (val.length > 5) formatted += "-" + val.substring(5, 9);
     }
     ssnInput.value = formatted;
-    if (val.length < 9 && val.length > 0) {
-        ssnText.innerText = "Must be 9 digits";
-        ssnText.style.color = "red";
+
+    if (val.length === 9) {
+        ssnText.innerHTML = "<span style='color:lightgreen'>pass</span>";
+        return true;
     } else {
-        ssnText.innerText = "";
+        ssnText.innerHTML = "<span style='color:lightcoral'>ERROR: Must be 9 digits</span>";
+        return false;
     }
 }
 
