@@ -80,8 +80,3 @@ table.output td:first-child {
     padding-right: 15px;
     font-weight: bold;
 }
-
-td.outputdata {
-    width: auto;
-    min-width: 200px;
-}
