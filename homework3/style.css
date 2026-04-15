@@ -66,20 +66,22 @@ footer
 a:link { color:rgb(255, 255, 255); }
 a:visited { color:rgb(255, 255, 255); }
 
-/* Update this block in style.css */
+
 span[id$="_text"], span[id$="_error"] {
     display: inline-block;
-    width: 220px;
+    width: 200px;
     min-height: 1.2em;
     font-family: "Times New Roman", serif;
-    font-size: 0.9em;
+    font-size: 0.85em;
     font-weight: bold;
-    margin-left: 15px;
+    margin-left: 10px;
     vertical-align: middle;
     text-align: left;
+    line-height: 1.2;
 }
 
-td:first-child {
-    padding-right: 20px;
-    width: 35%; 
+.form td:first-child {
+    padding-right: 15px;
+    width: 40%;
+    text-align: right;
 }
