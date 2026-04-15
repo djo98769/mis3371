@@ -278,9 +278,16 @@ function checkPhone() {
 function masterValidate() {
     const submitBtn = document.getElementById('btnSubmit');
     submitBtn.disabled = true;
-    getdata1(); 
+    getdata1();
     const isFnameValid = checkName(document.getElementById('firstname'));
     const isLnameValid = checkName(document.getElementById('lastname'));
+    const isDobValid   = checkDOB();
+    const isSsnValid   = formatSSN();
+    const isEmailValid = checkEmail();
+    const isPhoneValid = checkPhone();
+    const isUidValid   = checkUserID();
+    const isPwValid    = checkPassword();
+    const isPwMatchValid = checkPasswordMatch();
     if (isFnameValid && isLnameValid && isDobValid && isSsnValid && 
         isEmailValid && isPhoneValid && isUidValid && isPwValid && isPwMatchValid) {
         submitBtn.disabled = false;
