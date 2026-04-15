@@ -66,25 +66,3 @@ footer
 a:link { color:rgb(255, 255, 255); }
 a:visited { color:rgb(255, 255, 255); }
 
-
-span[id$="_text"], span[id$="_error"] {
-    display: block;
-    height: 1.2em;
-    font-family: "Times New Roman", serif; 
-    font-size: 0.85em; 
-    font-weight: bold;
-    line-height: 1.2;
-}
-
-table.form td:first-child {
-    padding-right: 20px;
-    width: 35%;
-    text-align: right;
-    vertical-align: middle;
-}
-
-table.output {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-}
