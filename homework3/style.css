@@ -98,6 +98,12 @@ table.output {
     gap: 10px;
     position: relative; 
     margin-bottom: 25px;
+    height: 30px;
+}
+
+.name-container label {
+    margin-top: 0;
+    vertical-align: middle;
 }
 
 
@@ -116,5 +122,5 @@ table.output {
 }
 
 #lastname_text {
-    left: 280px;
+    left: 320px;
 }
