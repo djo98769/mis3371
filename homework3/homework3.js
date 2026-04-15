@@ -105,7 +105,7 @@ function getdata1() {
                     statusMsg = "<span style='color:lightgreen'>PASS</span>";
                 } else {
                     var errorText = customError || element.title || "Invalid Input";
-                    statusMsg = "<span style='color:IndianRed'>ERROR: " + errorText + "</span>";
+                    statusMsg = "<span style='color:Tomato'>ERROR: " + errorText + "</span>";
                 }
                 
                 formoutput += "<tr><td align='right'>" + friendlyName + "</td><td class='outputdata'>" + displayVal + "</td><td align='center'>" + statusMsg + "</td></tr>";
