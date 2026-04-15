@@ -76,5 +76,5 @@ table.output td:first-child {
     white-space: nowrap;
     width: 160px;
     padding-right: 15px;
-    font-weight: bold;
+    horizontal-align: middle;
 }
