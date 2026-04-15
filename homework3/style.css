@@ -14,13 +14,15 @@ body {
 }
 
 table.form, tr.form, td.form {
-  width: 70%;
-  opacity: 0.9;
-  font-family: "Times New Roman", serif;
-  background-color: #03697F;
-  padding: 0px;
-  border-spacing: 00px;
-  color:rgb(255, 255, 255);
+    width: 70%;
+    opacity: 0.9;
+    font-family: "Times New Roman", serif;
+    background-color: #03697F;
+    padding: 0px;
+    border-spacing: 0px;
+    color: rgb(255, 255, 255);
+    margin-left: 0;
+    margin-right: 0; 
 }
 th.form {
   font-family: "Times New Roman", serif;
