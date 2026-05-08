@@ -364,6 +364,7 @@ window.onload = function () {
             "<a href='#' onclick='resetUser()'>Click HERE to start as a NEW USER.</a></span>";
         
         document.getElementById("firstname").value = user;
+        loadAllLocalStorage();
     } else {
         greetingArea.innerHTML = "Welcome, New User!";
     }
@@ -399,11 +400,25 @@ function saveFieldData(element) {
 async function loadExternalContent() {
     try {
         let response = await fetch('medical_news.txt'); 
+        if (!response.ok) throw new Error("Could not retrieve news.");
         let text = await response.text();
         document.getElementById("news-feed").innerHTML = text;
     } catch (error) {
-        console.log("Fetch failed", error);
+        console.error("Fetch failed:", error);
+        document.getElementById("news-feed").innerHTML = "Latest news is currently unavailable.";
     }
+}
+
+function loadAllLocalStorage() {
+    const fields = ["lastname", "middleinit", "email", "phone", "addr1", "addr2", "city", "zip", "symptoms", "userid"];
+    
+    fields.forEach(fieldId => {
+        let savedValue = localStorage.getItem(fieldId);
+        let element = document.getElementById(fieldId);
+        if (savedValue && element) {
+            element.value = savedValue;
+        }
+    });
 }
 
     /* End of document: homework4.js */
