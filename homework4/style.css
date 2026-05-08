@@ -207,5 +207,5 @@ body {
 
 .stop-animation {
     animation: none !important;
-    transform: scale(1.0) !important;
+    transform: translateY(0) !important;
 }
