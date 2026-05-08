@@ -191,7 +191,6 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     z-index: 6000;
     transition: transform 0.3s ease, background-color 0.3s ease;
-    /* This adds a gentle floating effect */
     animation: floatBubble 3s ease-in-out infinite;
 }
 
