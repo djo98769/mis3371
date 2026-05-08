@@ -434,8 +434,33 @@ function saveFieldData(element) {
         if (element.id === "firstname") {
             setCookie("firstName", element.value, 48);
         }
+        showSaveStatus(); 
     }
-    updateProgress(); 
+    updateProgress();
+}
+
+function showSaveStatus() {
+    let status = document.createElement("div");
+    status.innerHTML = "✓ Draft Saved to LocalStorage";
+    
+    status.style = `
+        position: fixed; 
+        top: 150px; 
+        right: 20px; 
+        background: #4CAF50; 
+        color: white; 
+        padding: 10px 20px; 
+        border-radius: 5px; 
+        z-index: 10000; 
+        font-size: 14px; 
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        animation: fadeOut 2.5s forwards;
+    `;
+    
+    document.body.appendChild(status);
+    
+    setTimeout(() => status.remove(), 2500);
 }
 
 async function loadExternalContent() {
