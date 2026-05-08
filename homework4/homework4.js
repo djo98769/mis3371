@@ -545,6 +545,24 @@ function toggleHelp() {
     }
 }
 
+function sendChatMessage() {
+    const input = document.getElementById("chat-input");
+    const container = document.getElementById("chat-messages");
+    
+    if (input.value.trim() !== "") {
+        container.innerHTML += `<p style="background: #03697F; color: white; padding: 8px; border-radius: 8px; margin: 5px 0; text-align: right;">${input.value}</p>`;
+
+        input.value = "";
+        
+        container.scrollTop = container.scrollHeight;
+
+        setTimeout(() => {
+            container.innerHTML += `<p style="background: #f1f1f1; padding: 8px; border-radius: 8px; margin: 5px 0;"><strong>Assistant:</strong> Thank you. A triage nurse has been notified.</p>`;
+            container.scrollTop = container.scrollHeight;
+        }, 1000);
+    }
+}
+
 function updateCharCount(textarea) {
     const count = textarea.value.length;
     const counterDisplay = document.getElementById('char-count');
