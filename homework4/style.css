@@ -209,3 +209,9 @@ body {
     animation: none !important;
     transform: translateY(0) !important;
 }
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: translateY(0); }
+    70% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
