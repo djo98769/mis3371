@@ -61,6 +61,7 @@
                 oninput="checkName(this)" 
                 title="1 to 30 characters; letters, spaces, hyphens, and apostrophes only." 
                 placeholder="First Name"
+                onblur="saveFieldData(this)"
             ><span id="firstname_text"></span>
             <label for="middleinit">M.I.</label>
             <input type="text" 
@@ -71,6 +72,7 @@
                     pattern="[A-Za-z]{1}" 
                     title="1 letter only." 
                     placeholder="M.I."
+                    onblur="saveFieldData(this)"
                 >
             <label for="lastname">Last Name*</label>
             <input type="text" 
@@ -83,6 +85,7 @@
                     oninput="checkName(this)" 
                     title="Minimum 2 characters; letters, numbers 2-5, hyphens, and apostrophes only."  
                     placeholder="Last Name"
+                    onblur="saveFieldData(this)"
             ><span id="lastname_text"></span>
         </td>
     </tr>
@@ -98,6 +101,7 @@
                     required 
                     onblur="checkDOB()"
                     title="Birthdays cannot be in the future or more than 120 years ago."
+                    onblur="saveFieldData(this)"
             >
             <span id="dob_text"></span>
         </td>
@@ -117,6 +121,7 @@
                     title="Please enter SSN in the format: 000-00-0000" 
                     placeholder="123-45-6789" 
                     required
+                    onblur="saveFieldData(this)"
             >
             <span id="ssn_text"></span>
         </td>
@@ -137,6 +142,7 @@
                     oninvalid="this.setCustomValidity('At least 1 address line Required')"
                     oninput="this.setCustomValidity('')"
                     placeholder="12345 Street Name"
+                    onblur="saveFieldData(this)"
             >
         <span id="addr1_text"></span>
         </td>
@@ -153,6 +159,7 @@
                     id="addr2" 
                     name="addr2" 
                     placeholder="Apt, Suite, Floor, etc."
+                    onblur="saveFieldData(this)"
             >
             <span id="addr2_text"></span>
         </td>
@@ -172,6 +179,7 @@
                     oninvalid="this.setCustomValidity('You forgot City')" 
                     oninput="this.setCustomValidity('')" 
                     placeholder="City"
+                    onblur="saveFieldData(this)"
             >
             <label for="state">State*</label>
             <select required 
@@ -190,6 +198,7 @@
                     title="5-digit zip or 5+4 format (e.g., 77002 or 77002-1234)" 
                     placeholder="00000" 
                     required
+                    onblur="saveFieldData(this)"
             >
             <span id="City_text"></span><span id="State_text"></span>
         </td>
@@ -207,6 +216,7 @@
                     title="Please enter a valid email address (e.g., name@domain.tld)" 
                     placeholder="name@domain.tld" 
                     required
+                    onblur="saveFieldData(this)"
             >
             <span id="email_text"></span>
         </td>
@@ -222,7 +232,8 @@
                     required 
                     oninput="checkPhone()"
                     title="Please enter phone number in the format: 000-000-0000" 
-                    placeholder="000-000-0000">
+                    placeholder="000-000-0000"
+                    onblur="saveFieldData(this)">
             <span id="phone_text"></span>
         </td>
     </tr>
@@ -231,7 +242,7 @@
             <label for="symptoms">Symptoms*</label>
         </td>
         <td>
-            <textarea id="symptoms" name="symptoms" rows="3" cols="50" placeholder="Describe your symptoms here" required></textarea>
+            <textarea id="symptoms" name="symptoms" rows="3" cols="50" placeholder="Describe your symptoms here" required onblur="saveFieldData(this)"></textarea>
         </td>
     </tr>
                 
@@ -243,27 +254,32 @@
             <input type="checkbox" 
                     name="history" 
                     id="diabetes" 
-                    value="diabetes"> 
+                    value="diabetes"
+                    onblur="saveFieldData(this)"> 
                     <label for="diabetes">Diabetes</label>
             <input type="checkbox" 
                     name="history" 
                     id="hypertension" 
-                    value="hypertension"> 
+                    value="hypertension"
+                    onblur="saveFieldData(this)"> 
                     <label for="hypertension">Hypertension</label>
             <input type="checkbox" 
                     name="history" 
                     id="asthma" 
-                    value="asthma"> 
+                    value="asthma"
+                    onblur="saveFieldData(this)"> 
                     <label for="asthma">Asthma</label>
             <input type="checkbox" 
                     name="history" 
                     id="flu" 
-                    value="flu"> 
+                    value="flu"
+                    onblur="saveFieldData(this)"> 
                     <label for="flu">Flu</label>
             <input type="checkbox" 
                     name="history" 
                     id="allergies" 
-                    value="allergies"> 
+                    value="allergies"
+                    onblur="saveFieldData(this)"> 
                     <label for="allergies">Allergies</label>
         </td>
     </tr>
@@ -275,17 +291,20 @@
                     name="gender"    
                     id="male" 
                     value="male" 
-                    required> 
+                    required
+                    onblur="saveFieldData(this)"> 
                     <label for="male">Male</label>
             <input type="radio" 
                     name="gender" 
                     id="female" 
-                    value="female"> 
+                    value="female"
+                    onblur="saveFieldData(this)"> 
                     <label for="female">Female</label>
             <input type="radio" 
                     name="gender" 
                     id="other" 
-                    value="other"> 
+                    value="other"
+                    onblur="saveFieldData(this)"> 
                     <label for="other">Other</label>
         </td>
     </tr>
@@ -297,12 +316,14 @@
                     name="vax" 
                     id="vax_yes" 
                     value="yes" 
-                    required> 
+                    required
+                    onblur="saveFieldData(this)"> 
                     <label for="vax_yes">Yes</label>
             <input type="radio" 
                     name="vax" 
                     id="vax_no" 
-                    value="no"> 
+                    value="no"
+                    onblur="saveFieldData(this)"> 
                     <label for="vax_no">No</label>
         </td>
     </tr>
@@ -316,12 +337,14 @@
                     name="insurance" 
                     id="ins_yes" 
                     value="yes" 
-                    required>
+                    required
+                    onblur="saveFieldData(this)">
                     <label for="ins_yes">Yes</label>
             <input type="radio" 
                     name="insurance" 
                     id="ins_no" 
-                    value="no">
+                    value="no"
+                    onblur="saveFieldData(this)">
                     <label for="ins_no">No</label>
         </td>
     </tr>
@@ -338,7 +361,9 @@
                       max="10" 
                       step="1" 
                       value="5"
-                      oninput="healthNum.innerText = this.value"> &nbsp;&nbsp;10<br>
+                      oninput="healthNum.innerText = this.value"
+                       onblur="saveFieldData(this)"
+                              > &nbsp;&nbsp;10<br>
                 Current Value: <span id="healthNum">5</span>
         </td>
     </tr>
@@ -357,6 +382,7 @@
                     title="5-30 chars; must start with a letter; no spaces or special chars (except _ or -)." 
                     oninput="checkUserID(); this.setCustomValidity('')"
                     placeholder="Desired User ID"
+                    onblur="saveFieldData(this)"
             >
             <span id="userid_text"></span>
         </td>
@@ -374,6 +400,7 @@
                    oninput="checkPassword()"
                    title="8-30 characters; must include 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Character (!@#$%^&*)" 
                    placeholder="Min 8 Characters"
+                    onblur="saveFieldData(this)"
                 >
             <span id="password_text"></span>
         </td>
@@ -389,25 +416,43 @@
                     required
                     placeholder="Confirm Password"
                     oninput="checkPasswordMatch()"
+                    onblur="saveFieldData(this)"
             >
             <span id="confirm_password_text"></span>
         </td>
     </tr>
-                
+
+    <tr class="form">
+        <td align="right"><label for="rememberMe">Remember Me?</label></td>
+        <td>
+            <input type="checkbox" id="rememberMe" checked onblur="saveFieldData(this)"> 
+            <small>(Saves info for 48 hours)</small>
+        </td>
+    </tr>
+    
     <tr class="form">        
         <td colspan="3">
             <br><br><center>
-            <input type="button" id="btnValidate" value="Validate" onclick="masterValidate()">
+            <input type="button" id="btnValidate" value="Validate" onclick="masterValidate()" onblur="saveFieldData(this)">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="submit" id="btnSubmit" value="Submit" disabled>
+            <input type="submit" id="btnSubmit" value="Submit" disabled onblur="saveFieldData(this)">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="reset" value="Clear and Start Over">
+            <input type="reset" value="Clear and Start Over" onblur="saveFieldData(this)">
             </center><br><br>
         </td>
     </tr>
 </tbody>
 </table>
 </form> 
+
+<center>
+    <h3>Patient Resources</h3>
+    <div id="news-feed" style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ccc; margin: 20px auto; width: 80%; color: black;">
+    Loading hospital news...
+    </div>
+    <iframe src="thankyou.html" width="80%" height="200px" style="border:2px solid #03697F;"></iframe>
+</center>
+    
 <div id="outputformdata"></div>
         </div>
         <div id="footer">
