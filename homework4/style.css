@@ -123,6 +123,10 @@ table.output td:first-child {
     font-size: 14px;
 }
 
+#body {
+    padding-bottom: 120px; 
+}
+
 body {
     margin-top: 140px; 
     margin-bottom: 0px;
