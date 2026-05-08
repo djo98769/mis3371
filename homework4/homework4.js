@@ -467,16 +467,18 @@ function showSaveStatus() {
 }
 
 async function loadExternalContent() {
+    const feed = document.getElementById("news-feed");
     try {
         let response = await fetch('medical_news.txt');
         if (!response.ok) throw new Error("File not found");
         let text = await response.text();
-        
-        document.getElementById("news-feed").innerHTML = '<span class="ticker-text"><strong>Latest News:</strong> ' + text + '</span>';
+        feed.innerHTML = `<span class="ticker-text"><strong>Latest News:</strong> ${text}</span>`;
     } catch (error) {
-        document.getElementById("news-feed").innerHTML = '<span class="ticker-text"><em>Welcome to Dan Jo Hospital. Please stay tuned for medical updates.</em></span>';
+        console.log("News Feed Error:", error);
+        feed.innerHTML = '<span class="ticker-text"><em>Welcome to Dan Jo Hospital. Checking for updates...</em></span>';
     }
 }
+
 function loadAllLocalStorage() {
     const fields = ["lastname", "middleinit", "email", "phone", "addr1", "addr2", "city", "zip", "symptoms", "userid"];
     
@@ -547,6 +549,7 @@ window.onkeydown = resetTimer;
 resetTimer();
 
 function updateProgress() {
+    const bar = document.getElementById('progress-bar'); 
     const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
     let completed = 0;
     
@@ -639,5 +642,15 @@ function updateCharCount(textarea) {
     if (counterDisplay) {
         counterDisplay.innerText = count + "/500 characters";
     }
+}
+
+function startLiveClock() {
+    setInterval(() => {
+        const now = new Date();
+        const clockElement = document.getElementById('clock');
+        if (clockElement) {
+            clockElement.innerText = now.toLocaleTimeString();
+        }
+    }, 1000);
 }
     /* End of document: homework4.js */
