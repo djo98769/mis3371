@@ -88,7 +88,7 @@ table.output td:first-child {
 }
 
 .header-hidden {
-    top: -200px !important; 
+    top: -250px !important;
 }
 
 #header td:last-child {
