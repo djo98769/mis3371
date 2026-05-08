@@ -113,8 +113,8 @@ table.output td:first-child {
 }
 
 body {
-    margin-top: 150px; 
-    margin-bottom: 250px; 
+    margin-top: 140px;  
+    margin-bottom: 300px;
     background-color: #7D8C9B;
 }
 
@@ -138,9 +138,11 @@ body {
 }
 
 #news-feed {
-    min-height: 50px;
-    width: 80%;
+    min-height: 40px; 
+    line-height: 40px;
+    padding: 10px;
     margin: 20px auto;
+    width: 80%;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     color: black;
