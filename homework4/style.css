@@ -174,3 +174,38 @@ body {
 #news-feed:hover .ticker-text {
     animation-play-state: paused;
 }
+
+#help-ball {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #03697F;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 6000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#help-ball:hover {
+    transform: scale(1.1);
+    background-color: #025061;
+}
+
+#help-ball::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #D8000C;
+    border: 2px solid white;
+    border-radius: 50%;
+}
