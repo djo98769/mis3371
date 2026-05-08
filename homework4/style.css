@@ -248,7 +248,9 @@ body {
     animation: pulse 2s infinite;
 }
 
-tr.form, tr.form:hover, tr.form:focus-within {
+tr.form, tr.form:hover, tr.form:focus-within, 
+td.form, td.form:hover, td.form:focus-within {
     background-color: #03697F !important;
+    outline: none !important;
     transition: none !important;
 }
