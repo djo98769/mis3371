@@ -531,7 +531,15 @@ function updateProgress() {
 }
 
 function toggleHelp() {
-    alert("Dan Jo Hospital Triage: Please ensure all required fields (*) are filled before validating.");
+    const chat = document.getElementById("chat-popup");
+    
+    if (chat) {
+        if (chat.style.display === "none" || chat.style.display === "") {
+            chat.style.display = "block";
+        } else {
+            chat.style.display = "none";
+        }
+    }
 }
 
 function updateCharCount(textarea) {
