@@ -73,3 +73,30 @@ table.output td:first-child {
     text-align: right;
     vertical-align: middle; 
 }
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    border-bottom: 2px solid #333;
+    padding: 10px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    z-index: 1000;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+body {
+    margin-top: 150px; 
+    margin-bottom: 80px;
+}
