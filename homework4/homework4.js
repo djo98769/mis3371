@@ -511,4 +511,17 @@ window.onmousemove = resetTimer;
 window.onkeydown = resetTimer;
 
 resetTimer();
+
+function updateProgress() {
+    const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+    let completed = 0;
+    requiredFields.forEach(field => {
+        if (field.value.trim() !== "" && field.checkValidity()) completed++;
+    });
+    
+    let percentage = Math.round((completed / requiredFields.length) * 100);
+    document.getElementById('progress-bar').style.width = percentage + "%";
+    document.getElementById('progress-text').innerText = percentage + "% Complete";
+}
+// Add updateProgress() inside your masterValidate and saveFieldData functions
     /* End of document: homework4.js */
