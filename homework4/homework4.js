@@ -439,18 +439,17 @@ let timeout;
 let warningTimeout;
 
 function resetTimer() {
-    document.getElementById('session-warning').style.display = 'none';
+    document.getElementById('session-modal-backdrop').style.display = 'none';
     clearTimeout(timeout);
     clearTimeout(warningTimeout);
 
     warningTimeout = setTimeout(() => {
-        document.getElementById('session-warning').style.display = 'block';
-        startCountdown(60);
+        document.getElementById('session-modal-backdrop').style.display = 'block';
+        startCountdown(10); 
     }, 5000);
 
     timeout = setTimeout(() => {
-        alert("Session Expired: For your security, the form has been cleared.");
-        resetUser();
+        resetUser(); 
     }, 15000);
 }
 
