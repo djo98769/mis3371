@@ -581,6 +581,16 @@ function updateProgress() {
     
     document.getElementById('progress-bar').style.width = percentage + "%";
     document.getElementById('progress-text').innerText = percentage + "% Complete";
+
+        if (percentage === 100) {
+        bar.style.backgroundColor = "#4CAF50";
+        bar.style.boxShadow = "0 0 10px #4CAF50";
+        bar.classList.add("pulse-animation");
+    } else {
+        bar.style.backgroundColor = "#03697F";
+        bar.style.boxShadow = "none";
+        bar.classList.remove("pulse-animation");
+}
 }
 
 function toggleHelp() {
