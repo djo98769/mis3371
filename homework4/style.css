@@ -247,3 +247,8 @@ body {
 .pulse-animation {
     animation: pulse 2s infinite;
 }
+
+tr.form, tr.form:hover, tr.form:focus-within {
+    background-color: #03697F !important;
+    transition: none !important;
+}
