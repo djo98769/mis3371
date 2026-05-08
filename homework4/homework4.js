@@ -385,4 +385,25 @@ function resetUser() {
     
     location.reload();
 }
+
+function saveFieldData(element) {
+    if (document.getElementById("rememberMe").checked) {
+        localStorage.setItem(element.id, element.value);
+        
+        if (element.id === "firstname") {
+            setCookie("firstName", element.value, 48);
+        }
+    }
+}
+
+async function loadExternalContent() {
+    try {
+        let response = await fetch('medical_news.txt'); 
+        let text = await response.text();
+        document.getElementById("news-feed").innerHTML = text;
+    } catch (error) {
+        console.log("Fetch failed", error);
+    }
+}
+
     /* End of document: homework4.js */
