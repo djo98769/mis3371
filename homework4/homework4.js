@@ -355,7 +355,9 @@ function populateStates() {
     }
 }
 
-window.onload = function () {
+window.onload = function() {
+    startLiveClock(); 
+
     var dobInput = document.getElementById("dob");
     if (dobInput) {
         var today = new Date();
@@ -370,20 +372,37 @@ window.onload = function () {
 
     let user = getCookie("firstName");
     let greetingArea = document.getElementById("greeting-display");
-
     if (user != "") {
         greetingArea.innerHTML = "Welcome back, " + user + "! " + 
-            "<br><span style='font-size:12px;'>Not " + user + "? " +
+            "<br><span style='font-size:12px;'>Not " + user + "? " + 
             "<a href='#' onclick='resetUser()'>Click HERE to start as a NEW USER.</a></span>";
-        
-        document.getElementById("firstname").value = user;
+        if(document.getElementById("firstname")) document.getElementById("firstname").value = user;
         loadAllLocalStorage();
     } else {
-        greetingArea.innerHTML = "Welcome, New User!";
+        if(greetingArea) greetingArea.innerHTML = "Welcome, New User!";
     }
+
     populateStates();
     loadExternalContent();
 };
+
+function startLiveClock() {
+    function update() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString([], { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            hour12: true 
+        });
+        const clockElement = document.getElementById('clock');
+        if (clockElement) clockElement.innerHTML = timeString;
+        
+        const dateElement = document.getElementById('today');
+        if (dateElement) dateElement.innerHTML = now.toLocaleDateString();
+    }
+    setInterval(update, 1000);
+    update();
+}
 
 document.getElementById('patientForm').onsubmit = function() {
     if (document.getElementById('btnSubmit').disabled) {
