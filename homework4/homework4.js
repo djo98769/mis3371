@@ -12,6 +12,25 @@
 This subroutine simply retrieves the data names and entered data from the form.
 This code doesn't require that you know how many elements are in your form OR the names of the variables. 
 */
+
+function setCookie(cname, cvalue, exhours) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exhours * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
 function removedata1() {
     document.getElementById("outputformdata").innerHTML = "<div style='text-align: center'>(you started over)</div>";
     document.getElementById("firstname_text").innerHTML = ""; 
@@ -334,6 +353,19 @@ window.onload = function () {
         var minDate = (yyyy - 120) + '-' + mm + '-' + dd;
         dobInput.setAttribute("max", maxDate);
         dobInput.setAttribute("min", minDate);
+    }
+
+    let user = getCookie("firstName");
+    let greetingArea = document.getElementById("greeting-display");
+
+    if (user != "") {
+        greetingArea.innerHTML = "Welcome back, " + user + "! " + 
+            "<br><span style='font-size:12px;'>Not " + user + "? " +
+            "<a href='#' onclick='resetUser()'>Click HERE to start as a NEW USER.</a></span>";
+        
+        document.getElementById("firstname").value = user;
+    } else {
+        greetingArea.innerHTML = "Welcome, New User!";
     }
     populateStates();
 };
