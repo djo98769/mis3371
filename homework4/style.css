@@ -124,3 +124,14 @@ body {
     color: #cc0000;
     text-decoration: underline;
 }
+
+#news-feed, .external-content, #body center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#news-feed {
+    width: 80%;
+    margin-bottom: 20px;
+}
