@@ -400,13 +400,12 @@ function saveFieldData(element) {
 
 async function loadExternalContent() {
     try {
-        let response = await fetch('medical_news.txt'); 
-        if (!response.ok) throw new Error("Could not retrieve news.");
+        let response = await fetch('medical_news.txt');
+        if (!response.ok) throw new Error("File not found");
         let text = await response.text();
-        document.getElementById("news-feed").innerHTML = text;
+        document.getElementById("news-feed").innerHTML = "<strong>Latest News:</strong> " + text;
     } catch (error) {
-        console.error("Fetch failed:", error);
-        document.getElementById("news-feed").innerHTML = "Latest news is currently unavailable.";
+        document.getElementById("news-feed").innerHTML = "<em>Welcome to Dan Jo Hospital. Please stay tuned for medical updates.</em>";
     }
 }
 
