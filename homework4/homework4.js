@@ -550,14 +550,24 @@ function sendChatMessage() {
     const container = document.getElementById("chat-messages");
     
     if (input.value.trim() !== "") {
-        container.innerHTML += `<p style="background: #03697F; color: white; padding: 8px; border-radius: 8px; margin: 5px 0; text-align: right;">${input.value}</p>`;
-
-        input.value = "";
+        container.innerHTML += `
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+                <div style="background: #03697F; color: white; padding: 8px 12px; border-radius: 15px 15px 0 15px; max-width: 80%; font-size: 13px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    ${input.value}
+                </div>
+            </div>`;
         
+        const userText = input.value;
+        input.value = "";
         container.scrollTop = container.scrollHeight;
 
         setTimeout(() => {
-            container.innerHTML += `<p style="background: #f1f1f1; padding: 8px; border-radius: 8px; margin: 5px 0;"><strong>Assistant:</strong> Thank you. A triage nurse has been notified.</p>`;
+            container.innerHTML += `
+                <div style="display: flex; justify-content: flex-start; margin-bottom: 10px;">
+                    <div style="background: #f1f1f1; color: #333; padding: 8px 12px; border-radius: 15px 15px 15px 0; max-width: 80%; font-size: 13px; border: 1px solid #ddd;">
+                        <strong>Assistant:</strong> Received. A triage nurse will review your note regarding "${userText}".
+                    </div>
+                </div>`;
             container.scrollTop = container.scrollHeight;
         }, 1000);
     }
