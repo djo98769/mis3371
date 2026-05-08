@@ -336,9 +336,11 @@ function masterValidate() {
 
     if (form.checkValidity()) {
         submitBtn.disabled = false;
-        alert("Success! All fields are valid.");
+        getdata1();
+        alert("Success! All fields are valid. Scroll down to see your validation summary.");
     } else {
         submitBtn.disabled = true;
+        getdata1();
         if (firstInvalid) firstInvalid.focus();
         alert("Please fix the highlighted errors.");
     }
@@ -561,11 +563,22 @@ resetTimer();
 function updateProgress() {
     const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
     let completed = 0;
-    requiredFields.forEach(field => {
-        if (field.value.trim() !== "" && field.checkValidity()) completed++;
-    });
     
-    let percentage = Math.round((completed / requiredFields.length) * 100);
+    requiredFields.forEach(field => {
+        if (field.type === "radio") {
+            const name = field.name;
+            if (document.querySelector(`input[name="${name}"]:checked`)) {
+                completed++;
+            }
+        } 
+        else if (field.value.trim() !== "" && field.checkValidity()) {
+            completed++;
+        }
+    });
+
+    const totalRequired = new Set(Array.from(requiredFields).map(f => f.name || f.id)).size;
+    let percentage = Math.round((completed / totalRequired) * 100);
+    
     document.getElementById('progress-bar').style.width = percentage + "%";
     document.getElementById('progress-text').innerText = percentage + "% Complete";
 }
