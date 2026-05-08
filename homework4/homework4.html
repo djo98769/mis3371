@@ -96,13 +96,9 @@
         </td>
         <td>
             <input type="date" 
-                    id="dob" 
-                    name="dob" 
-                    required 
-                    onblur="checkDOB()"
-                    title="Birthdays cannot be in the future or more than 120 years ago."
-                    onblur="saveFieldData(this)"
-            >
+                    id="dob" name="dob" 
+                    required onblur="checkDOB(); saveFieldData(this);" 
+                    title="Birthdays cannot be in the future or more than 120 years ago.">
             <span id="dob_text"></span>
         </td>
     </tr>
@@ -450,7 +446,7 @@
     <div id="news-feed" style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ccc; margin: 20px auto; width: 80%; color: black;">
     Loading hospital news...
     </div>
-    <iframe src="thankyou.html" width="80%" height="200px" style="border:2px solid #03697F;"></iframe>
+    <iframe src="https://www.wikipedia.org/wiki/Patient_safety" width="80%" height="200px" style="border:2px solid #03697F;"></iframe>
 </center>
     
 <div id="outputformdata"></div>
