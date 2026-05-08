@@ -174,21 +174,23 @@ function checkUserID() {
 
 function checkPassword() {
     const password = document.getElementById('password').value;
-    const userid = document.getElementById('userid').value;
     const passwordText = document.getElementById('password_text');
-    
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,30}$/;
+    let strength = 0;
 
-    if (password === userid && userid !== "") {
-        passwordText.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot match User ID</span>";
-        return false;
-    } else if (passwordRegex.test(password)) {
-        passwordText.innerHTML = "<span style='color:lightgreen'>Pass</span>";
-        return true;
+    if (password.match(/[a-z]/)) strength++;
+    if (password.match(/[A-Z]/)) strength++;
+    if (password.match(/\d/)) strength++;
+    if (password.length >= 8) strength++;
+
+    let colors = ["#ff4d4d", "#ffa500", "#ffff00", "#lightgreen"];
+    let labels = ["Weak", "Fair", "Good", "Strong"];
+
+    if (password.length === 0) {
+        passwordText.innerHTML = "";
     } else {
-        passwordText.innerHTML = "<span style='color:lightcoral'>8-30 chars: 1 Upper, 1 Lower, 1 Num</span>";
-        return false;
+        passwordText.innerHTML = `<span style="color:${colors[strength-1]}"> Strength: ${labels[strength-1]}</span>`;
     }
+    return strength === 4;
 }
 
 function checkPasswordMatch() {
