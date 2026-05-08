@@ -51,7 +51,13 @@
             </table>
         </div>
         <hr>
-<div id="body">    
+<div id="body">   
+    
+<div style="width: 70%; margin: 20px auto; background: #ddd; border-radius: 5px; border: 1px solid #333;">
+    <div id="progress-bar" style="width: 0%; height: 25px; background: #03697F; border-radius: 5px; transition: width 0.5s ease-in-out;"></div>
+</div>
+<p id="progress-text" style="text-align: center; color: white; font-weight: bold; margin-bottom: 20px;">0% Complete</p>
+    
 <form id="patientForm" onreset="removedata1()" oninput="document.getElementById('btnSubmit').disabled = true;" action="thankyou.html">
    <table class="form" align="center">
     <tbody>
@@ -260,7 +266,10 @@
             <label for="symptoms">Symptoms*</label>
         </td>
         <td>
-            <textarea id="symptoms" name="symptoms" rows="3" cols="50" placeholder="Describe your symptoms here" required onblur="saveFieldData(this)"></textarea>
+            <textarea id="symptoms" name="symptoms" rows="3" cols="50" maxlength="500" 
+              oninput="updateCharCount(this); updateProgress();" 
+              onblur="saveFieldData(this)" required></textarea>
+            <div id="char-count" style="font-size: 12px; color: white; margin-top: 5px;">0/500 characters</div>
         </td>
     </tr>
                 
@@ -516,6 +525,16 @@
  <script>
     document.getElementById("today").innerHTML = new Date().toLocaleDateString();
 </script>
+
+<div id="help-ball" onclick="toggleHelp()" 
+     style="position: fixed; bottom: 100px; right: 30px; width: 60px; height: 60px; 
+            background-color: #03697F; color: white; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+            z-index: 6000; font-weight: bold;">
+    HELP
+</div>
+    
 </body>
 <!-- End of file: homework4.html -->
 </html>
