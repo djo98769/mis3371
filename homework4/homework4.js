@@ -380,8 +380,13 @@ function populateStates() {
     }
 }
 
-window.onload = function() {
-    startLiveClock(); 
+window.onload = function () {
+    startLiveClock();
+    
+    const hour = new Date().getHours();
+    let timeGreeting = "Good Morning";
+    if (hour >= 12 && hour < 17) timeGreeting = "Good Afternoon";
+    if (hour >= 17) timeGreeting = "Good Evening";
 
     var dobInput = document.getElementById("dob");
     if (dobInput) {
@@ -397,37 +402,18 @@ window.onload = function() {
 
     let user = getCookie("firstName");
     let greetingArea = document.getElementById("greeting-display");
+
     if (user != "") {
-        greetingArea.innerHTML = "Welcome back, " + user + "! " + 
-            "<br><span style='font-size:12px;'>Not " + user + "? " + 
-            "<a href='#' onclick='resetUser()'>Click HERE to start as a NEW USER.</a></span>";
-        if(document.getElementById("firstname")) document.getElementById("firstname").value = user;
+        greetingArea.innerHTML = `${timeGreeting}, ${user}! <br><span style='font-size:12px;'>Not ${user}? <a href='#' onclick='resetUser()'>Click HERE to start as a NEW USER.</a></span>`;
+        if (document.getElementById("firstname")) document.getElementById("firstname").value = user;
         loadAllLocalStorage();
     } else {
-        if(greetingArea) greetingArea.innerHTML = "Welcome, New User!";
+        if (greetingArea) greetingArea.innerHTML = `${timeGreeting}, New User!`;
     }
 
     populateStates();
     loadExternalContent();
 };
-
-function startLiveClock() {
-    function update() {
-        const now = new Date();
-        const timeString = now.toLocaleTimeString([], { 
-            hour: '2-digit', 
-            minute: '2-digit', 
-            hour12: true 
-        });
-        const clockElement = document.getElementById('clock');
-        if (clockElement) clockElement.innerHTML = timeString;
-        
-        const dateElement = document.getElementById('today');
-        if (dateElement) dateElement.innerHTML = now.toLocaleDateString();
-    }
-    setInterval(update, 1000);
-    update();
-}
 
 document.getElementById('patientForm').onsubmit = function() {
     if (document.getElementById('btnSubmit').disabled) {
