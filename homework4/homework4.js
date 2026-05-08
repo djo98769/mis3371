@@ -13,6 +13,8 @@ This subroutine simply retrieves the data names and entered data from the form.
 This code doesn't require that you know how many elements are in your form OR the names of the variables. 
 */
 
+var isFnameValid, isLnameValid, isDobValid, isSsnValid, isEmailValid, isPhoneValid, isUidValid, isPwValid, isPwMatchValid;
+
 function setCookie(cname, cvalue, exhours) {
     const d = new Date();
     d.setTime(d.getTime() + (exhours * 60 * 60 * 1000));
