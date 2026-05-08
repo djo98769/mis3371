@@ -520,23 +520,18 @@
  <script>
     document.getElementById("today").innerHTML = new Date().toLocaleDateString();
 </script>
-
-<div id="chat-popup" style="display: none; position: fixed; bottom: 180px; right: 30px; width: 320px; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 7000; font-family: 'Times New Roman', serif; overflow: hidden; border: 1px solid #eee;">
     
+<div id="chat-popup" style="display: none; position: fixed; bottom: 180px; right: 30px; width: 320px; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 7000; font-family: 'Times New Roman', serif; overflow: hidden; border: 1px solid #eee;">
     <div style="background: #03697F; color: white; padding: 20px; text-align: center;">
         <h3 style="margin: 0; font-size: 18px;">Dan Jo Hospital</h3>
         <p style="margin: 5px 0 0 0; font-size: 13px; opacity: 0.9;">We'll respond as soon as we can</p>
     </div>
-
-    <div style="padding: 20px; color: #444; font-size: 14px; line-height: 1.5; background: #fff;">
+    <div style="padding: 20px; color: #444; font-size: 14px; line-height: 1.5;">
         <strong>Triage Status: Online</strong>
-        <p>Welcome! Our team is currently processing patient registrations. Please finish the form and click <strong>Validate</strong> to check for errors.</p>
+        <p>Welcome! Please complete the registration form and click <strong>Validate</strong> to check for errors.</p>
     </div>
-
     <div style="padding: 15px; background: #f8f9fa; text-align: center; border-top: 1px solid #eee;">
-        <button onclick="toggleHelp()" style="background: #03697F; color: white; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s;">
-            Got it!
-        </button>
+        <button onclick="toggleHelp()" style="background: #03697F; color: white; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: bold;">Got it!</button>
     </div>
 </div>
     
