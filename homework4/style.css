@@ -204,3 +204,8 @@ body {
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
+
+.stop-animation {
+    animation: none !important;
+    transform: scale(1.0) !important;
+}
