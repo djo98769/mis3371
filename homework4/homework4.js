@@ -552,7 +552,7 @@ function sendChatMessage() {
     if (input.value.trim() !== "") {
         container.innerHTML += `
             <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-                <div style="background: #03697F; color: white; padding: 8px 12px; border-radius: 15px 15px 0 15px; max-width: 80%; font-size: 13px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <div style="background: #03697F; color: white; padding: 8px 12px; border-radius: 15px 15px 0 15px; max-width: 80%; font-size: 13px;">
                     ${input.value}
                 </div>
             </div>`;
@@ -561,18 +561,29 @@ function sendChatMessage() {
         input.value = "";
         container.scrollTop = container.scrollHeight;
 
+        const typingId = "typing-" + Date.now();
+        container.innerHTML += `
+            <div id="${typingId}" style="display: flex; justify-content: flex-start; margin-bottom: 10px;">
+                <div style="background: #f1f1f1; color: #777; padding: 8px 12px; border-radius: 15px 15px 15px 0; font-size: 12px; font-style: italic;">
+                    Nurse is typing...
+                </div>
+            </div>`;
+        container.scrollTop = container.scrollHeight;
+
         setTimeout(() => {
+            const typingElem = document.getElementById(typingId);
+            if (typingElem) typingElem.remove();
+
             container.innerHTML += `
                 <div style="display: flex; justify-content: flex-start; margin-bottom: 10px;">
                     <div style="background: #f1f1f1; color: #333; padding: 8px 12px; border-radius: 15px 15px 15px 0; max-width: 80%; font-size: 13px; border: 1px solid #ddd;">
-                        <strong>Assistant:</strong> Received. A triage nurse will review your note regarding "${userText}".
+                        <strong>Assistant:</strong> Registered. A triage nurse will review your note regarding "${userText}".
                     </div>
                 </div>`;
             container.scrollTop = container.scrollHeight;
-        }, 1000);
+        }, 1500);
     }
 }
-
 function updateCharCount(textarea) {
     const count = textarea.value.length;
     const counterDisplay = document.getElementById('char-count');
