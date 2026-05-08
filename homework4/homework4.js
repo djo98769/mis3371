@@ -481,11 +481,11 @@ function resetTimer() {
     warningTimeout = setTimeout(() => {
         document.getElementById('session-modal-backdrop').style.display = 'block';
         startCountdown(10); 
-    }, 5000);
+    }, 840000);
 
     timeout = setTimeout(() => {
         resetUser(); 
-    }, 15000);
+    }, 900000);
 }
 
 function stayLoggedIn() {
