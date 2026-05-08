@@ -100,3 +100,16 @@ body {
     margin-top: 150px; 
     margin-bottom: 80px;
 }
+
+#greeting-display {
+    color: #03697F;
+    font-family: "Times New Roman";
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+#greeting-display a {
+    color: #cc0000;
+    text-decoration: underline;
+}
