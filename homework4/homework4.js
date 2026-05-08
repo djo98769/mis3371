@@ -425,11 +425,11 @@ function resetUser() {
 function saveFieldData(element) {
     if (document.getElementById("rememberMe").checked) {
         localStorage.setItem(element.id, element.value);
-        
         if (element.id === "firstname") {
             setCookie("firstName", element.value, 48);
         }
     }
+    updateProgress(); 
 }
 
 async function loadExternalContent() {
@@ -523,5 +523,16 @@ function updateProgress() {
     document.getElementById('progress-bar').style.width = percentage + "%";
     document.getElementById('progress-text').innerText = percentage + "% Complete";
 }
-// Add updateProgress() inside your masterValidate and saveFieldData functions
+
+function toggleHelp() {
+    alert("Dan Jo Hospital Triage: Please ensure all required fields (*) are filled before validating.");
+}
+
+function updateCharCount(textarea) {
+    const count = textarea.value.length;
+    const counterDisplay = document.getElementById('char-count');
+    if (counterDisplay) {
+        counterDisplay.innerText = count + "/500 characters";
+    }
+}
     /* End of document: homework4.js */
