@@ -176,7 +176,8 @@ function checkPassword() {
     const password = document.getElementById('password').value;
     const userid = document.getElementById('userid').value;
     const passwordText = document.getElementById('password_text');
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,30}$/;
 
     if (password === userid && userid !== "") {
         passwordText.innerHTML = "<span style='color:lightcoral'>ERROR: Password cannot match User ID</span>";
@@ -185,7 +186,7 @@ function checkPassword() {
         passwordText.innerHTML = "<span style='color:lightgreen'>Pass</span>";
         return true;
     } else {
-        passwordText.innerHTML = "<span style='color:lightcoral'>Must be 8+ chars with 1 Uppercase, 1 Lowercase, and 1 Digit</span>";
+        passwordText.innerHTML = "<span style='color:lightcoral'>8-30 chars: 1 Upper, 1 Lower, 1 Num</span>";
         return false;
     }
 }
@@ -317,7 +318,7 @@ function masterValidate() {
     } else {
         submitBtn.disabled = true;
         alert("Please fix the errors highlighted in red before submitting.");
-        form.reportValidity(); 
+        form.reportValidity();
     }
 }
 
