@@ -7,12 +7,6 @@
   Purpose: Style sheet for MIS 3371 Homework 4
 */
 
-body {
-    background-color: #7D8C9B;
-    font-family: "Times New Roman", serif;
-    color:rgb(255, 255, 255);
-}
-
 table.form, tr.form, td.form {
     width: 70%;
     opacity: 0.9;
@@ -128,9 +122,11 @@ table.output td:first-child {
 }
 
 body {
-    margin-top: 140px; 
-    margin-bottom: 0px;
     background-color: #7D8C9B;
+    font-family: "Times New Roman", serif;
+    color: rgb(255, 255, 255);
+    margin-top: 140px;
+    margin-bottom: 0px;
 }
 
 #greeting-display {
