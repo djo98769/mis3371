@@ -25,6 +25,13 @@
                     </td>
                     <td align="center" valign="middle">
                         <h1>Dan Jo Hospital</h1>
+                        <div id="session-warning" style="display: none; color: #D8000C; background-color: #ffffff; padding: 15px; font-weight: bold; font-size: 16px; border: 2px solid #D8000C; margin: 10px auto; width: 80%; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);">
+                            ⚠️ SECURITY ALERT: Session expires in <span id="timer">60</span> seconds due to inactivity.
+                            <br><br>
+                            <button type="button" onclick="resetUser()" style="background-color: #D8000C; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                                Login Again
+                            </button>
+                        </div>
                         <div id="greeting-display" style="color: white; font-family: serif;"></div>
                     </td>
                     <td width="20%" valign="bottom" align="right">
