@@ -68,10 +68,16 @@
     </div>
 
     <script>
-        const firstName = getCookie("firstName");
-        if (firstName !== "") {
-            document.getElementById("userNameDisplay").innerText = firstName;
-        }
-    </script>
+    if (typeof startLiveClock === 'function') {
+        startLiveClock();
+    }
+    
+    document.getElementById("today").innerHTML = new Date().toLocaleDateString();
+
+    const firstName = getCookie("firstName");
+    if (firstName !== "") {
+        document.getElementById("userNameDisplay").innerText = firstName;
+    }
+</script>
 </body>
 </html>
