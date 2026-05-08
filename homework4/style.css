@@ -82,13 +82,18 @@ table.output td:first-child {
     background-color: #7D8C9B;
     z-index: 1000;
     border-bottom: 2px solid #333;
-    padding: 5px 10px
+    padding: 5px 10px;
     height: auto;
+    transition: top 0.3s ease-in-out; 
+}
+
+.header-hidden {
+    top: -150px !important;
 }
 
 #header td:last-child {
     white-space: nowrap;
-    padding-right: 20px;
+    padding-right: 30px;
 }
 
 #logo {
