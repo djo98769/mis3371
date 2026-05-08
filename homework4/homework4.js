@@ -13,7 +13,6 @@ This subroutine simply retrieves the data names and entered data from the form.
 This code doesn't require that you know how many elements are in your form OR the names of the variables. 
 */
 
-var isFnameValid, isLnameValid, isDobValid, isSsnValid, isEmailValid, isPhoneValid, isUidValid, isPwValid, isPwMatchValid;
 
 function setCookie(cname, cvalue, exhours) {
     const d = new Date();
@@ -297,17 +296,18 @@ function checkPhone() {
 }
 
 function masterValidate() {
+    const form = document.getElementById('patientForm');
     const submitBtn = document.getElementById('btnSubmit');
-    submitBtn.disabled = true; 
+    
     getdata1(); 
-    if (isFnameValid && isLnameValid && isDobValid && isSsnValid && 
-        isEmailValid && isPhoneValid && isUidValid && isPwValid && isPwMatchValid) {
-        
+
+    if (form.checkValidity()) {
         submitBtn.disabled = false;
         alert("Success! All fields are valid. You can now submit.");
     } else {
-        submitBtn.disabled = true; 
+        submitBtn.disabled = true;
         alert("Please fix the errors highlighted in red before submitting.");
+        form.reportValidity(); // This will point out exactly which field is failing
     }
 }
 
