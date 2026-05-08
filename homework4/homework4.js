@@ -532,7 +532,6 @@ function updateProgress() {
 
 function toggleHelp() {
     const chat = document.getElementById("chat-popup");
-    
     if (chat) {
         if (chat.style.display === "none" || chat.style.display === "") {
             chat.style.display = "block";
