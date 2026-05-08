@@ -82,7 +82,18 @@ table.output td:first-child {
     background-color: #7D8C9B;
     z-index: 1000;
     border-bottom: 2px solid #333;
-    padding: 10px;
+    padding: 5px 10px
+    height: auto;
+}
+
+#header td:last-child {
+    white-space: nowrap;
+    padding-right: 20px;
+}
+
+#logo {
+    width: 80px;
+    height: auto;
 }
 
 #footer {
