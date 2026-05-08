@@ -318,11 +318,18 @@ function masterValidate() {
     checkPassword();
     checkPasswordMatch();
 
-    getdata1();
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        if (!input.checkValidity()) {
+            input.classList.add("input-error");
+        } else {
+            input.classList.remove("input-error");
+        }
+    });
 
     if (form.checkValidity()) {
         submitBtn.disabled = false;
-        alert("Success! All fields are valid. You can now submit.");
+        alert("Success! All fields are valid. You can now submit your registration.");
     } else {
         submitBtn.disabled = true;
         alert("Please fix the errors highlighted in red before submitting.");
