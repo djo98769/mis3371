@@ -532,11 +532,15 @@ function updateProgress() {
 
 function toggleHelp() {
     const chat = document.getElementById("chat-popup");
+    const bubble = document.getElementById("help-ball");
+    
     if (chat) {
         if (chat.style.display === "none" || chat.style.display === "") {
             chat.style.display = "block";
+            bubble.classList.add("stop-animation");
         } else {
             chat.style.display = "none";
+            bubble.classList.remove("stop-animation");
         }
     }
 }
