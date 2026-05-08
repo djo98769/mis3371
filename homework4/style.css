@@ -114,7 +114,8 @@ table.output td:first-child {
 
 body {
     margin-top: 150px; 
-    margin-bottom: 80px;
+    margin-bottom: 250px; 
+    background-color: #7D8C9B;
 }
 
 #greeting-display {
@@ -137,6 +138,10 @@ body {
 }
 
 #news-feed {
+    min-height: 50px;
     width: 80%;
-    margin-bottom: 20px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    color: black;
 }
