@@ -191,6 +191,8 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     z-index: 6000;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    /* This adds a gentle floating effect */
+    animation: floatBubble 3s ease-in-out infinite;
 }
 
 #help-ball:hover {
@@ -198,14 +200,8 @@ body {
     background-color: #025061;
 }
 
-#help-ball::after {
-    content: '';
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 12px;
-    height: 12px;
-    background-color: #D8000C;
-    border: 2px solid white;
-    border-radius: 50%;
+@keyframes floatBubble {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
