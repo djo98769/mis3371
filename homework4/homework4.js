@@ -329,7 +329,7 @@ function masterValidate() {
 
     if (form.checkValidity()) {
         submitBtn.disabled = false;
-        alert("Success! All fields are valid. You can now submit your registration.");
+        alert("Success! All fields are valid. You can now submit.");
     } else {
         submitBtn.disabled = true;
         alert("Please fix the errors highlighted in red before submitting.");
@@ -447,27 +447,25 @@ function saveFieldData(element) {
 }
 
 function showSaveStatus() {
+    const container = document.getElementById("save-status-container");
+    if (!container) return;
+
+    container.innerHTML = "";
     let status = document.createElement("div");
     status.innerHTML = "✓ Draft Saved to LocalStorage";
-    
     status.style = `
-        position: fixed; 
-        top: 150px; 
-        right: 20px; 
+        display: inline-block;
         background: #4CAF50; 
         color: white; 
-        padding: 10px 20px; 
-        border-radius: 5px; 
-        z-index: 10000; 
-        font-size: 14px; 
+        padding: 5px 15px; 
+        border-radius: 20px; 
+        font-size: 13px; 
         font-weight: bold;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         animation: fadeOut 2.5s forwards;
     `;
-    
-    document.body.appendChild(status);
-    
-    setTimeout(() => status.remove(), 2500);
+    container.appendChild(status);
+    setTimeout(() => { if (status.parentNode) status.remove(); }, 2500);
 }
 
 async function loadExternalContent() {
