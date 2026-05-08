@@ -79,7 +79,7 @@ table.output td:first-child {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: white;
+    background-color: #7D8C9B;
     z-index: 1000;
     border-bottom: 2px solid #333;
     padding: 10px;
@@ -90,7 +90,7 @@ table.output td:first-child {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #f1f1f1;
+    background-color: #7D8C9B;
     z-index: 1000;
     padding: 10px;
     border-top: 1px solid #ccc;
