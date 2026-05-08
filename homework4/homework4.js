@@ -369,6 +369,7 @@ window.onload = function () {
         greetingArea.innerHTML = "Welcome, New User!";
     }
     populateStates();
+    loadExternalContent();
 };
 
 document.getElementById('patientForm').onsubmit = function() {
