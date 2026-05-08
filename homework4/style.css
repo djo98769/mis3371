@@ -113,8 +113,14 @@ table.output td:first-child {
     width: 100%;
     background-color: #7D8C9B;
     z-index: 1000;
-    padding: 10px;
+    padding: 10px 0;
     border-top: 1px solid #ccc;
+    height: auto;
+}
+
+#footer td {
+    color: white;
+    font-size: 14px;
 }
 
 body {
