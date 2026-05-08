@@ -377,4 +377,12 @@ document.getElementById('patientForm').onsubmit = function() {
     }
     return true; 
 };
+
+function resetUser() {
+    document.cookie = "firstName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+    localStorage.clear();
+    
+    location.reload();
+}
     /* End of document: homework4.js */
