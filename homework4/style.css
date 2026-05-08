@@ -134,17 +134,12 @@ body {
 }
 
 #greeting-display {
-    color: #03697F;
-    font-family: "Times New Roman";
+    color: white;
+    font-family: "Times New Roman", serif;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 1.1em;
-}
-
-#greeting-display a {
-    color: #cc0000;
-    text-decoration: underline;
-}
+    line-height: 1.4;
 
 #news-feed, .external-content, #body center {
     margin-left: auto;
