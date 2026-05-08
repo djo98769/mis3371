@@ -308,6 +308,7 @@ function masterValidate() {
     const form = document.getElementById('patientForm');
     const submitBtn = document.getElementById('btnSubmit');
     
+    // Run all individual validation checks
     checkName(document.getElementById('firstname'));
     checkName(document.getElementById('lastname'));
     checkDOB();
@@ -322,13 +323,13 @@ function masterValidate() {
     let firstInvalid = null;
 
     inputs.forEach(input => {
-        input.classList.remove("input-error");
+        // Reset the animation by removing the class
+        input.classList.remove("input-error"); 
         
         if (!input.checkValidity()) {
+            // Force a reflow so the browser notices the class reset
             void input.offsetWidth; 
-            
             input.classList.add("input-error");
-            
             if (!firstInvalid) firstInvalid = input;
         }
     });
@@ -338,11 +339,11 @@ function masterValidate() {
         alert("Success! All fields are valid.");
     } else {
         submitBtn.disabled = true;
-        if (firstInvalid) firstInvalid.focus(); 
+        if (firstInvalid) firstInvalid.focus();
         alert("Please fix the highlighted errors.");
     }
 }
-}
+
 
 function populateStates() {
     const states = [
