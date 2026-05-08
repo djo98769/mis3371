@@ -434,4 +434,37 @@ window.onscroll = function() {
     }
     lastScrollTop = scrollTop;
 };
+
+let timeout;
+let warningTimeout;
+
+function resetTimer() {
+    document.getElementById('session-warning').style.display = 'none';
+    clearTimeout(timeout);
+    clearTimeout(warningTimeout);
+
+    warningTimeout = setTimeout(() => {
+        document.getElementById('session-warning').style.display = 'block';
+        startCountdown(60);
+    }, 840000);
+
+    timeout = setTimeout(() => {
+        alert("Session Expired: For your security, the form has been cleared.");
+        resetUser();
+    }, 900000);
+}
+
+function startCountdown(seconds) {
+    let counter = seconds;
+    const interval = setInterval(() => {
+        counter--;
+        document.getElementById('timer').innerText = counter;
+        if (counter <= 0) clearInterval(interval);
+    }, 1000);
+}
+
+window.onmousemove = resetTimer;
+window.onkeydown = resetTimer;
+
+resetTimer();
     /* End of document: homework4.js */
