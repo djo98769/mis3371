@@ -462,17 +462,17 @@ function showSaveStatus() {
 
     container.innerHTML = ""; 
     let status = document.createElement("div");
-    status.innerHTML = "✓ Saved";
+    status.innerHTML = "✓ Saved"; 
     
     status.style = `
-        background: rgba(76, 175, 80, 0.9); 
+        background: rgba(255, 255, 255, 0.2);
         color: white; 
-        padding: 4px 12px; 
+        padding: 2px 10px; 
         border-radius: 4px; 
-        font-size: 11px; 
+        font-size: 10px; 
         font-weight: bold;
         text-transform: uppercase;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        border: 1px solid rgba(255,255,255,0.4);
         animation: fadeOut 2.5s forwards;
     `;
     
