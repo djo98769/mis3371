@@ -299,7 +299,17 @@ function masterValidate() {
     const form = document.getElementById('patientForm');
     const submitBtn = document.getElementById('btnSubmit');
     
-    getdata1(); 
+    checkName(document.getElementById('firstname'));
+    checkName(document.getElementById('lastname'));
+    checkDOB();
+    formatSSN();
+    checkEmail();
+    checkPhone();
+    checkUserID();
+    checkPassword();
+    checkPasswordMatch();
+
+    getdata1();
 
     if (form.checkValidity()) {
         submitBtn.disabled = false;
@@ -307,7 +317,7 @@ function masterValidate() {
     } else {
         submitBtn.disabled = true;
         alert("Please fix the errors highlighted in red before submitting.");
-        form.reportValidity(); // This will point out exactly which field is failing
+        form.reportValidity(); 
     }
 }
 
@@ -441,7 +451,10 @@ let timeout;
 let warningTimeout;
 
 function resetTimer() {
-    document.getElementById('session-modal-backdrop').style.display = 'none';
+    if (document.getElementById('session-modal-backdrop').style.display === 'block') {
+        return; 
+    }
+
     clearTimeout(timeout);
     clearTimeout(warningTimeout);
 
@@ -455,12 +468,20 @@ function resetTimer() {
     }, 15000);
 }
 
+function stayLoggedIn() {
+    document.getElementById('session-modal-backdrop').style.display = 'none';
+    resetTimer();
+}
+
 function startCountdown(seconds) {
     let counter = seconds;
+    const timerSpan = document.getElementById('timer');
     const interval = setInterval(() => {
         counter--;
-        document.getElementById('timer').innerText = counter;
-        if (counter <= 0) clearInterval(interval);
+        if (timerSpan) timerSpan.innerText = counter;
+        if (counter <= 0 || document.getElementById('session-modal-backdrop').style.display === 'none') {
+            clearInterval(interval);
+        }
     }, 1000);
 }
 
