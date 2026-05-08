@@ -15,50 +15,50 @@
     <script src="homework4.js"></script>
 </head>
 <body>
-
-<div id="header">
-    <table width="100%" style="border-collapse: collapse;">
-        <tr>
-            <td width="20%" align="left">
-                <img id="logo" src="logo.png" alt="Dan Jo Hospital" style="width:150px;">
-            </td>
-            <td align="center" valign="middle">
-                <h1 style="margin: 0;">Dan Jo Hospital</h1>
-                <div id="greeting-display" style="color: white; font-family: serif;"></div>
-            </td>
-            
-            <div id="body" style="text-align: center; margin-top: 160px; padding-bottom: 120px;">
-                <div style="background-color: #03697F; width: 70%; margin: auto; padding: 40px; border-radius: 10px; border: 2px solid #333; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-                    <h2 style="color: white; border-bottom: 1px solid white; padding-bottom: 10px;">Thank You for Registering!</h2>
-                    <p style="font-size: 1.2em;">We have received your information, <strong><span id="userNameDisplay">Patient</span></strong>.</p>
-                    <p>Your records have been securely transmitted to the <strong>Mosaic Project</strong> portal at Baylor College of Medicine.</p>
-                    <br>
-                    <button onclick="window.location.href='homework4.html'" style="background-color: white; color: #03697F; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1.1em;">
-                        Return Home
-                    </button>
-                </div>
-            </div>
-
-<div id="body" style="text-align: center; margin-top: 160px; padding-bottom: 120px;">
-    <div style="background-color: #03697F; width: 70%; margin: auto; padding: 40px; border-radius: 10px; border: 2px solid #333; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-        <h2 style="color: white; border-bottom: 1px solid white; padding-bottom: 10px;">Thank You for Registering!</h2>
-        <p style="font-size: 1.2em;">We have received your information, <strong><span id="userNameDisplay">Patient</span></strong>.</p>
-        <p>Your records have been securely transmitted to the <strong>Mosaic Project</strong> portal at Baylor College of Medicine.</p>
-        <p>Our triage team at the <strong>Ben Taub trauma unit</strong> will review your symptoms shortly.</p>
-        <br>
-        <button onclick="window.location.href='homework4.html'" style="background-color: white; color: #03697F; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1.1em;">
-            Return Home
-        </button>
+    <div id="header">
+        <table width="100%" style="border-collapse: collapse;">
+            <tr>
+                <td width="30%" align="left">
+                    <img id="logo" src="logo.png" alt="Dan Jo Hospital" style="width:150px;">
+                </td>
+                <td width="40%" align="center" valign="middle">
+                    <h1 style="margin: 0;">Dan Jo Hospital</h1>
+                    <div id="greeting-display" style="color: white; font-family: serif; font-weight: bold;"></div>
+                </td>
+                <td width="30%" align="right" valign="bottom" style="color: white; font-weight: bold; padding-right: 20px;">
+                    <span id="today"></span>, <span id="clock"></span>
+                </td>
+            </tr>
+        </table>
     </div>
-</div>
-    
+
+    <div id="body" style="text-align: center; margin-top: 160px; padding-bottom: 120px;">
+        <div style="background-color: #03697F; width: 70%; margin: auto; padding: 40px; border-radius: 10px; border: 2px solid #333; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+            <h2 style="color: white; border-bottom: 1px solid white; padding-bottom: 10px;">Thank You for Registering!</h2>
+            <p style="font-size: 1.2em;">We have received your information, <strong><span id="userNameDisplay">Patient</span></strong>.</p>
+            <p>Your records have been securely transmitted to the <strong>Mosaic Project</strong> portal at Baylor College of Medicine.</p>
+            <p>Our triage team at the <strong>Ben Taub trauma unit</strong> will review your symptoms shortly.</p>
+            <br>
+            <button onclick="window.location.href='homework4.html'" style="background-color: white; color: #03697F; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1.1em;">
+                Return Home
+            </button>
+        </div>
+    </div>
+
     <div id="footer">
         <hr>
         <table width="100%">
             <tr>
-                <td width="30%" align="left">Dan Jo Hospital<br>PO BOX 18881<br>Katy, TX 77494</td>
-                <td align="center">Questions?<br><a href="contact.html">Contact Us</a></td>
-                <td width="30%" align="right">
+                <td width="30%" align="left" valign="middle">
+                    Dan Jo Hospital<br>
+                    PO BOX 18881<br>
+                    Katy, TX 77494
+                </td>
+                <td align="center" valign="middle">
+                    Questions?<br>
+                    <a href="contact.html">Contact Us</a>
+                </td>
+                <td width="30%" align="right" valign="middle">
                     <a href="https://www.facebook.com"><img src="facebook.png" width="30" alt="Facebook"></a>
                     <a href="https://www.instagram.com"><img src="instagram.png" width="30" alt="Instagram"></a>
                     <a href="https://www.twitter.com"><img src="twitter.png" width="30" alt="Twitter"></a>
@@ -68,16 +68,6 @@
     </div>
 
     <script>
-        function getCookie(cname) {
-            let name = cname + "=";
-            let ca = document.cookie.split(';');
-            for(let i = 0; i < ca.length; i++) {
-                let c = ca[i].trim();
-                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-            }
-            return "";
-        }
-
         const firstName = getCookie("firstName");
         if (firstName !== "") {
             document.getElementById("userNameDisplay").innerText = firstName;
