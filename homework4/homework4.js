@@ -34,16 +34,22 @@ function getCookie(cname) {
 
 function removedata1() {
     document.getElementById("outputformdata").innerHTML = "<div style='text-align: center'>(you started over)</div>";
-    document.getElementById("firstname_text").innerHTML = ""; 
-    document.getElementById("lastname_text").innerHTML = ""; 
-    document.getElementById("dob_text").innerHTML = "";     
-    document.getElementById("ssn_text").innerHTML = "";      
+    
+    document.getElementById("firstname_text").innerHTML = "";
+    document.getElementById("lastname_text").innerHTML = "";
+    document.getElementById("dob_text").innerHTML = "";
+    document.getElementById("ssn_text").innerHTML = "";
     document.getElementById("email_text").innerHTML = "";
     document.getElementById("phone_text").innerHTML = "";
-    document.getElementById("userid_text").innerHTML = ""; 
-    document.getElementById("password_text").innerHTML = ""; 
-    document.getElementById("confirm_password_text").innerHTML = ""; 
-    document.getElementById("confirm_password").setCustomValidity(""); 
+    document.getElementById("userid_text").innerHTML = "";
+    document.getElementById("password_text").innerHTML = "";
+    document.getElementById("confirm_password_text").innerHTML = "";
+    document.getElementById("confirm_password").setCustomValidity("");
+
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    if (progressBar) progressBar.style.width = "0%";
+    if (progressText) progressText.innerText = "0% Complete";
 }
 
 function getdata1() {
