@@ -458,20 +458,22 @@ function showSaveStatus() {
     const container = document.getElementById("save-status-container");
     if (!container) return;
 
-    container.innerHTML = "";
+    container.innerHTML = ""; 
     let status = document.createElement("div");
-    status.innerHTML = "✓ Draft Saved to LocalStorage";
+    status.innerHTML = "✓ Saved";
+    
     status.style = `
-        display: inline-block;
-        background: #4CAF50; 
+        background: rgba(76, 175, 80, 0.9); 
         color: white; 
-        padding: 5px 15px; 
-        border-radius: 20px; 
-        font-size: 13px; 
+        padding: 4px 12px; 
+        border-radius: 4px; 
+        font-size: 11px; 
         font-weight: bold;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-transform: uppercase;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         animation: fadeOut 2.5s forwards;
     `;
+    
     container.appendChild(status);
     setTimeout(() => { if (status.parentNode) status.remove(); }, 2500);
 }
