@@ -88,12 +88,17 @@ table.output td:first-child {
 }
 
 .header-hidden {
-    top: -150px !important;
+    top: -200px !important; 
 }
 
 #header td:last-child {
     white-space: nowrap;
-    padding-right: 30px;
+    padding-right: 50px;
+}
+
+#outputformdata {
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 #logo {
