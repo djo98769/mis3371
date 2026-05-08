@@ -319,22 +319,29 @@ function masterValidate() {
     checkPasswordMatch();
 
     const inputs = form.querySelectorAll('input, select, textarea');
+    let firstInvalid = null;
+
     inputs.forEach(input => {
+        input.classList.remove("input-error");
+        
         if (!input.checkValidity()) {
+            void input.offsetWidth; 
+            
             input.classList.add("input-error");
-        } else {
-            input.classList.remove("input-error");
+            
+            if (!firstInvalid) firstInvalid = input;
         }
     });
 
     if (form.checkValidity()) {
         submitBtn.disabled = false;
-        alert("Success! All fields are valid. You can now submit.");
+        alert("Success! All fields are valid.");
     } else {
         submitBtn.disabled = true;
-        alert("Please fix the errors highlighted in red before submitting.");
-        form.reportValidity();
+        if (firstInvalid) firstInvalid.focus(); 
+        alert("Please fix the highlighted errors.");
     }
+}
 }
 
 function populateStates() {
