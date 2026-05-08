@@ -182,7 +182,7 @@ function checkPassword() {
     if (password.match(/\d/)) strength++;
     if (password.length >= 8) strength++;
 
-    let colors = ["#ff4d4d", "#ffa500", "#ffff00", "#lightgreen"];
+    let colors = ["#ff4d4d", "#ffa500", "#ffff00", "lightgreen"];
     let labels = ["Weak", "Fair", "Good", "Strong"];
 
     if (password.length === 0) {
