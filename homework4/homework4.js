@@ -446,12 +446,12 @@ function resetTimer() {
     warningTimeout = setTimeout(() => {
         document.getElementById('session-warning').style.display = 'block';
         startCountdown(60);
-    }, 840000);
+    }, 5);
 
     timeout = setTimeout(() => {
         alert("Session Expired: For your security, the form has been cleared.");
         resetUser();
-    }, 900000);
+    }, 15);
 }
 
 function startCountdown(seconds) {
